@@ -1,0 +1,7 @@
+echo "# Rotten-Mangoes" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M 'main'
+git remote add origin https://github.com/Nabidbhai12/Rotten-Mangoes.git
+git push -u origin 'main'
