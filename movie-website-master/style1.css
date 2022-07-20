@@ -1,0 +1,31 @@
+#movies img, #movie img{
+  width:100%;
+}
+
+body{
+  background-image: url("https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  /*background-color: #222222;*/
+}
+
+@media(min-width:960px){
+  #movies .col-md-3 .well{
+    height: 390px;
+  }
+
+  #movies .col-md-3 img{
+    height:240px;
+  }
+}
+.navbar-brand
+{
+  color:#ff0000;
+
+}
+.container
+{
+  color:#548DF7;
+
+}
