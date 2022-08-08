@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Anime ist</title>
+    <link rel="icon" href="/img/icons/mal-logo-head.png">
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+
+<body>
+    <div class="main-content">
+        <%- include('../partials/header.ejs') %>
+            <section id="homepage-top-animes" style="margin-bottom: 15%;">
+                <div style="float: left; width : 50%">
+                    <h3> <a class="home" href="/movielist/new">Newly Released Anime</a> </h3>
+
+                </div>
+                <div style="float: right; width : 50%">
+                    <h3><a class="home" href="/movielist/top">Top Animes</a></h3>
+                    <% for (let movie of recommendation){ %>
+                        <li>
+                            <a class="listed" href=<%="/movie/" + movie.id %> >
+                                //<img height="40" src=<%="/img/anime_pic/" +a + "" %>>
+                                <%= movie.title %>
+                            </a>
+                        </li>
+                        <% } %>
+                </div>
+
+            </section>
+
+            <section id="homepage-recommended-animes" style="margin-top: 50%;">
+                <% if(isAuth){ %>
+                    <h3><a class="home" href="/animelist/recommendation"> Recommended For You </a> </h3>
+                    <% for (let movie of recommendation){ %>
+                        <li>
+                            <a class="listed" href=<%="/anime/" + movie.id %> >
+                                //<img height="40" src=<%="/img/anime_pic/" +anime.PICTURE_ID + ".jpg" %>>
+                                <%= movie.title %>
+                            </a>
+                        </li>
+                        <% } %>
+                            <% } %>
+            </section>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+</body>
+
+</html>

@@ -1,11 +1,11 @@
 const express = require('express')
-const DB_anime = require('../../DB_codes/DB_movie')
+const DB_movie = require('../../DB_codes/DB_movie')
 const router = express.Router({ mergeParams: true })
 //all done.Ok
 // '/genre' endpoint
 router.get('/', async (req, res) => {
     //database query
-    const genres = await DB_anime.getAllGenres();
+    const genres = await DB_movie.getAllGenres();
     //error checking
     const data = {
         pageTitle: 'Genres',

@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
 
     let recommendation = []
   //  if (req.session.isAuth)
-      //  recommendation = await DB_homepage.getUserRecommendation(username)
+        recommendation = await DB_homepage.getTopMovies();
     const data = {
         pageTitle: 'MyAnimeList',
         isAuth: req.session.isAuth,
@@ -38,7 +38,7 @@ router.get('/', async (req, res) => {
 
         //newlyReleased,
         //topAnimes,
-    //    recommendation
+        recommendation
     }
     res.render('index', data)
 })

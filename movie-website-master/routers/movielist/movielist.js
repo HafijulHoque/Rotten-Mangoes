@@ -29,7 +29,7 @@ router.get('/new', async (req, res) => {
 })
 
 router.get('/top', async (req, res) => {
-    const topMovies = await DB_list.getAllTopAnimes();
+    const topMovies = await DB_list.getTopMovies();
     const data = {
         pageTitle: 'List of Top movies',
         isAuth: req.session.isAuth,

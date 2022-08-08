@@ -4,9 +4,18 @@ const database = require('./database')
 async function getMoviesByID(id) {
     let sql = `
         SELECT 
-            Title,Release_date,directors_ssn
+        *
         FROM Movies natural join SHOW 
-        WHERE Id=:id and Director_SSN=SSN;
+        WHERE Id=:id 
+    `
+    return (await database.execute(sql, [id], database.options)).rows[0]
+}
+async function getShowsByID(id) {
+    let sql = `
+        SELECT *
+        
+        FROM Show
+        WHERE Id=:id ;
     `
     return (await database.execute(sql, [id], database.options)).rows[0]
 }
@@ -160,7 +169,8 @@ async function getNumberOfSeasons(Title,Release_date) {
 
 module.exports = {
     //getAnimeByID,
-    getMoviesById,
+    getMoviesByID,
+    getShowsByID,
     getMoviesByREGEX,
     getGenresById,
  getDirectorByID,
