@@ -1,11 +1,43 @@
 const database = require('./database')
 //no error.Ok
 
+async function getShowsByREGEX(string) {
+    let sql = `
+    SELECT * FROM "C##MOVIEDATABSE"."Show" WHERE LOWER("Title") LIKE '${string[0]}'`
+    for (let i = 1; i < string.length; i++) {
+        sql += ` AND LOWER("Title") LIKE '${string[i]}'`;
+    }
+    return (await database.execute(sql, [], database.options)).rows
+}
 async function getMoviesByREGEX(string) {
     let sql = `
-    SELECT Title,Release_Date FROM Movies WHERE LOWER(Title) LIKE '${string[0]}'`
+    SELECT * FROM "C##MOVIEDATABSE"."Show" NATURAL Join"C##MOVIEDATABSE"."Movies" WHERE LOWER("Title") LIKE '${string[0]}'`
     for (let i = 1; i < string.length; i++) {
-        sql += ` AND LOWER(ANIME_TITLE) LIKE '${string[i]}'`;
+        sql += ` AND LOWER("Title") LIKE '${string[i]}'`;
+    }
+    return (await database.execute(sql, [], database.options)).rows
+}
+async function getTvSeriesByREGEX(string) {
+    let sql = `
+    SELECT * FROM "C##MOVIEDATABSE"."Show" NATURAL Join"C##MOVIEDATABSE"."Tv_series" WHERE LOWER("Title") LIKE '${string[0]}'`
+    for (let i = 1; i < string.length; i++) {
+        sql += ` AND LOWER("Title") LIKE '${string[i]}'`;
+    }
+    return (await database.execute(sql, [], database.options)).rows
+}
+async function getActorsByREGEX(string) {
+    let sql = `
+    SELECT * FROM "C##MOVIEDATABSE"."Acotr" WHERE LOWER("Name") LIKE '${string[0]}'`
+    for (let i = 1; i < string.length; i++) {
+        sql += ` AND LOWER("Name") LIKE '${string[i]}'`;
+    }
+    return (await database.execute(sql, [], database.options)).rows
+}
+async function getDirectorsByREGEX(string) {
+    let sql = `
+    SELECT * FROM "C##MOVIEDATABSE"."Directors" WHERE LOWER("Name") LIKE '${string[0]}'`
+    for (let i = 1; i < string.length; i++) {
+        sql += ` AND LOWER("Name") LIKE '${string[i]}'`;
     }
     return (await database.execute(sql, [], database.options)).rows
 }
@@ -52,7 +84,10 @@ async function getMoviesByREGEX(string) {
 
 
 module.exports = {
+    getActorsByREGEX,
     getMoviesByREGEX,
+    getTvSeriesByREGEX,
+    getShowsByREGEX
     //getCharactersByREGEX,
     //getVoiceActorsByREGEX,
     //getWritersByREGEX

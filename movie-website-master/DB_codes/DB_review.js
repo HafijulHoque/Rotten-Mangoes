@@ -15,12 +15,20 @@ async function insertIntoTest(id) {
 async function getAllReviewsOf(id) {
     let sql = `
         SELECT *
-    FROM Review
-where show_id=:id
+    FROM "C##MOVIEDATABASE"."Review"
+where "show_id"=:id
     `
     return (await database.execute(sql, [id], database.options)).rows
 }
-
+async function getAllReviewsFromTitle(title) {
+    let sql = `
+        SELECT *
+    FROM "C##MOVIEDATABASE"."Review"
+where "Title"=:title
+    `
+    return (await database.execute(sql, [id], database.options)).rows
+}
+//gets all reviews where our user commented
 async function getAllReviewsWithUserVotes(id, username) {
     let sql = `
         SELECT *
@@ -38,13 +46,20 @@ async function getUserReview(username,id) {
     `
     return (await database.execute(sql, [username, id], database.options)).rows[0]
 }
+async function getAllUserReview(username) {
+    let sql = `
+        SELECT * FROM "C##MOVIEDATABSE"."Review"
+        WHERE "Username"=:username
+    `
+    return (await database.execute(sql, [username, id], database.options)).rows[0]
+}
 
 
 
 //this function will enter new review into the DB and return the NEW REVIEW_ID
 async function insertReview(Id,reviewContent,username) {
     let sql = `
-        INSERT INTO REVIEW (Review_ID,DATE,CONTENT, votes,username) 
+        INSERT INTO REVIEW ("Review_id","Date","Content", "Votes","Username") 
         VALUES(:ID,SYSDATE,:content,0,:username) 
         RETURNING REVIEW_ID INTO :retID
     `
@@ -61,7 +76,7 @@ async function insertReview(Id,reviewContent,username) {
 
 async function updateReview(review_id, content) {
     let sql = `
-        UPDATE REVIEW SET CONTENT = :CONTENT WHERE REVIEW_ID = :REVIEW_ID
+        UPDATE "C##MOVIEDATABASE"."Review" SET "Content" = :CONTENT WHERE "Review_id" = :review_id
     `
     return (await database.execute(sql, [content, review_id], database.options))
 }
@@ -69,8 +84,8 @@ async function updateReview(review_id, content) {
 //has problems
 async function removeReviewFromReviewed(username, id) {
     let sql = `
-        DELETE FROM REVIEW 
-            WHERE USERNAME = :username AND show_id=:id    
+        DELETE FROM "C##MOVIEDATABASE"."REVIEW" 
+            WHERE "Username" = :username AND "Review_id"=:id    
             `
     return (await database.execute(sql, [id], database.options))
 }

@@ -2,30 +2,60 @@ const database = require('./database')
 
 async function getNewlyReleasedMovies() {
     let sql = `
-        SELECT TITLE,RUNTIME,REVENUE
-        FROM MOVIES
-        ORDER BY RELEASE_DATE DESC
+        SELECT *
+        FROM "C##MOVIEDATABASE"."Movies"
+        ORDER BY "RELEASE_DATE" DESC
+        FETCH next 4 ROWS ONLY 
+       
+    `
+    return (await database.execute(sql, [], database.options)).rows
+}
+async function getNewlyReleasedTvShows() {
+    let sql = `
+        SELECT *
+        FROM "C##MOVIEDATABASE"."Tv_series"
+        ORDER BY "RELEASE_DATE" DESC
+            FETCH next 4 ROWS ONLY
        
     `
     return (await database.execute(sql, [], database.options)).rows
 }
 
 
+async function getTopTvSeries() {
+    let sql = `
+        SELECT *
+        FROM "C##MOVIEDATABASE"."Rated" NATURAL join "C##MOVIEDATABASE"."Tv_series"
+        ORDER BY "Stars" DESC
+            FETCH next 4 ROWS ONLY
+        
+    `
+    return (await database.execute(sql, [], database.options)).rows
+}
 async function getTopMovies() {
     let sql = `
-        SELECT TITLE,RELEASE_DATE,RUNTIME,REVENUE
-        FROM Rated
-        ORDER BY STARS DESC
+        SELECT *
+        FROM "C##MOVIEDATABASE"."Rated" NATURAL join "C##MOVIEDATABASE"."Movies"
+        ORDER BY "Stars" DESC
+            FETCH next 4 ROWS ONLY
         
     `
     return (await database.execute(sql, [], database.options)).rows
 }
 
-async function getAllNewlyReleasedAnime() {
-    let sql = `
-     SELECT TITLE,RUNTIME,REVENUE
-        FROM MOVIES
-        ORDER BY RELEASE_DATE DESC
+async function getAllNewlyReleasedMovies() {
+    let sql = `    SELECT *
+                   FROM "C##MOVIEDATABASE"."Movies"
+                   ORDER BY "RELEASE_DATE" DESC
+  
+    `
+    return (await database.execute(sql, [], database.options)).rows
+}
+async function getAllNewlyReleasedTvSeries() {
+    let sql = `    SELECT *
+                   FROM "C##MOVIEDATABASE"."Tv_series"
+                   ORDER BY "RELEASE_DATE" DESC
+  
     `
     return (await database.execute(sql, [], database.options)).rows
 }
@@ -33,14 +63,39 @@ async function getAllNewlyReleasedAnime() {
 
 async function getAllTopMovies() {
     let sql = `
-          SELECT "Title"
-        FROM "C##MOVIEDATABASE"."Rated"
+        SELECT *
+        FROM "C##MOVIEDATABASE"."Rated" NATURAL join "C##MOVIEDATABASE"."Movies"
+        ORDER BY "Stars" DESC
     
     `
 
     return (await database.execute(sql, [], database.options)).rows
 }
+async function getAllTopTvSeries() {
+    let sql = `
+        SELECT *
+        FROM "C##MOVIEDATABASE"."Rated" NATURAL join "C##MOVIEDATABASE"."Tv_series"
+        ORDER BY "Stars" DESC
+    
+    `
 
+    return (await database.execute(sql, [], database.options)).rows
+}
+async function getUserRecommendation(username) {
+    let sql = `
+SELECT *
+FROM "C##MOVIEDATABASE"."SHOW"
+WHERE "GENRE" IN(
+
+      SELECT "Genre"
+      FROM "C##MOVIEDATABASE"."favourites" NATURAL JOIN "C##MOVIEDATABASE"."Show")
+FETCH NEXT 3 ROWS ONLY 
+    
+    `
+
+
+    return (await database.execute(sql, [], database.options)).rows
+}
 
 //First it gets the top 4 genres the user prefers
 //then it finds the anime ids with the most matches with those genres (COUNT(*) AS RECOMMENDATION)

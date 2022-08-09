@@ -5,12 +5,12 @@ const DB_watchlist = require('../../DB_codes/DB_watchlist')
 const DB_rating = require('../../DB_codes/DB_rating')
 const router = express.Router({ mergeParams: true })
 
-// /anime router
+// /movie router
 router.get('/:id', async (req, res) => {
     const movie_id = req.params.id;
     const username = req.session.username;
 
-    const movie = await DB_movie.getMoviesById(movie_id);
+    const movie = await DB_movie.getMoviesByID(movie_id);
     const genres = await DB_movie.getGenresById(movie_id);
     const director = await DB_movie.getDirectorByID(movie.directors_ssn);
     const characters = await DB_movie.getActorsById(movie_id);

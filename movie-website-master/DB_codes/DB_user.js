@@ -5,28 +5,43 @@ const database = require('./database')
 async function getUserInfoByUsername(username) {
     let sql = `
         SELECT *
-        FROM USERaccount
-        WHERE USERNAME = :USERNAME
+        FROM "USERaccount"
+        WHERE "Username" = :USERNAME
     `
     return (await database.execute(sql, [username], database.options)).rows[0]
 }
-
+async function updateUserFirstName(userame,First_name) {
+    let sql = `
+    UPDATE "C##MOVIEDATABSE"."USERaccount"
+    SET "FIRST_NAME" = :First_name
+    WHERE "Username"=:username
+    `
+    return (await database.execute(sql, [email, bio, username], database.options))
+}
+async function updateUserPassword(userame,Password) {
+    let sql = `
+    UPDATE "C##MOVIEDATABSE"."USERaccount"
+    SET "Password" = :Password
+    WHERE "Username"=:username
+    `
+    return (await database.execute(sql, [email, bio, username], database.options))
+}
 
 
 async function updateUserEmailandBio(username, email, bio) {
     let sql = `
-    UPDATE USERaccount
-    SET EMAIL = :EMAIL, FIRST_NAME = :BIO
-    WHERE USERNAME = :USERNAME
+    UPDATE "C##MOVIEDATABSE"."USERaccount"
+    SET "EMAIL" = :EMAIL, "FIRST_NAME" = :BIO
+    WHERE "Username" = :USERNAME
     `
     return (await database.execute(sql, [email, bio, username], database.options))
 }
 
 async function getFavouriteslistOfUser(username) {
     let sql = `
-        SELECT TITLE,RELEASE_DATE
-        FROM FAVOURITES
-        WHERE USERNAME=:USERNAME
+        SELECT *
+        FROM "C##MOVIEDATABSE"."favourites"
+        WHERE "USERNAME"=:USERNAME
           
     `
     return (await database.execute(sql, [username], database.options)).rows
@@ -34,9 +49,9 @@ async function getFavouriteslistOfUser(username) {
 
 async function getWatchlistOfUser(username) {
     let sql = `
-     SELECT TITLE,RELEASE_DATE
-        FROM WATCHLIST
-        WHERE USERNAME=:USERNAME
+     SELECT *
+        FROM "C##MOVIEDATABSE"."WATCHLIST"
+        WHERE "USERNAME"=:USERNAME
         
     `
     return (await database.execute(sql, [username], database.options)).rows
@@ -46,5 +61,7 @@ module.exports = {
     getUserInfoByUsername,
     updateUserEmailandBio,
     getFavouriteslistOfUser,
-    getWatchlistOfUser
+    getWatchlistOfUser,
+    updateUserFirstName,
+    updateUserPassword
 }

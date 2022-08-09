@@ -5,8 +5,8 @@ async function getMoviesByID(id) {
     let sql = `
         SELECT 
         *
-        FROM Movies natural join SHOW 
-        WHERE Id=:id 
+        FROM "C##MOVIEDATABASE"."Movies" natural join "C##MOVIEDATABSE"."Show" 
+        WHERE "Id"=:id 
     `
     return (await database.execute(sql, [id], database.options)).rows[0]
 }
@@ -14,8 +14,8 @@ async function getShowsByID(id) {
     let sql = `
         SELECT *
         
-        FROM Show
-        WHERE Id=:id ;
+        FROM "C##MOVIEDATABSE"."Show"
+        WHERE "Id"=:id ;
     `
     return (await database.execute(sql, [id], database.options)).rows[0]
 }
@@ -23,9 +23,11 @@ async function getShowsByID(id) {
 
 async function getMoviesByREGEX(string) {
     let sql = `
-    SELECT    Title,Release_date,Runtime,Revenue FROM Movies  WHERE LOWER(TITLE) LIKE '${string[0]}'`
+    SELECT    *
+    FROM    "C##MOVIEDATABASE"."Movies" 
+                WHERE LOWER("Title") LIKE '${string[0]}'`
     for (let i = 1; i < string.length; i++) {
-        sql += ` AND LOWER(TITLE) LIKE '${string[i]}'`;
+        sql += ` AND LOWER("TITLE") LIKE '${string[i]}'`;
     }
     return (await database.execute(sql, [], database.options)).rows
 }
@@ -33,36 +35,44 @@ async function getMoviesByREGEX(string) {
 
 async function getGenresById(id) {
     let sql = `
-        SELECT GENRE FROM  Show WHERE Id=:id
+        SELECT "Gnere" 
+        FROM  "C##MOVIEDATABSE"."Show"
+              WHERE "Id"=:id
     `
     return (await database.execute(sql, [id], database.options)).rows
 }
 async function getActorsById(id) {
     let sql = `
-        SELECT Name FROM  Show natural join Actedby Natural join Actors 
-                    WHERE Id=:id
+        SELECT "Name" FROM  "C##MOVIEDATABSE"."Show" natural join "C##MOVEIDATABASE"."ActedBy" Natural join "C##MOVIEDATABASE"."Actors" 
+                    WHERE "Id"=:id
     `
     return (await database.execute(sql, [id], database.options)).rows
 }
 async function getDirectorByID(PERSONNEL_ID) {
     let sql = `
-        SELECT * FROM Director WHERE SSN = :ID
+        SELECT * FROM "C##MOVIEDATABASE"."Directors" WHERE "SSN" = :PERSONNEL_ID
     `
     return (await database.execute(sql, [PERSONNEL_ID], database.options)).rows[0]
 }
 
 async function getStudioName(id) {
     let sql = `
-        SELECT * FROM  Show WHERE Id=:id
+        SELECT "Studio_name" FROM  "C##MOVIEDATABSE"."Show" WHERE "Id"=:id
     `
-    return (await database.execute(sql, [PERSONNEL_ID], database.options)).rows[0]
+    return (await database.execute(sql, [id], database.options)).rows[0]
 }
 
 async function getAllMoviesTitleAndID() {
     let sql = `
-           SELECT 
-            Title,Release_date,Runtime,Revenue
-        FROM Movies
+           SELECT *
+        FROM "C##MOVIEDATABSE"."Movies"
+    `
+    return (await database.execute(sql, [], database.options)).rows
+}
+async function getAllTvSeriesTitleAndID() {
+    let sql = `
+           SELECT *
+        FROM "C##MOVIEDATABSE"."Tv_series"
     `
     return (await database.execute(sql, [], database.options)).rows
 }
