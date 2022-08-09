@@ -137,6 +137,6 @@ module.exports = {
     getTopMovies,
  //   getUserRecommendation,
     getAllTopMovies,
-    getAllNewlyReleasedAnime,
+    //getAllNewlyReleasedAnime,
    // getAllUserRecommendation
 }
