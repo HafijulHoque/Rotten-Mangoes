@@ -16,7 +16,6 @@
         <%- include('../partials/header.ejs') %>
             <section>
                 <div style="float: left; width : 50%">
-                    <img src=<%="/img/anime_pic/" +anime.PICTURE_ID + ".jpg" %>>
                 </div>
                 <div style="float: right; width : 50%">
                     <h3 style="color: rgb(52, 52, 110);">Rank #</h3>
@@ -76,40 +75,40 @@
             </div>
 
 
-            <!--<a href=<%="/anime/" + movie.title + "/reviews/" %> ><button>Reviews</button></a>-->
-            <p><span style="color:rgb(37, 37, 87);font-weight: 700;">Synopsis </span> : <%= anime.SYNOPSIS %>
+            <!--<a href=<%="/movie/" + movie.title + "/reviews/" %> ><button>Reviews</button></a>-->
+            <p><span style="color:rgb(37, 37, 87);font-weight: 700;">Synopsis </span> : <%= movie.title %>
             </p>
             <p><span style="color: rgb(37, 37, 87); font-weight: 700;">Genre </span> :
                 <% for (let genre of genres){ %>
                     <!-- this might change depending on the search by genre -->
-                    <a class="listed" href=<%="/genre/" + genre.GENRE_NAME %> > <%=genre.GENRE_NAME %> </a>
+                    <a class="listed" href=<%="/genre/" + genre %> > <%=genre %> </a>
                     <% } %>
             </p>
             <p><span style="color: rgb(37, 37, 87); font-weight: 700;">Released </span> : <%= movie.release_date %>
-                    <%= movie.RELEASE_SEASON %>
+                    <%= movie.RELEASE_date %>
             </p>
 
-            <% studioURL=encodeURIComponent(anime.STUDIO_NAME) %>
+            <% studioURL=encodeURIComponent(movie.STUDIO_NAME) %>
                 <p><span style="color: rgb(37, 37, 87); font-weight: 700;">Studio </span>: <a class="listed" href=<%="/studio/" + studioURL%>> <%= movie.STUDIO_NAME %>
                     </a>
                 </p>
-                <p><span style="color: rgb(37, 37, 87); font-weight: 700;">Writer</span> : <a class="listed" href=<%="/personnel/" + writer.PERSONNEL_ID%> > <%= writer.FIRST_NAME %>
-                            <%= writer.LAST_NAME %> </a> </p>
-                <a href=<%="/anime/" + anime.ANIME_ID + "/episodes/" %> ><button style="background-color: rgb(58, 58, 122);">Episodes</button></a>
+                <p><span style="color: rgb(37, 37, 87); font-weight: 700;">Writer</span> : <a class="listed" href=<%="/personnel/" + Director.name%> > <%= writer.FIRST_NAME %>
+                            <%= director.name%> </a> </p>
+                <a href=<%="/anime/" + movie.id + "/episodes/" %> ><button style="background-color: rgb(58, 58, 122);">Episodes</button></a>
                 <div>
                     <h3 style="color: rgb(83, 18, 109);">Characters & Voice Actors</h3>
                     <ul>
                         <% for (let character of characters){ %>
                             <li>
-                                <a class="listed-character" href=<%="/anime/" + anime.ANIME_ID + "/characters/" +
-                                    character.FIRST_NAME + "_" + character.LAST_NAME%>>
-                                    <img width="40" src=<%="/img/character_pic/" + anime.ANIME_ID + "/" +
-                                        character.PICTURE_ID + ".jpg" %>>
-                                    <%= character.FIRST_NAME %>
-                                        <%= character.LAST_NAME %>
+                                <a class="listed-character" href=<%="/anime/" + movie.id + "/characters/" +
+                                    character.NAME + "_" + character.NAME%>>
+                                    <img width="40" src=<%="/img/character_pic/" + movie.id + "/"
+                                    %>>
+                                    <%= character.NAME %>
+                                        <%= character.NAME %>
                                 </a>
-                                <a class="listed" href=<%="/personnel/" + character.VOICE_ACTOR_ID %>>
-                                    <%=character.VA_NAME %>
+                                <a class="listed" href=<%="/personnel/" + character.name %>>
+                                    <%=character.NAME %>
                                 </a>
                             </li>
                             <% } %>
@@ -117,8 +116,8 @@
                 </div>
                 <br>
                 <br>
-                <a href=<%="/anime/" + anime.ANIME_ID + "/reviews/" %> ><button style="background-color:rgb(88, 88, 167) ;">Reviews</button></a>
-                <!--<a href=<%="/anime/" + anime.ANIME_ID + "/episodes/" %> ><button>Episodes</button></a>-->
+                <a href=<%="/movie/" + movie.id + "/reviews/" %> ><button style="background-color:rgb(88, 88, 167) ;">Reviews</button></a>
+                <!--<a href=<%="/movie/" + movie.id + "/episodes/" %> ><button>Episodes</button></a>-->
 
     </div>
     <%- include('../partials/footer.ejs') %>

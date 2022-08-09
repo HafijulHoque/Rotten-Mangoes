@@ -1,5 +1,5 @@
 const express = require('express')
-const DB_movie = require('../../DB_codes/DB_anime')
+const DB_movie = require('../../DB_codes/DB_movie')
 const DB_list = require('../../DB_codes/DB_homepage')
 const router = express.Router({ mergeParams: true })
 //all done. Ok

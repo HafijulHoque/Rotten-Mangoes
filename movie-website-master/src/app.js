@@ -48,6 +48,8 @@ app.listen(PORT, async () => {
 })
 
 
+
+
 process
     .once('SIGTERM', database.shutdown)
     .once('SIGINT', database.shutdown);

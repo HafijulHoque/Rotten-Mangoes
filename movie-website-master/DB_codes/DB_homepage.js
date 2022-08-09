@@ -5,7 +5,7 @@ async function getNewlyReleasedMovies() {
         SELECT TITLE,RUNTIME,REVENUE
         FROM MOVIES
         ORDER BY RELEASE_DATE DESC
-        FETCH NEXT 4 ROWS ONLY
+       
     `
     return (await database.execute(sql, [], database.options)).rows
 }
@@ -16,7 +16,7 @@ async function getTopMovies() {
         SELECT TITLE,RELEASE_DATE,RUNTIME,REVENUE
         FROM Rated
         ORDER BY STARS DESC
-        FETCH NEXT 4 ROWS ONLY
+        
     `
     return (await database.execute(sql, [], database.options)).rows
 }
@@ -33,10 +33,11 @@ async function getAllNewlyReleasedAnime() {
 
 async function getAllTopMovies() {
     let sql = `
-          SELECT TITLE,RELEASE_DATE,RUNTIME,REVENUE
-        FROM Rated
-        ORDER BY STARS DESC
+          SELECT "Title"
+        FROM "C##MOVIEDATABASE"."Rated"
+    
     `
+
     return (await database.execute(sql, [], database.options)).rows
 }
 

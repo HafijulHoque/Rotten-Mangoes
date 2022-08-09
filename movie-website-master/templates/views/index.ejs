@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>My Anime ist</title>
+    <title>My Movie ist</title>
     <link rel="icon" href="/img/icons/mal-logo-head.png">
     <link rel="stylesheet" href="/css/styles.css">
 
@@ -21,7 +21,7 @@
                     <% for (let movie of recommendation){ %>
                         <li>
                             <a class="listed" href=<%="/movie/" + movie.id %> >
-                                //<img height="40" src=<%="/img/anime_pic/" +a + "" %>>
+
                                 <%= movie.title %>
                             </a>
                         </li>
@@ -35,8 +35,8 @@
                     <h3><a class="home" href="/animelist/recommendation"> Recommended For You </a> </h3>
                     <% for (let movie of recommendation){ %>
                         <li>
-                            <a class="listed" href=<%="/anime/" + movie.id %> >
-                                //<img height="40" src=<%="/img/anime_pic/" +anime.PICTURE_ID + ".jpg" %>>
+                            <a class="listed" href=<%="/movie/" + movie.id %> >
+
                                 <%= movie.title %>
                             </a>
                         </li>

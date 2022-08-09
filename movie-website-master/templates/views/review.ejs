@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>My Anime List</title>
+    <title>My movie List</title>
     <link rel="icon" href="/img/icons/mal-logo-head.png">
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/new.css">
@@ -21,20 +21,20 @@
                     <br>
                     <% if(userReview) { %>
                         <!-- this button will show if the logged in user reviewed this anime -->
-                        <form action=<%="/movie/" + anime_id + "/reviews/delete" %> method="post">
+                        <form action=<%="/movie/" + movie_id + "/reviews/delete" %> method="post">
                             <input type="hidden" name="username" value=<%=username %>>
-                            <input type="hidden" name="anime_id" value=<%=anime_id %>>
+                            <input type="hidden" name="anime_id" value=<%=movie_id %>>
                             <button type="submit" onclick="return removeReview()" style="background-color: rgb(194, 79, 83);">Remove review</button>
                         </form>
                         <% } %>
                             <br>
                             <!-- this div will open when write review button is pressed -->
                             <div class="review-edit" id="myReview">
-                                <form class="Review" method="post" action=<%="/anime/" + anime_id + "/reviews" %> >
+                                <form class="Review" method="post" action=<%="/anime/" + movie_id + "/reviews" %> >
                                     <textarea id="text" name="reviewContent" rows="5"
                                         cols="50"><%= userReviewContent %></textarea>
                                     <input type="hidden" name="username" value=<%=username %> >
-                                    <input type="hidden" name="anime_id" value=<%=anime_id%>>
+                                    <input type="hidden" name="anime_id" value=<%=movie_id%>>
                                     <br>
                                     <button type="submit" style="background-color: rgb(60, 33, 112);"> Post </button>
                                 </form>
@@ -43,7 +43,7 @@
                             <% } %>
             </div>
             <p style="font-weight: bolder; color: rgb(64, 64, 124);">
-                Reviews for <%= anime_title %>
+                Reviews for <%= movie_title %>
             </p>
 
             <div>
@@ -61,7 +61,7 @@
                                     </p>
                                     <% if(isAuth) { %>
                                         <div class="user-vote-popup" id="vote">
-                                            <form method="post" action=<%="/anime/" + anime_id + "/reviews/" +
+                                            <form method="post" action=<%="/movie/" + anime_id + "/reviews/" +
                                                 review.REVIEW_ID + "/vote" %>>
                                                 <input type="hidden" name="username" value=<%=username %> >
                                                 <input type="hidden" name="review_id" value=<%=review.REVIEW_ID %> >

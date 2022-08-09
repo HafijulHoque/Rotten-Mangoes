@@ -12,7 +12,7 @@ const logoutRouter = require('./authentication/logout')
 const movieRouter = require('./movie/movie')
 const movieListRouter = require('./movielist/movielist')
 const searchTagsRouter = require('./searchtags/searchtags')
-const searchResultsRouter = require('./searchresults/searchresults.js')
+const searchResultsRouter = require('./searchresult/searchresult.js')
 const genreRouter = require('./genre/genre')
 const studioRouter = require('./studio/studio')
 const personnelRouter = require('./personnel/personnel')
@@ -29,9 +29,9 @@ router.get('/', async (req, res) => {
 
     let recommendation = []
   //  if (req.session.isAuth)
-        recommendation = await DB_homepage.getTopMovies();
+        recommendation = await DB_homepage.getAllTopMovies();
     const data = {
-        pageTitle: 'MyAnimeList',
+        pageTitle: 'Rotten Mangoes',
         isAuth: req.session.isAuth,
         username: req.session.userid,
         message: 'This is the Home Page',

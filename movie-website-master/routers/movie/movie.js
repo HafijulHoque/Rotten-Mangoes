@@ -85,7 +85,7 @@ router.get('/:id/reviews', async (req, res) => {
 
 
 
-router.post('/:anime_id/reviews', async (req, res) => {
+router.post('/:id/reviews', async (req, res) => {
     const movie_id = req.params.id
     const reviewContent = req.body.Content
     const user = req.body.username
@@ -133,7 +133,7 @@ router.post('/:movie_id/reviews/:review_id/vote', async (req, res) => {
 })
 
 
-router.post('/:movie_id/rating/post', async (req, res) => {
+router.post('/:id/rating/post', async (req, res) => {
     const { username,  stars,movie_id } = req.body;
 
     const userMovieRatingData = await DB_rating.getUsersRatingOfMovie(username, movie_id);
@@ -168,7 +168,7 @@ router.post('/:movie_id/rating/post', async (req, res) => {
 })*/
 
 
-router.get('/:movie_id/episodes', async (req, res) => {
+router.get('/:id/episodes', async (req, res) => {
     const movie_id = req.params.id;
     //database query
     const numSeasons = await DB_movie.getNumberOfSeasons(movie_id);
