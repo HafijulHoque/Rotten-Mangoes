@@ -1,0 +1,29 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-image: url("https://www.myfreewalls.com/public/uploads/preview/captain-america-shield-4k-wallpaper-116241401857fqn8nphyk.jpg");
+    /*background-position: center;*/
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #8e54e9;
+}
+
+.main-content{
+    background: #093485;
+    width: 350px;
+    height: 200px;
+    padding-bottom: 20px;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    padding: 70px 50px 20px 50px;
+    text-align: center;
+}
+
+.home{
+    background: crimson;
+}

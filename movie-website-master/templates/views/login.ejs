@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <p style="color:yellow; text-align: center;">
+        <%= message %>
+    </p>
+    <!-- !this is important. posts to /login route -->
+    <br>
+    <!--<div class = "container" style="align-self:center; margin-right:300px;">
+        <form action="/login" method="post" style="text-align: center;">
+            <h2>Login</h2>
+            <div class="input-field">
+                <input type="text" name="username" id="username" placeholder="Enter Username">
+            </div>
+            <div class="input-field">
+                <input type="password" name="password" id="password" placeholder="Enter Password">
+            </div>
+            <input type="submit" value="LogIn">
+        </form>
+    </div>-->
+    <div class="container">
+        <div class = "head">
+            <h1 style="color: #EFFC20">Log In</h1>
+        </div>
+        <form action="/login" method="post" style="text-align: center;" autocomplete="on">
+            <!---Email ID---->
+            <div class="box">
+                <label for="email" class="fl fontLabel"> Email ID: </label>
+                <!--<div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>-->
+                <div class="fr">
+                    <input type="email" required name="email" placeholder="Email Id" class="textBox">
+                </div>
+                <div class="clr"></div>
+            </div>
+            <!--Email ID----->
+
+
+            <!---Password------>
+            <div class="box">
+                <label for="password" class="fl fontLabel"> Password </label>
+                <!--<div class="fl iconBox"><i class="fa fa-key" aria-hidden="true"></i></div>-->
+                <div class="fr">
+                    <input type="Password" required name="password" placeholder="Password" class="textBox">
+                </div>
+                <div class="clr"></div>
+            </div>
+            <!---Password---->
+
+
+
+            <!---Submit Button------>
+            <div class="box" style="background: #000000; text-align: center; ">
+                <input type="Submit" name="Submit" class="submit" value="Log In">
+            </div>
+            <!---Submit Button----->
+        </form>
+    </div>
+</body>
+
+</html>

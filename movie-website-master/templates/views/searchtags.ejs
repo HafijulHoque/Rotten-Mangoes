@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Search by tags</title>
+    <link rel="icon" href="/img/icons/mal-logo-head.png">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div class="search-by-tags">
+        <%- include('../partials/header.ejs') %>
+
+            <div>
+                <% if( typeof animes !=="undefined" ) { %>
+                    <p style="color:rgb(86, 12, 109);">Search results</p>
+                    <ul>
+                        <%- include('../partials/listedAnimes.ejs') %>
+                    </ul>
+                    <% } %>
+            </div>
+
+            <form action="/searchtags" method="post">
+                <input type="submit" value="Search" style="background-color:rgb(139, 132, 230);">
+                <h3 style="color:rgb(26, 20, 114);">Select tags you want to search</h3>
+                <div>
+                    <% for (let genre of genres){ %>
+                        <input class="tags-genre" type="checkbox" id="tag[]" name="genres" value=<%=genre.GENRE_NAME %>>
+                        <label for="tag[]">
+                            <%= genre.GENRE_NAME %>
+                        </label><br>
+                        <% } %>
+                </div>
+                <h3 style="color:rgb(26, 20, 114);">Select year you want to search</h3>
+                <div>
+                    <% for (let year of years){ %>
+                        <input class="tags-year" type="checkbox" id="yr" name="years" value=<%=year %> >
+                        <label for="yr">
+                            <%= year %>
+                        </label><br>
+                        <% } %>
+                </div>
+
+            </form>
+
+
+    </div>
+    <%- include('../partials/footer.ejs') %>
+</body>
+
+</html>

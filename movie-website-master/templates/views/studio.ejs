@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Anime List</title>
+    <link rel="icon" href="/img/icons/mal-logo-head.png">
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+
+<body>
+    <div class="main-content">
+        <%- include('../partials/header.ejs') %>
+            <h3 style="color:rgb(26, 20, 114);">
+                <%= studio.studio_NAME %>
+            </h3>
+            <p><span style="color: rgb(26, 20, 114);font-weight: 800;">Founded</span> : <%= studio.FOUNDING_DATE %>
+            </p>
+            <p><span style="color: rgb(26, 20, 114);font-weight: 800;">Website</span> : <a href=<%="https://" + studio.WEBSITE %>> <%= studio.WEBSITE %></a></p>
+            <p><span style="color: rgb(26, 20, 114);font-weight: 800;">Headquarters</span> : <%= studio.HEADQUARTERs %>
+            </p>
+            <p style="color: rgb(26, 20, 114);font-weight: 800;">Animes produced by <%= studio.STUDIO_NAME %>
+            </p>
+            <ul>
+                <!--<p>Animes produced by <%= studio.STUDIO_NAME %>
+                </p>-->
+                <%- include('../partials/listedAnimes.ejs') %>
+            </ul>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+</body>
+
+</html>
