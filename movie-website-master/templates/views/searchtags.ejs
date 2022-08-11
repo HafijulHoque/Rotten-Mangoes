@@ -3,16 +3,13 @@
 
 <head>
     <title>Search by tags</title>
-    <link rel="icon" href="/img/icons/mal-logo-head.png">
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-    <div class="search-by-tags">
-        <%- include('../partials/header.ejs') %>
-
+    <!--<div class="search-by-tags">
             <div>
-                <% if( typeof animes !=="undefined" ) { %>
+                <% if( typeof movies !=="undefined" ) { %>
                     <p style="color:rgb(86, 12, 109);">Search results</p>
                     <ul>
                         <%- include('../partials/listedAnimes.ejs') %>
@@ -20,7 +17,7 @@
                     <% } %>
             </div>
 
-            <form action="/searchtags" method="post">
+            <form action="/searchresult" method="post">
                 <input type="submit" value="Search" style="background-color:rgb(139, 132, 230);">
                 <h3 style="color:rgb(26, 20, 114);">Select tags you want to search</h3>
                 <div>
@@ -46,6 +43,7 @@
 
     </div>
     <%- include('../partials/footer.ejs') %>
+-->
 </body>
 
 </html>

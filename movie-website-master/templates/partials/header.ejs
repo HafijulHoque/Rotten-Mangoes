@@ -6,7 +6,7 @@
         <div class="shundor">
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/animelist">Movielist</a>
+                <li><a href="/movielist">Movielist</a>
                     <ul>
                         <li><a href="/searchtags">Tags</a></li>
                         <li><a href="/genre">Genre</a></li>
@@ -24,13 +24,21 @@
         </div>
     </section>
 
-    <section id="search">
-        <!-- !SEARCH -->
-        <form class="search-bar" action="/searchresults" method="post">
+    <section id="search" style=" color: black; background-color: white; width: 55px;">
+        <div class = "search-bar">
+            <form action="/searchtags" method="post">
+                <button type="submit" style="font-style: italic; font-family: cursive; background-color: white; color: black;"> Search </button>
+            </form>
+        </div>
+    </section>
+
+    <!--<section id="search">
+        &lt;!&ndash; !SEARCH &ndash;&gt;
+        <form class="search-bar" action="/searchtags" method="post">
             <input class="search-bar" type="text" placeholder="Search for anything" name="search">
             <button type="submit">Search</button>
         </form>
-    </section>
+    </section>-->
 
 
 </header>
