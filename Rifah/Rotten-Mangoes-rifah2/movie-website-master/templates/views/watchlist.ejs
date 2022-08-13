@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Anime List</title>
+    <link rel="icon" href="/img/icons/mal-logo-head.png">
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+
+<body>
+    <div class="main-content">
+        <%- include('../partials/header.ejs') %>
+            <% if(!movies || movies.length==0) { %>
+                <p>No result found</p>
+                <% } else { %>
+                    <ul>
+                        <% for (let movie of animes){ %>
+                            <li> <a class="listed" href=<%="/anime/" + movie.ID %> >
+
+                                    <%= movie.TITLE %>
+                                </a>
+                                <% if(movie.title) { %>
+                                    <a class="favourited" href=<%="/user/" + username + "/favourites" %>> Favourited!
+                                    </a>
+                                    <% } %>
+                            </li>
+                            <% } %>
+                    </ul>
+                    <% } %>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+</body>
+
+</html>

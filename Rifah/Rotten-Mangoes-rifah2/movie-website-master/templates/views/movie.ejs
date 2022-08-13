@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= movie.title %>
+    </title>
+    <link rel="icon" href="/img/icons/mal-logo-head.png">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/new.css">
+
+</head>
+
+<body>
+    <div class="main-content-anime">
+        <%- include('../partials/header.ejs') %>
+            <section>
+                <div style="float: left; width : 50%">
+                </div>
+                <div style="float: right; width : 50%">
+                    <h3 style="color: rgb(52, 52, 110);">Rank #</h3>
+                    <%= movie.title %>
+                        <h3 style="color: rgb(18, 18, 75);">Rating </h3>
+                        <%= movie.title %>
+                            <h3 style="color: rgb(57, 18, 66);">Members #</h3>
+                            <%= usersWatchlisted %>
+                                <h3 style="color: rgb(85, 22, 69);">Favourited by #</h3>
+                                <%= usersFavourited %>
+                </div>
+            </section>
+            <div class="anime-title" style="margin-top: 60%;">
+                <h2 style="font-size: x-large; color: rgb(11, 11, 112);">
+                    <%= movie.title %>
+                </h2>
+            </div>
+
+
+
+
+            <!-- !for adding to watchlist button -->
+            <div>
+
+                <% if(isAuth) { %>
+                    <form method="post" action=<%="/user/" + username + "/watchlist/add" %>>
+                        <input type="hidden" name="username" value=<%=username %> >
+                        <input type="hidden" name="anime_id" value=<%=movie.id %> >
+                        <input type="hidden" name="type" value=<%=isAddedToWatchlist ? (isAddedToFavouriteList
+                            ? 'unfavourite' : 'favourite' ) : 'add' %>>
+                        <button type="submit">
+                            <%= isAddedToWatchlist ? (isAddedToFavouriteList ? 'Favourited' : 'Add to favourites' )
+                                : 'Add to watchlist' %>
+                        </button>
+                    </form>
+                    <br>
+                    <br>
+
+                    <!-- if added to watchlist then you can rate? -->
+                    <form id="ratingForm" method="post" action=<%="/anime/" + movie.id + "/rating/post" %>>
+                        <input type="hidden" name="username" value=<%=username %> >
+                        <input type="hidden" name="anime_id" value=<%=movie.id %> >
+                        <select id="stars" name="star" form="ratingForm" class="anime-rating">
+                            <option value="5" required>(5) Masterpiece!</option>
+                            <option value="4" required>(4) Very Good</option>
+                            <option value="3" required>(3) Average</option>
+                            <option value="2" required>(2) Bad</option>
+                            <option value="1" required>(1) Horrible</option>
+                        </select>
+                        <button type="submit" class="btn" style="background-color: rgb(85, 22, 69);"> Rate </button>
+                    </form>
+                    <p style="font-weight: bolder; color:rgb(105, 11, 77);">
+                        <%= userRatedThisAnime ? "You rated " + movie.title + " with " +userRating.stars + " stars"
+                            : "" %>
+                    </p>
+                    <% } %>
+            </div>
+
+
+            <!--<a href=<%="/movie/" + movie.title + "/reviews/" %> ><button>Reviews</button></a>-->
+            <p><span style="color:rgb(37, 37, 87);font-weight: 700;">Synopsis </span> : <%= movie.title %>
+            </p>
+            <p><span style="color: rgb(37, 37, 87); font-weight: 700;">Genre </span> :
+                <% for (let genre of genres){ %>
+                    <!-- this might change depending on the search by genre -->
+                    <a class="listed" href=<%="/genre/" + genre %> > <%=genre %> </a>
+                    <% } %>
+            </p>
+            <p><span style="color: rgb(37, 37, 87); font-weight: 700;">Released </span> : <%= movie.release_date %>
+                    <%= movie.RELEASE_date %>
+            </p>
+
+            <% studioURL=encodeURIComponent(movie.STUDIO_NAME) %>
+                <p><span style="color: rgb(37, 37, 87); font-weight: 700;">Studio </span>: <a class="listed" href=<%="/studio/" + studioURL%>> <%= movie.STUDIO_NAME %>
+                    </a>
+                </p>
+                <p><span style="color: rgb(37, 37, 87); font-weight: 700;">Writer</span> : <a class="listed" href=<%="/personnel/" + Director.name%> > <%= writer.FIRST_NAME %>
+                            <%= director.name%> </a> </p>
+                <a href=<%="/anime/" + movie.id + "/episodes/" %> ><button style="background-color: rgb(58, 58, 122);">Episodes</button></a>
+                <div>
+                    <h3 style="color: rgb(83, 18, 109);">Characters & Voice Actors</h3>
+                    <ul>
+                        <% for (let character of characters){ %>
+                            <li>
+                                <a class="listed-character" href=<%="/anime/" + movie.id + "/characters/" +
+                                    character.NAME + "_" + character.NAME%>>
+                                    <img width="40" src=<%="/img/character_pic/" + movie.id + "/"
+                                    %>>
+                                    <%= character.NAME %>
+                                        <%= character.NAME %>
+                                </a>
+                                <a class="listed" href=<%="/personnel/" + character.name %>>
+                                    <%=character.NAME %>
+                                </a>
+                            </li>
+                            <% } %>
+                    </ul>
+                </div>
+                <br>
+                <br>
+                <a href=<%="/movie/" + movie.id + "/reviews/" %> ><button style="background-color:rgb(88, 88, 167) ;">Reviews</button></a>
+                <!--<a href=<%="/movie/" + movie.id + "/episodes/" %> ><button>Episodes</button></a>-->
+
+    </div>
+    <%- include('../partials/footer.ejs') %>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Users profile</title>
+    <link rel="icon" href="/img/icons/mal-logo-head.png">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .form-popup {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('../partials/header.ejs') %>
+        <div class="users profile">
+            <h3 style="font-size: larger; font-weight: 900; color: rgb(7, 7, 138);">
+                <%= username %>
+            </h3>
+            <br>
+            <br>
+            <p style="color: rgb(37, 37, 87);font-size: larger; font-weight: 800;">Email :<span style="color: black;"> <%= userInfo.EMAIL %></span>
+            </p>
+            <br>
+            <p style="color: rgb(28, 28, 124);font-size: larger; font-weight: 700;"> Bio: <span style="color: black;"><%= userInfo.email %></span>
+            </p>
+            <br>
+            <p style="color: rgb(4, 4, 61);font-size: larger; font-weight: 600;">Join Date : <span style="color: black;"><%= userInfo.email %></span>
+            </p>
+            <br>
+
+            <a href=<%="/user/" + userInfo.USERNAME + "/watchlist/" %> >
+                <button style="background: rgb(91, 91, 141);">
+                    Your Watchlist
+                </button>
+            </a>
+        </div>
+        <br>
+        <div>
+
+            <button class="update-info-show" onclick="openForm()">Update Info</button>
+            <div class="form-popup" id="update-info-form">
+                <form action=<%="/user/" + username + "/update" %> method = "post" class="form-container">
+                    <h3>User information update</h3>
+                    <label for="email"><b>Edit Email</b></label>
+                    <input type="text" placeholder="Edit Email" name="email" value=<%=userInfo.EMAIL %> >
+                    <br><br>
+
+                    <label for="bio"><b>Edit Bio:</b></label>
+                    <br>
+                    <textarea id="bio" name="bio" rows="5" cols="50" placeholder="Edit bio...">
+                    </textarea>
+                    <br><br>
+
+                    <button type="submit" class="btn" style="background-color:rgb(53, 53, 104);"> Update</button>
+                </form>
+            </div>
+            <script>
+                var a = 0;
+                function openForm() {
+                    if (a == 1) {
+                        document.getElementById("update-info-form").style.display = "none";
+                        return a = 0;
+                    } else if (a == 0) {
+                        document.getElementById("update-info-form").style.display = "block";
+                        return a = 1;
+                    }
+                }
+
+                function toggleform() {
+                    return a = !a;
+                }
+            </script>
+        </div>
+
+        <%- include('../partials/footer.ejs') %>
+</body>
+
+</html>
