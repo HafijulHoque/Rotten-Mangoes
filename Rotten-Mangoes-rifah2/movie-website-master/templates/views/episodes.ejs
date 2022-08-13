@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Episodes</title>
+    <link rel="icon" href="/img/icons/mal-logo-head.png">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div class="main-content">
+        <%- include('../partials/header.ejs') %>
+
+            <% for (let i=1; i<=numSeasons ; i++ ) { %>
+                <a name=<%="season" + i %>></a>
+                
+                <div>
+                    <% for (let j=1; j<=numSeasons ; j++ ){ %>
+                        <a href=<%="#season" + j%>>Season-<%= j %></a>::::
+                    <% } %>
+                </div>
+
+                <P style="color: rgb(85, 9, 62);font-weight: bolder;">Episodes of Season <%= i %></P>
+                
+                <div>
+                    <% for (let episode of episodes){ %>
+                        <% if(episode.SEASON==i){ %>
+                            <p ><span style="font-weight: bold; color: rgb(7, 32, 114);"> Episode# <%= episode.EPISODE_NUMBER %> </span>: <%= episode.EPISODE_TITLE %> 
+                                <br>
+                                <span style="font-weight: bold; color: rgb(76, 13, 117);">Runtime </span>: <%= episode.RUNTIME %> minutes
+                            </p>
+                        <% } %>
+                    <% } %>
+                </div>
+                <% } %>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+</body>
+
+</html>

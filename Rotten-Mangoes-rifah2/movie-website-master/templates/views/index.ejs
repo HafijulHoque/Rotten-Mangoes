@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Movie List</title>
+        <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+
+<body>
+    <div class="main-content">
+        <%- include('../partials/header.ejs') %>
+            <section id="homepage-top-movies" style="margin-bottom: 15%;">
+                <div style="float: left; width : 50%">
+                    <h3> <a class="home" href="/movielist/new";">Newly Released Movies</a> </h3>
+
+                </div>
+                <div style="float: right; width : 50%">
+                    <h3><a class="home" href="/movielist/top">Top Movies</a></h3>
+                    <% for (let movie of recommendation){ %>
+                        <li>
+                            <a class="listed" href=<%="/movie/" + movie.id %> >
+
+                                <%= movie.title %>
+                            </a>
+                        </li>
+                        <% } %>
+                </div>
+
+            </section>
+
+            <section id="homepage-recommended-movies" style="margin-top: 50%;">
+                <% if(isAuth){ %>
+                    <h3><a class="home" href="/movielist/recommendation"> Recommended For You </a> </h3>
+                    <% for (let movie of recommendation){ %>
+                        <li>
+                            <a class="listed" href=<%="/movie/" + movie.id %> >
+
+                                <%= movie.title %>
+                            </a>
+                        </li>
+                        <% } %>
+                            <% } %>
+            </section>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+</body>
+
+</html>

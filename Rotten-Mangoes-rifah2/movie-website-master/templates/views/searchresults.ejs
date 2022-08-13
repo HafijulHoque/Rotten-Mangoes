@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Movie List</title>
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+
+<body>
+    <div class="main-content">
+        <%- include('../partials/header.ejs') %>
+            <h3 style="color:rgb(26, 20, 114);">Movie</h3>
+                <ul>
+
+
+                    <% for (let movie of movies){ %>
+                    <li> <a class="listed" href=<%="/movie/" + movie.id%> >
+                            <%=movie.Title%>
+
+                        </a>
+                    </li>
+                    <% } %>
+                </ul>
+            <ul>
+                <%- include('../partials/listedAnimes.ejs') %>
+            </ul>
+            <h3 style="color:rgb(26, 20, 114);">Actors</h3>
+            <ul>
+                <%- include('../partials/listedCharacters.ejs') %>
+            </ul>
+            <h3 style="color:rgb(26, 20, 114);">Director</h3>
+                <a class="listed" href=<%="/movie/" + movies.id %> />
+
+
+            <h3 style="color:rgb(26, 20, 114);">Studio</h3>
+
+
+            </div>
+    <%- include('../partials/footer.ejs') %>
+</body>
+
+</html>
