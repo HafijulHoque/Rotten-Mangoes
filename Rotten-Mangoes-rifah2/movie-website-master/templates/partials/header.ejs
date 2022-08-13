@@ -14,6 +14,7 @@
 
                     </ul>
                 </li>
+                <li><a href="/searchtags"> Search </a> </li>
                 <li><a href="/reviews"> Reviews </a> </li>
                 <li><a href="/user/" + <%=username%> >Profile</a></li>
                 <span style="float: right;">
@@ -28,6 +29,7 @@
     <section id="search" style=" color: black; background-color: white; width: 55px;">
         <div class = "search-bar">
             <form action="/searchtags" method="post">
+                <input class="search-bar" type="text" placeholder="Search for anything" name="search">
                 <button type="submit" style="font-style: italic; font-family: cursive; background-color: white; color: black;"> Search </button>
             </form>
         </div>
