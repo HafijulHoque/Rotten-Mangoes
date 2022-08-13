@@ -13,7 +13,8 @@ router.post('/', async (req, res) => {
     if (string.length == 0) return res.redirect('/');
 
 
-    const movies = await DB_search.getMoviesByREGEX(string);
+    const movies = await DB_search.getMoviesByREGEX(string)
+    const actors=await DB_search.getActorsByREGEX(string)
 //    const characters = await DB_search.getCharactersByREGEX(string);
  //   const voice_actors = await DB_search.getVoiceActorsByREGEX(string);
    // const writers = await DB_search.getWritersByREGEX(string);
@@ -23,7 +24,8 @@ router.post('/', async (req, res) => {
         isAuth: req.session.isAuth,
         username: req.session.userid,
 
-        movies,
+        movies:movies,
+        actors:actors
      //   characters,
        // voice_actors,
         //writers

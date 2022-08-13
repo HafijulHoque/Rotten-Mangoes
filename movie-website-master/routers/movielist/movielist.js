@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/new', async (req, res) => {
-    const newMovies = await DB_list.getAllNewlyReleasedAnime();
+    const newMovies = await DB_list.getNewlyReleasedMovies();
     const data = {
         pageTitle: 'List of Newly released Movies',
         isAuth: req.session.isAuth,
@@ -37,7 +37,7 @@ router.get('/top', async (req, res) => {
 
         movies: topMovies
     }
-    res.render('Movielist', data)
+    res.render('movielist', data)
 })
 
 router.get('/recommendation', async (req, res) => {

@@ -11,10 +11,11 @@
 <body>
     <div class="main-content">
         <%- include('../partials/header.ejs') %>
-            <% if(!animes || animes.length==0) { %>
+            <% if(!movies || movies.length==0) { %>
                 <p>No result found</p>
                 <% } else { %>
                     <ul>
+
                         <%- include('../partials/listedAnimes.ejs') %>
                     </ul>
                     <% } %>
