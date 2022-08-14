@@ -4,6 +4,26 @@ const DB_list = require('../../DB_codes/DB_homepage')
 const router = express.Router({ mergeParams: true })
 //all done. Ok
 
+var Canvas = require("canvas");
+var Image = Canvas.Image;
+var canvas = new Canvas();
+var image = new Image();
+
+imgArray[0] = new Image(70, 100);
+imgArray[0].src = 'img/Movie_pics/GodFather1.png';
+
+imgArray[1] = new Image(70, 100);
+imgArray[1].src = 'img/Movie_pics/Tenet.jpg';
+//
+// imgArray[2] = new Image();
+// imgArray[2].src = './images/splash nature image.jpg';
+//
+// imgArray[3] = new Image();
+// imgArray[3].src = './images/splash food image.jpg';
+//
+// imgArray[4] = new Image();
+// imgArray[4].src = './images/splash travel image.jpg';
+
 router.get('/', async (req, res) => {
     const movieList = await DB_movie.getAllMoviesTitleAndID();
     console.log(movieList);
@@ -12,7 +32,8 @@ router.get('/', async (req, res) => {
         isAuth: req.session.isAuth,
         username: req.session.username,
 
-        moviesList: movieList
+        moviesList: movieList,
+        image: imgArray
     }
     res.render('movielist', data)
 })
