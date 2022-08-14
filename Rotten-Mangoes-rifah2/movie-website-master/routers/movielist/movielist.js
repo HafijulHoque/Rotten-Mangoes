@@ -6,23 +6,16 @@ const router = express.Router({ mergeParams: true })
 
 var Canvas = require("canvas");
 var Image = Canvas.Image;
-var canvas = new Canvas();
-var image = new Image();
+//var canvas = new Canvas();
+var image1 = new Image();
+image1.src = 'img/Movie_pics/GodFather1.png';
 
-imgArray[0] = new Image(70, 100);
-imgArray[0].src = 'img/Movie_pics/GodFather1.png';
+var image2 = new Image();
+image2.src = 'img/Movie_pics/Tenet.jpg';
 
-imgArray[1] = new Image(70, 100);
-imgArray[1].src = 'img/Movie_pics/Tenet.jpg';
-//
-// imgArray[2] = new Image();
-// imgArray[2].src = './images/splash nature image.jpg';
-//
-// imgArray[3] = new Image();
-// imgArray[3].src = './images/splash food image.jpg';
-//
-// imgArray[4] = new Image();
-// imgArray[4].src = './images/splash travel image.jpg';
+var imgArray = new Array();
+imgArray[0] = image1;
+imgArray[1] = image2;
 
 router.get('/', async (req, res) => {
     const movieList = await DB_movie.getAllMoviesTitleAndID();
