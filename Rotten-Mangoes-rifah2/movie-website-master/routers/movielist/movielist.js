@@ -6,17 +6,18 @@ const router = express.Router({ mergeParams: true })
 
 router.get('/', async (req, res) => {
     const movieList = await DB_movie.getAllMoviesTitleAndID();
+    console.log(movieList);
     const data = {
         pageTitle: 'List of movies',
         isAuth: req.session.isAuth,
         username: req.session.username,
 
-        movies: movieList
+        moviesList: movieList
     }
     res.render('movielist', data)
 })
 
-router.get('/new', async (req, res) => {
+/*router.get('/new', async (req, res) => {
     const newMovies = await DB_list.getAllNewlyReleasedAnime();
     const data = {
         pageTitle: 'List of Newly released Movies',
@@ -26,7 +27,7 @@ router.get('/new', async (req, res) => {
         movies: newMovies
     }
     res.render('movielist', data)
-})
+})*/
 
 router.get('/top', async (req, res) => {
     const topMovies = await DB_list.getTopMovies();

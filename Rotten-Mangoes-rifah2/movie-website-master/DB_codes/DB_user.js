@@ -5,14 +5,14 @@ const database = require('./database')
 async function getUserInfoByUsername(username) {
     let sql = `
         SELECT *
-        FROM "C##MOVIEDATABASE"."Useraccount"
+        FROM "C##MOVIE_DATABASE"."Useraccount"
         WHERE "Username" = :USERNAME
     `
     return (await database.execute(sql, [username], database.options)).rows[0]
 }
 async function updateUserFirstName(userame,First_name) {
     let sql = `
-    UPDATE "C##MOVIEDATABASE"."USERaccount"
+    UPDATE "C##MOVIE_DATABASE"."USERaccount"
     SET "FIRST_NAME" = :First_name
     WHERE "Username"=:username
     `
@@ -20,7 +20,7 @@ async function updateUserFirstName(userame,First_name) {
 }
 async function updateUserPassword(userame,Password) {
     let sql = `
-    UPDATE "C##MOVIEDATABASE"."USERaccount"
+    UPDATE "C##MOVIE_DATABASE"."USERaccount"
     SET "Password" = :Password
     WHERE "Username"=:username
     `
@@ -30,7 +30,7 @@ async function updateUserPassword(userame,Password) {
 
 async function updateUserEmailandBio(username, email, bio) {
     let sql = `
-    UPDATE "C##MOVIEDATABASE"."USERaccount"
+    UPDATE "C##MOVIE_DATABASE"."USERaccount"
     SET "EMAIL" = :EMAIL, "FIRST_NAME" = :BIO
     WHERE "Username" = :USERNAME
     `
@@ -40,7 +40,7 @@ async function updateUserEmailandBio(username, email, bio) {
 async function getFavouriteslistOfUser(username) {
     let sql = `
         SELECT *
-        FROM "C##MOVIEDATABASE"."favourites"
+        FROM "C##MOVIE_DATABASE"."favourites"
         WHERE "USERNAME"=:USERNAME
           
     `
@@ -50,7 +50,7 @@ async function getFavouriteslistOfUser(username) {
 async function getWatchlistOfUser(username) {
     let sql = `
      SELECT *
-        FROM "C##MOVIEDATABASE"."WATCHLIST"
+        FROM "C##MOVIE_DATABASE"."WATCHLIST"
         WHERE "USERNAME"=:USERNAME
         
     `

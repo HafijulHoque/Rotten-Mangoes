@@ -1,22 +1,20 @@
 <header>
-    <h1 style="color: rgb(239, 252, 32); font-style: italic; font-family: cursive;">
+    <h1 style="color: #EFFC20; font-style: italic; font-family: cursive;">
         <%= pageTitle %>
     </h1>
     <section id="nav" style="font-family: cursive;">
         <div class="shundor">
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/movielist">Movielist</a>
+                <li style="color: black">Movielist
                     <ul>
-                        <li><a href="/searchtags">Tags</a></li>
-                        <li><a href="/genre">Genre</a></li>
-                        <li><a href="/studio">Studio</a></li>
-
+                        <li><a href="/movielist">Movies</a></li>
+                        <li><a href="/alltvshows">Tv Series</a></li>
                     </ul>
                 </li>
                 <li><a href="/searchtags"> Search </a> </li>
                 <li><a href="/reviews"> Reviews </a> </li>
-                <li><a href="/user/" + <%=username%> >Profile</a></li>
+                <li><a href="/userprofile/" + <%=username%> >Profile</a></li>
                 <span style="float: right;">
                     <li><a href="/login">Login</a></li>
                     <li><a href="/register">Register</a></li>

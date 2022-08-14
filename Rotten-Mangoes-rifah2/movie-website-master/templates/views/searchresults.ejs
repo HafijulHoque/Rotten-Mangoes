@@ -12,8 +12,6 @@
         <%- include('../partials/header.ejs') %>
             <h3 style="color:rgb(26, 20, 114);">Movie</h3>
                 <ul>
-
-
                     <% for (let movie of movies){ %>
                     <li> <a class="listed" href=<%="/movie/" + movie.id %> >
                             <%=movie.title %>

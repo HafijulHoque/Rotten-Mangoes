@@ -3,7 +3,7 @@ const database = require('./database')
 async function getNewlyReleasedMovies() {
     let sql = `
         SELECT *
-        FROM "C##MOVIEDATABASE"."Movies"
+        FROM "C##MOVIE_DATABASE"."Movies"
         ORDER BY "RELEASE_DATE" DESC
         FETCH next 4 ROWS ONLY 
        
@@ -13,7 +13,7 @@ async function getNewlyReleasedMovies() {
 async function getNewlyReleasedTvShows() {
     let sql = `
         SELECT *
-        FROM "C##MOVIEDATABASE"."Tv_series"
+        FROM "C##MOVIE_DATABASE"."Tv_series"
         ORDER BY "RELEASE_DATE" DESC
             FETCH next 4 ROWS ONLY
        
@@ -25,7 +25,7 @@ async function getNewlyReleasedTvShows() {
 async function getTopTvSeries() {
     let sql = `
         SELECT *
-        FROM "C##MOVIEDATABASE"."Rated" NATURAL join "C##MOVIEDATABASE"."Tv_series"
+        FROM "C##MOVIE_DATABASE"."Rated" NATURAL join "C##MOVIE_DATABASE"."Tv_series"
         ORDER BY "Stars" DESC
             FETCH next 4 ROWS ONLY
         
@@ -35,7 +35,7 @@ async function getTopTvSeries() {
 async function getTopMovies() {
     let sql = `
         SELECT *
-        FROM "C##MOVIEDATABASE"."Rated" NATURAL join "C##MOVIEDATABASE"."Movies"
+        FROM "C##MOVIE_DATABASE"."Rated" NATURAL join "C##MOVIE_DATABASE"."Movies"
         ORDER BY "Stars" DESC
             FETCH next 4 ROWS ONLY
         
@@ -45,7 +45,7 @@ async function getTopMovies() {
 
 async function getAllNewlyReleasedMovies() {
     let sql = `    SELECT *
-                   FROM "C##MOVIEDATABASE"."Movies"
+                   FROM "C##MOVIE_DATABASE"."Movies"
                    ORDER BY "RELEASE_DATE" DESC
   
     `
@@ -53,7 +53,7 @@ async function getAllNewlyReleasedMovies() {
 }
 async function getAllNewlyReleasedTvSeries() {
     let sql = `    SELECT *
-                   FROM "C##MOVIEDATABASE"."Tv_series"
+                   FROM "C##MOVIE_DATABASE"."Tv_series"
                    ORDER BY "RELEASE_DATE" DESC
   
     `
@@ -64,7 +64,7 @@ async function getAllNewlyReleasedTvSeries() {
 async function getAllTopMovies() {
     let sql = `
         SELECT *
-        FROM "C##MOVIEDATABASE"."Rated" NATURAL join "C##MOVIEDATABASE"."Movies"
+        FROM "C##MOVIE_DATABASE"."Rated" NATURAL join "C##MOVIE_DATABASE"."Movies"
         ORDER BY "Stars" DESC
     
     `
@@ -74,7 +74,7 @@ async function getAllTopMovies() {
 async function getAllTopTvSeries() {
     let sql = `
         SELECT *
-        FROM "C##MOVIEDATABASE"."Rated" NATURAL join "C##MOVIEDATABASE"."Tv_series"
+        FROM "C##MOVIE_DATABASE"."Rated" NATURAL join "C##MOVIE_DATABASE"."Tv_series"
         ORDER BY "Stars" DESC
     
     `
@@ -84,11 +84,11 @@ async function getAllTopTvSeries() {
 async function getUserRecommendation(username) {
     let sql = `
 SELECT *
-FROM "C##MOVIEDATABASE"."SHOW"
+FROM "C##MOVIE_DATABASE"."SHOW"
 WHERE "GENRE" IN(
 
       SELECT "Genre"
-      FROM "C##MOVIEDATABASE"."favourites" NATURAL JOIN "C##MOVIEDATABASE"."Show")
+      FROM "C##MOVIE_DATABASE"."favourites" NATURAL JOIN "C##MOVIE_DATABASE"."Show")
 FETCH NEXT 3 ROWS ONLY 
     
     `

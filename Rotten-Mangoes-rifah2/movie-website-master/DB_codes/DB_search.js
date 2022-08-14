@@ -3,7 +3,7 @@ const database = require('./database')
 
 async function getShowsByREGEX(string) {
     let sql = `
-    SELECT * FROM "C##MOVIEDATABASE"."Show" WHERE LOWER("Title") LIKE '${string[0]}'`
+    SELECT * FROM "C##MOVIE_DATABASE"."Show" WHERE LOWER("Title") LIKE '${string[0]}'`
     for (let i = 1; i < string.length; i++) {
         sql += ` AND LOWER("Title") LIKE '${string[i]}'`;
     }
@@ -11,7 +11,7 @@ async function getShowsByREGEX(string) {
 }
 async function getMoviesByREGEX(string) {
     let sql = `
-    SELECT * FROM "C##MOVIEDATABASE"."Show" NATURAL Join"C##MOVIEDATABASE"."Movies" WHERE LOWER("Title") LIKE '${string[0]}'`
+    SELECT * FROM "C##MOVIE_DATABASE"."Show" NATURAL Join"C##MOVIE_DATABASE"."Movies" WHERE LOWER("Title") LIKE '${string[0]}'`
     for (let i = 1; i < string.length; i++) {
         sql += ` AND LOWER("Title") LIKE '${string[i]}'`;
     }
@@ -19,7 +19,7 @@ async function getMoviesByREGEX(string) {
 }
 async function getTvSeriesByREGEX(string) {
     let sql = `
-    SELECT * FROM "C##MOVIEDATABASE"."Show" NATURAL Join"C##MOVIEDATABASE"."Tv_series" WHERE LOWER("Title") LIKE '${string[0]}'`
+    SELECT * FROM "C##MOVIE_DATABASE"."Show" NATURAL Join"C##MOVIE_DATABASE"."Tv_series" WHERE LOWER("Title") LIKE '${string[0]}'`
     for (let i = 1; i < string.length; i++) {
         sql += ` AND LOWER("Title") LIKE '${string[i]}'`;
     }
@@ -27,7 +27,7 @@ async function getTvSeriesByREGEX(string) {
 }
 async function getActorsByREGEX(string) {
     let sql = `
-    SELECT * FROM "C##MOVIEDATABASE"."Actor" WHERE LOWER("Name") LIKE '${string[0]}'`
+    SELECT * FROM "C##MOVIE_DATABASE"."Actor" WHERE LOWER("Name") LIKE '${string[0]}'`
     for (let i = 1; i < string.length; i++) {
         sql += ` AND LOWER("Name") LIKE '${string[i]}'`;
     }
@@ -35,7 +35,7 @@ async function getActorsByREGEX(string) {
 }
 async function getDirectorsByREGEX(string) {
     let sql = `
-    SELECT * FROM "C##MOVIEDATABASE"."Directors" WHERE LOWER("Name") LIKE '${string[0]}'`
+    SELECT * FROM "C##MOVIE_DATABASE"."Directors" WHERE LOWER("Name") LIKE '${string[0]}'`
     for (let i = 1; i < string.length; i++) {
         sql += ` AND LOWER("Name") LIKE '${string[i]}'`;
     }

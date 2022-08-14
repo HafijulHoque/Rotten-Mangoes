@@ -4,7 +4,7 @@ async function getUserByUsername(username) {
     console.log("from sql "+username);
     let sql = `
         SELECT "Username","Password","Email"
-        FROM "C##MOVIEDATABASE"."Useraccount"
+        FROM "C##MOVIE_DATABASE"."Useraccount"
         WHERE "Username" = :username
     `
     const saffat=  (await database.execute(sql, [username], database.options))
@@ -15,7 +15,7 @@ async function getUserByUsername(username) {
 async function insertAccountIntoDB(username, hashpassword,email) {
     console.log(email);
     let sql = `
-        INSERT INTO "C##MOVIEDATABASE"."Useraccount"
+        INSERT INTO "C##MOVIE_DATABASE"."Useraccount"
         (
             "Username",      
             "Password","Email"

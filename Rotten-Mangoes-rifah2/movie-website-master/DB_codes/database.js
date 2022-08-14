@@ -7,7 +7,7 @@ async function startup() {
     console.log('starting up database.');
     try{
         await oracledb.createPool({
-            user: process.env.DB_USER || "C##MOVIEDATABASE",
+            user: process.env.DB_USER || "c##movie_database",
             password: process.env.DB_PASS || "moviedatabase",
             connectstring: process.env.DB_CONNECTSTRING || "localhost/orcl",
             poolMin: 4,

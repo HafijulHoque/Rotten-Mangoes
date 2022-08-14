@@ -12,7 +12,7 @@ function range(size, startAt = 0) {
 
 //Loads the search by tags page from all genres
 router.get('/', async (req, res) => {
-    console.log("from searchtags")
+    console.log("getting from searchtags")
     const genres = await DB_movie.getAllGenres()
     const years = range(33, 1990);
     const data = {

@@ -8,21 +8,20 @@
 
 <body>
 <div class="dropdown">
-    <form class="dropdown" action="/searchActor",method="post">
-        <select class="selectpicker" data-style="btn-info" name="selectpicker">
-            <optgroup label="Select Table">
-                <option name="title" id="title">title</option>
-                <option name="genre" id="genre">genre</option>
-            </optgroup>
-                <input type="submit"/>
-            </select>
-    </form>
+
+
 
 </div>
 <<div class="search-by-tags">
     <section id="search">
         <!-- !SEARCH -->
         <form class="search-bar" action="/searchresults" method="post">
+            <select class="selectpicker" data-style="btn-info" name="selectpicker">
+                <optgroup label="Select Table">
+                    <option  id="title" value="title">title</option>
+                    <option  id="genre" value="genre">genre</option>
+                </optgroup>
+            </select>
             <input class="search-bar" type="text" placeholder="Search for anything" name="search">
             <button type="submit">Search</button>
         </form>

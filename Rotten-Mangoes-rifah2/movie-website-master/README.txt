@@ -4,8 +4,8 @@
     connect sys as sysdba
     [enter password]
     alter session set "_ORACLE_SCRIPT" = true;
-        create user C##MOVIEDATABASE identified by MOVIEDATABSE;
-    grant dba to C##MOVIEDATABASE; The sql files can then be executed.
+        create user C##MOVIE_DATABASE identified by MOVIEDATABSE;
+    grant dba to C##MOVIE_DATABASE; The sql files can then be executed.
 
 2.Starting the server
 The code to start up the server is inside the src/app.js To start up the server, Open the terminal and type:

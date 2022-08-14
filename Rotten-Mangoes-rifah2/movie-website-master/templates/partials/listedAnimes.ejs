@@ -1,7 +1,8 @@
 <% for (let movie of movies){ %>
     <li>
-        <a class="listed" href=<%="/movie/" + movie.id %> >
+        <!--<a class="listed" href=<%="/movie/" + movie.id %> >
             <%= movie.title %>
-        </a>
+        </a>-->
+        <h4> <%= movie.id + ". " + movie.title %></h4>
     </li>
     <% } %>

@@ -2,21 +2,25 @@
 <html>
 
 <head>
-    <title>My Movie List</title>
-    <link rel="icon" href="/img/icons/mal-logo-head.png">
+    <title>Movies</title>
     <link rel="stylesheet" href="/css/styles.css">
 
 </head>
 
 <body>
-    <div class="main-content">
+    <div class="main-content" name="movies">
         <%- include('../partials/header.ejs') %>
-            <% if(!animes || animes.length==0) { %>
-                <p>No result found</p>
-                <% } else { %>
-                    <ul>
-                        <%- include('../partials/listedAnimes.ejs') %>
-                    </ul>
+        <h3 style="color: yellow; font-family: cursive;">Movies:</h3>
+            <% if(!moviesList || moviesList.length === 0) { %>
+                <p style="color: white">No result found</p>
+                <% }
+                else { %>
+                        <% for (var i = 0; i < moviesList.length; i++){ %>
+            <ul style="color: white">
+                            <%= moviesList[i].Id + ". " + moviesList[i].Title %>
+            </ul>
+                        <% } %>
+
                     <% } %>
     </div>
     <%- include('../partials/footer.ejs') %>
