@@ -6,7 +6,7 @@ const router = express.Router({ mergeParams: true })
 
 var Canvas = require("canvas");
 var Image = Canvas.Image;
-//var canvas = new Canvas();
+var canvas = new Canvas();
 var image1 = new Image();
 image1.src = 'img/Movie_pics/GodFather1.png';
 
