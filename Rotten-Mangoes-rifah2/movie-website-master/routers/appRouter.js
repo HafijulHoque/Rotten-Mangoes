@@ -11,6 +11,7 @@ const logoutRouter = require('./authentication/logout')
 
 const movieRouter = require('./movie/movie')
 const movieListRouter = require('./movielist/movielist')
+const tvListRouter = require('./tvshows/tvshows')
 const searchTagsRouter = require('./searchtags/searchtags')
 const searchResultsRouter = require('./searchresult/searchresult.js')
 const genreRouter = require('./genre/genre')
@@ -59,7 +60,7 @@ router.use('/studio', studioRouter)
 router.use('/user', userRouter)
 router.use('/personnel', personnelRouter)
 router.use('/reviews',movieRouter)
-router.use('/alltvshows', movieListRouter)
+router.use('/alltvshows', tvListRouter)
 
 
 

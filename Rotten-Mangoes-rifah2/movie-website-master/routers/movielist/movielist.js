@@ -19,20 +19,6 @@ imgArray[1] = image2;
 
 
 router.get('/', async (req, res) => {
-    const tvList = await DB_movie.getAllTvSeriesTitleAndID();
-    console.log(tvList);
-    const data = {
-        pageTitle: 'List of Tv Series',
-        isAuth: req.session.isAuth,
-        username: req.session.username,
-
-        tvsList: tvList,
-        image: imgArray
-    }
-    res.render('alltvshows.ejs', data)
-})
-
-router.get('/', async (req, res) => {
     const movieList = await DB_movie.getAllMoviesTitleAndID();
     console.log(movieList)
     const data = {
