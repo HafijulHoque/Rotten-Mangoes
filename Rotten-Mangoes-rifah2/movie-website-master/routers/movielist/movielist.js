@@ -6,7 +6,7 @@ const router = express.Router({ mergeParams: true })
 
 var Canvas = require("canvas");
 var Image = Canvas.Image;
-var canvas = new Canvas();
+//var canvas = new Canvas();
 var image1 = new Image();
 image1.src = 'img/Movie_pics/GodFather1.png';
 
@@ -17,9 +17,24 @@ var imgArray = new Array();
 imgArray[0] = image1;
 imgArray[1] = image2;
 
+
+router.get('/', async (req, res) => {
+    const tvList = await DB_movie.getAllTvSeriesTitleAndID();
+    console.log(tvList);
+    const data = {
+        pageTitle: 'List of Tv Series',
+        isAuth: req.session.isAuth,
+        username: req.session.username,
+
+        tvsList: tvList,
+        image: imgArray
+    }
+    res.render('alltvshows.ejs', data)
+})
+
 router.get('/', async (req, res) => {
     const movieList = await DB_movie.getAllMoviesTitleAndID();
-    console.log(movieList);
+    console.log(movieList)
     const data = {
         pageTitle: 'List of movies',
         isAuth: req.session.isAuth,
@@ -28,8 +43,11 @@ router.get('/', async (req, res) => {
         moviesList: movieList,
         image: imgArray
     }
-    res.render('movielist', data)
+    res.render('movielist.ejs', data)
+
 })
+
+
 
 /*router.get('/new', async (req, res) => {
     const newMovies = await DB_list.getAllNewlyReleasedAnime();

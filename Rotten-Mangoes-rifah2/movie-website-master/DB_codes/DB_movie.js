@@ -1,3 +1,4 @@
+
 const database = require('./database')
 
 
@@ -77,6 +78,14 @@ async function getAllTvSeriesTitleAndID() {
     `
     return (await database.execute(sql, [], database.options)).rows
 }
+
+/*async function getAllTvSeriesTitleAndID() {
+    let sql = `
+           SELECT *
+        FROM "C##MOVIE_DATABASE"."Tv_series"
+    `
+    return (await database.execute(sql, [], database.options)).rows
+}*/
 
 
 
@@ -184,8 +193,9 @@ module.exports = {
     getShowsByID,
     getMoviesByREGEX,
     getGenresById,
- getDirectorByID,
+    getDirectorByID,
     getAllMoviesTitleAndID,
+    getAllTvSeriesTitleAndID,
     getAllGenres,
     //getMoviesByGenreAndOrYear,
     getMoviesByYear,

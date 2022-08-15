@@ -1,9 +1,32 @@
+<!DOCTYPE html>
 <html>
-<head>
-    <title> Tv Series </title>
-    <!--<link rel="stylesheet" href="/css/styles.css">-->
-</head>
-<body>
 
+<head>
+    <title>Tv Shows</title>
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+
+<body>
+<div class="main-content">
+    <%- include('../partials/header.ejs') %>
+    <h3 style="color: yellow; font-family: cursive;">Tv Series: </h3>
+    <% if(!tvsList || tvsList.length === 0) { %>
+        <p style="color: white">No result found</p>
+    <% }
+    else { %>
+        <% for (var i = 0; i < tvsList.length; i++){ %>
+            <ul style="color: white">
+                <%= tvsList[i].Id + ". " + tvsList[i].Title %>
+            </ul>
+            <ul>
+                <%= image[i] %>
+            </ul>
+        <% } %>
+
+    <% } %>
+</div>
+<%- include('../partials/footer.ejs') %>
 </body>
+
 </html>

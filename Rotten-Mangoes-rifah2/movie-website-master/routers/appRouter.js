@@ -59,6 +59,7 @@ router.use('/studio', studioRouter)
 router.use('/user', userRouter)
 router.use('/personnel', personnelRouter)
 router.use('/reviews',movieRouter)
+router.use('/alltvshows', movieListRouter)
 
 
 
