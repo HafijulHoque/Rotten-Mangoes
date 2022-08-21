@@ -2,124 +2,103 @@
 <html lang="en">
 
 <head>
+
     <title>My movie List</title>
-    <link rel="icon" href="/img/icons/mal-logo-head.png">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/new.css">
 </head>
 
 <body>
-    <div class="reviews">
-        <%- include('../partials/header.ejs') %>
-            <br>
-            <div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
-                <% if(isAuth) { %>
-                    <button class="open-review" onclick="openReview()" style="background-color: rgb(78, 78, 211);"> Write/Edit review</button>
+<div class="reviews">
+    <%- include('../partials/header.ejs') %>
 
-                    <br>
-                    <br>
-                    <% if(userReview) { %>
-                        <!-- this button will show if the logged in user reviewed this anime -->
-                        <form action=<%="/movie/" + movie_id + "/reviews/delete" %> method="post">
-                            <input type="hidden" name="username" value=<%=username %>>
-                            <input type="hidden" name="anime_id" value=<%=movie_id %>>
-                            <button type="submit" onclick="return removeReview()" style="background-color: rgb(194, 79, 83);">Remove review</button>
-                        </form>
-                        <% } %>
-                            <br>
-                            <!-- this div will open when write review button is pressed -->
-                            <div class="review-edit" id="myReview">
-                                <form class="Review" method="post" action=<%="/anime/" + movie_id + "/reviews" %> >
+
+
+    <!--<p style="font-weight: bolder; color: rgb(64, 64, 124);">
+        Reviews for
+    </p>-->
+
+    <div>
+
+        <button class="open-review" onclick="openReview()" style="background-color: rgb(78, 78, 211);"> Write/Edit review</button>
+        <br>
+        <br>
+
+        <div class="review-edit" id="myReview">
+            <form class="Review" method="post" action=<%="/review" %> >
                                     <textarea id="text" name="reviewContent" rows="5"
-                                        cols="50"><%= userReviewContent %></textarea>
-                                    <input type="hidden" name="username" value=<%=username %> >
-                                    <input type="hidden" name="anime_id" value=<%=movie_id%>>
-                                    <br>
-                                    <button type="submit" style="background-color: rgb(60, 33, 112);"> Post </button>
-                                </form>
-                            </div>
+                                              cols="50"><%= userReviewContent %></textarea>
+                <input type="hidden" name="username" value=<%=username %> >
 
-                            <% } %>
-            </div>
-            <p style="font-weight: bolder; color: rgb(64, 64, 124);">
-                Reviews for <%= movie_title %>
-            </p>
+                <br>
+                <button type="submit" style="background-color: rgb(60, 33, 112);"> Post </button>
+            </form>
+        </div>
 
-            <div>
+        <div class="review-edit" id="myReview">
+            <form class="Review" method="post" action=<%="/reviews" %> >
+                                    <textarea id="text" name="reviewContent" rows="5"
+                                              cols="50"><%= userReviewContent %></textarea>
+                <input type="hidden" name="username" value=<%=username %> >
 
-                <% if(!reviews || reviews.length==0) { %>
-                    <p>No result found</p>
-                    <% } else { %>
-                        <ul>
-                            <% for (let review of reviews){ %>
-                                <li>
-                                    <p><span style="color: rgb(37, 37, 87); font-weight: 700;">
-                                        <%= review.USERNAME %> said :</span> <%= review.CONTENT %>
-                                    </p>
-                                    <p> <span style="color: rgb(37, 37, 87); font-weight: 700;">Votes </span> : <%= review.VOTES %>
-                                    </p>
-                                    <% if(isAuth) { %>
-                                        <div class="user-vote-popup" id="vote">
-                                            <form method="post" action=<%="/movie/" + anime_id + "/reviews/" +
-                                                review.REVIEW_ID + "/vote" %>>
-                                                <input type="hidden" name="username" value=<%=username %> >
-                                                <input type="hidden" name="review_id" value=<%=review.REVIEW_ID %> >
-                                                <input type="hidden" name="vote_comment" value="">
-                                                <input type="hidden" name="vote_type"
-                                                    value=<%=review.USERNAME_1==username ? -1 : 1 %>>
-                                                <!-- !button will show upvote if not voted, downvote if already voted -->
-                                                <button type="submit" style="background-color: rgb(41, 20, 80);">
-                                                    <%= review.USERNAME_1==username ? 'Downvote' : 'Upvote' %>
-                                                </button>
-                                            </form>
-                                        </div>
-                                        <% } %>
-                                </li>
-                                <% } %>
-                        </ul>
-                        <% } %>
-            </div>
+                <br>
+                <button type="submit" style="background-color: rgb(60, 33, 112);"> Post </button>
+            </form>
+        </div>
+    <% if(!reviews || reviews.length==0) { %>
+            <p>No result found</p>
+        <% } else { %>
+            <ul>
+                <% for (let review of reviews){ %>
+                    <%= review.id + review.content%>
+                <% } %>
+            </ul>
+        <% } %>
     </div>
-    <script>
-        var a = 0;
-        function openReview() {
-            if (a == 1) {
-                document.getElementById("myReview").style.display = "none";
-                return a = 0;
-            } else {
-                document.getElementById("myReview").style.display = "block";
-                return a = 1;
-            }
+</div>
+<script>
+    var a = 0;
+    function openReview() {
+        if (a == 1) {
+            document.getElementById("myReview").style.display = "none";
+            return a = 0;
+        } else {
+            document.getElementById("myReview").style.display = "block";
+            return a = 1;
         }
-        var b = 0
-        function openVoteForm() {
-            if (b == 1) {
-                document.getElementById("vote").style.display = "none";
-                return b = 0;
-            } else {
-                document.getElementById("vote").style.display = "block";
-                return b = 1;
-            }
+    }
+    var b = 0
+    function openVoteForm() {
+        if (b == 1) {
+            document.getElementById("vote").style.display = "none";
+            return b = 0;
+        } else {
+            document.getElementById("vote").style.display = "block";
+            return b = 1;
         }
-
-        function removeReview() {
-            return confirm("your review will be deleted");
+    }
+    function removeReview() {
+        return confirm("your review will be deleted");
+    }
+    document.getElementById("vote").addEventListener("click", vote);
+    var a = 1;
+    function vote() {
+        if (a == 1) {
+            document.getElementById("in").value = parseInt(document.getElementById("in").value) + 1;
+            return a = 0;
         }
-        document.getElementById("vote").addEventListener("click", vote);
-        var a = 1;
-        function vote() {
-            if (a == 1) {
-                document.getElementById("in").value = parseInt(document.getElementById("in").value) + 1;
-                return a = 0;
-            }
-            else {
-                document.getElementById("in").value = parseInt(document.getElementById("in").value) - 1;
-                return a = 1;
-            }
+        else {
+            document.getElementById("in").value = parseInt(document.getElementById("in").value) - 1;
+            return a = 1;
         }
-    </script>
-    <%- include('../partials/footer.ejs') %>
+    }
+</script>
+<%- include('../partials/footer.ejs') %>
 </body>
 
 </html>

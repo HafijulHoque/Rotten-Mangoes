@@ -1,6 +1,23 @@
 const database = require('./database')
 
-
+async function getRandomSeries()
+{
+    let sql=`
+    SELECT *
+    FROM "C##MOVIEDATABASE"."Tv_series"
+    fetch NEXT 4 ROWS ONLY 
+    `
+    return (await database.execute(sql,[],database.options)).rows
+}
+async function getRandomShow()
+{
+    let sql=`
+    SELECT *
+    FROM "C##MOVIEDATABASE"."Show"
+    fetch NEXT 4 ROWS ONLY 
+    `
+    return (await database.execute(sql,[],database.options)).rows
+}
 async function getMoviesByID(id) {
     let sql = `
         SELECT 
@@ -15,7 +32,7 @@ async function getShowsByID(id) {
         SELECT *
         
         FROM "C##MOVIEDATABASE"."Show"
-        WHERE "Id"=:id ;
+        WHERE "Id"=:id 
     `
     return (await database.execute(sql, [id], database.options)).rows[0]
 }
@@ -197,5 +214,7 @@ module.exports = {
 
     //updateAnimeRating
     getStudioName,
-    getActorsById
+    getActorsById,
+    getRandomSeries,
+    getRandomShow
 }

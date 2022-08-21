@@ -31,7 +31,7 @@ async function updateUserPassword(userame,Password) {
 async function updateUserEmailandBio(username, email, bio) {
     let sql = `
     UPDATE "C##MOVIEDATABASE"."USERaccount"
-    SET "EMAIL" = :EMAIL, "FIRST_NAME" = :BIO
+    SET "Email" = :EMAIL, "Fist_Name" = :BIO
     WHERE "Username" = :USERNAME
     `
     return (await database.execute(sql, [email, bio, username], database.options))
@@ -41,7 +41,7 @@ async function getFavouriteslistOfUser(username) {
     let sql = `
         SELECT *
         FROM "C##MOVIEDATABASE"."favourites"
-        WHERE "USERNAME"=:USERNAME
+        WHERE "Username"=:USERNAME
           
     `
     return (await database.execute(sql, [username], database.options)).rows
@@ -50,8 +50,8 @@ async function getFavouriteslistOfUser(username) {
 async function getWatchlistOfUser(username) {
     let sql = `
      SELECT *
-        FROM "C##MOVIEDATABASE"."WATCHLIST"
-        WHERE "USERNAME"=:USERNAME
+        FROM "C##MOVIEDATABASE"."Watchlist"
+        WHERE "Username"=:USERNAME
         
     `
     return (await database.execute(sql, [username], database.options)).rows

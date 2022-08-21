@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Users profile</title>
+
+    <link rel="icon" href="/img/icons/mal-logo-head.png">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .form-popup {
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+<%- include('../partials/header.ejs') %>
+<div class="container">
+
+    <div class="row">
+        <% console.log(userInfo)%>
+        <div class="col-3">
+            <img src="<%=userInfo.Picture%>" alt="Responsive image" class="img-thumbnail" width="200" style="border-radius: 100%;">
+        </div>
+
+        <div class="col-9" style="padding-top: 20px;">
+            <h4><%=userInfo.First_Name + ' ' + userInfo.Last_Name%> <span class="card-subtitle mb-2 text-muted">(<i><%=userInfo.Username%>)</i></span></h4>
+
+            <p class="h6"><span class="card-subtitle mb-2 text-muted">Born: <%=userInfo.Date_of_birth%> </span></p>
+            <p class="h6"><span class="card-subtitle mb-2 text-muted"><b> BIO: </b>"<%=userInfo.Bio%>" </span></p>
+        </div>
+
+    </div>
+    <hr style="border:1px solid #f1f1f1d0">
+</div>
+
+<<form >
+    <button type="submit" name="Submit" id="frm1_submit" class="btn btn-outline-danger btn-sm"
+            style="position: absolute;
+    left: 1200px;
+    top: 600px;">
+       <span> Edit Profile</span></button>
+</form>
+
+
+
+
+
+
+<div class="row">
+    <div class="col-4">
+        <h6 >
+
+            <b> Shows Watched  (Total: <%=favList.length%>) </b></h6>
+        <% if(favList.length == 0) {  %>
+            <p>No Show</p>
+        <% } %>
+
+        <ul>
+            <% if(favList.length > 0) { %>
+                <%  for (var i = 0; i< favList.length; i++) {  %>
+                    <% console.log('this is ' + i + ' ' + favList[i].Title)  %>
+
+                    <li class="showsug" style="margin : 8px 0">
+
+                        <p><%=  favList[i].Title  %> </p>
+
+                    </li>
+
+
+                <%  }  %>
+            <% } %>
+        </ul>
+    </div>
+
+
+
+</div>
+</body>

@@ -13,7 +13,7 @@ const database = require('./database')
 async function getDirector(personnel_id) {
     let sql = `
         SELECT *
-        FROM DIRECTORS
+        FROM "C##MOVIEDATABASE"."Directors"
         WHERE SSN= :ID
     `
     return (await database.execute(sql, [personnel_id], database.options)).rows[0]

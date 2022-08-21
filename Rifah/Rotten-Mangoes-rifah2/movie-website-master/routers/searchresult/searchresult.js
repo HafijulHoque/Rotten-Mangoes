@@ -14,10 +14,29 @@ router.post('/', async (req, res) => {
     }
     if (string.length == 0) return res.redirect('/');
 
-    console.log(string);
+   console.log(req.body.selectpicker)
+let movies=[];
+   let directors=[]
 
-    const movies = await DB_search.getShowsByREGEX(string);
-    console.log(movies);
+if(req.body.selectpicker=='title')
+{
+    movies = await DB_search.getShowsByREGEX(string);
+
+}
+
+else if(req.body.selectpicker=='Actor')
+{
+ movies=await DB_search.getActorsByREGEX(string)
+}
+else
+{
+    console.log(string)
+    directors=await DB_search.getDirectorsByREGEX(string)
+    console.log(directors)
+
+}
+
+
     const actors = await DB_search.getActorsByREGEX(string);
 //    const characters = await DB_search.getCharactersByREGEX(string);
  //   const voice_actors = await DB_search.getVoiceActorsByREGEX(string);
@@ -30,6 +49,7 @@ router.post('/', async (req, res) => {
 
         movies:movies,
         actors:actors,
+        directors:directors
      //   characters,
        // voice_actors,
         //writers

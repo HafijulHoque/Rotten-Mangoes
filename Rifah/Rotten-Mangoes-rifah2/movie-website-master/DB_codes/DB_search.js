@@ -84,6 +84,7 @@ async function getDirectorsByREGEX(string) {
 
 
 module.exports = {
+    getDirectorsByREGEX,
     getActorsByREGEX,
     getMoviesByREGEX,
     getTvSeriesByREGEX,

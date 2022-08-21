@@ -8,17 +8,22 @@ const DB_homepage = require('../DB_codes/DB_homepage');
 const loginRouter = require('./authentication/login')
 const registerRouter = require('./authentication/register')
 const logoutRouter = require('./authentication/logout')
+const singleMovieRouter=require('./Movie1/Movie1')
 
 const movieRouter = require('./movie/movie')
+const  movieRouter2=require('./allmovies/allmovies')
+const movieRouter3=require('./alltvshows/alltvshows')
 const movieListRouter = require('./movielist/movielist')
 const searchTagsRouter = require('./searchtags/searchtags')
 const searchActorRouter=require('./searchActor/searchActor')
-const searchResultsRouter = require('./searchresult/searchresult.js')
+const searchResultsRouter = require('./searchresult/searchresult')
 const genreRouter = require('./genre/genre')
 const studioRouter = require('./studio/studio')
 const personnelRouter = require('./personnel/personnel')
 
 const userRouter = require('./user/user')
+const awardRouter=require('./Awards/Awards')
+const merchandiseRouter=require('./Merchandise/Merchandise')
 
 
 
@@ -60,7 +65,12 @@ router.use('/studio', studioRouter)
 router.use('/user', userRouter)
 router.use('/personnel', personnelRouter)
 router.use('/searchActor',searchActorRouter)
-
+router.use('/review',movieRouter)
+router.use('/allmovies',movieRouter2)
+router.use('/alltvshows',movieRouter3)
+router.use('/singlemovie',singleMovieRouter)
+router.use('/Awards',awardRouter)
+router.use('/Merchandise',merchandiseRouter)
 
 
 //!ERRORS

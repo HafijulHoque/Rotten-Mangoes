@@ -32,8 +32,8 @@ where "Title"=:title
 async function getAllReviewsWithUserVotes(id, username) {
     let sql = `
         SELECT *
-        FROM REVIEW NATURAL JOIN VOTED
-        Where show_id=:id and username=:username
+        FROM "C##MOVIEDATABASE"."Review" NATURAL JOIN "C##MOVIEDATABASE"."Voted"
+        Where "show_id"=:id and "Username"=:username
         
     `
     return (await database.execute(sql, [id, username], database.options)).rows
@@ -41,8 +41,8 @@ async function getAllReviewsWithUserVotes(id, username) {
 
 async function getUserReview(username,id) {
     let sql = `
-        SELECT * FROM REVIEW
-        WHERE Username=:username and show_id=:id
+        SELECT * FROM "C##MOVIEDATABASE"."Review"
+        WHERE "Username"=:username and "show_id"=:id
     `
     return (await database.execute(sql, [username, id], database.options)).rows[0]
 }
@@ -57,11 +57,14 @@ async function getAllUserReview(username) {
 
 
 //this function will enter new review into the DB and return the NEW REVIEW_ID
-async function insertReview(Id,reviewContent,username) {
+async function insertReview(reviewContent,username) {
+    Id=(Math.random()*100)
+    Id=Math.floor(Id)
+    console.log("from database"+reviewContent)
     let sql = `
-        INSERT INTO REVIEW ("Review_id","Date","Content", "Votes","Username") 
+        INSERT INTO "C##MOVIEDATABASE"."Review" ("Review_id","Date","Content", "Votes","Username") 
         VALUES(:ID,SYSDATE,:content,0,:username) 
-        RETURNING REVIEW_ID INTO :retID
+        RETURNING "Review_id" INTO :retID
     `
 
     const binds = {

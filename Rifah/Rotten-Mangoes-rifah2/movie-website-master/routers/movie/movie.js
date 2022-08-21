@@ -6,7 +6,7 @@ const DB_rating = require('../../DB_codes/DB_rating')
 const router = express.Router({ mergeParams: true })
 
 // /movie router
-router.get('/:id', async (req, res) => {
+/*router.get('/:id', async (req, res) => {
     const movie_id = req.params.id;
     const username = req.session.username;
 
@@ -54,17 +54,22 @@ router.get('/:id', async (req, res) => {
     res.render('movie', data)
 })
 
+ */
 
 
-router.get('/:id/reviews', async (req, res) => {
+
+router.get('/', async (req, res) => {
+    console.log("getting from reviews")
+    console.log(req)
+    console.log(req.session)
     const movie_id = req.params.id;
-    const user = req.session.username;
-
+    const user = req.session.userid;
+console.log(user)
     const reviews = await DB_review.getAllReviewsWithUserVotes(movie_id, user);
     const userReview = await DB_review.getUserReview(user, movie_id);
-    const movie_title = (await DB_movie.getMoviesById(movie_id)).title
+    const movie_title = await DB_movie.getMoviesByID(movie_id);
 
-    let userReviewContent = "";
+    let userReviewContent = ""
     if (userReview) userReviewContent = userReview.CONTENT;
 
     //console.log(reviews)
@@ -78,31 +83,34 @@ router.get('/:id/reviews', async (req, res) => {
         userReview,
         userReviewContent,
         movie_id,
-        movie_title
+        movie_title,
+        username:user
     }
     res.render('review', data);
 })
 
 
 
-router.post('/:id/reviews', async (req, res) => {
+router.post('/', async (req, res) => {
+    console.log("posting from review router")
+    console.log(req.body)
     const movie_id = req.params.id
-    const reviewContent = req.body.Content
+    const reviewContent = req.body.reviewContent
     const user = req.body.username
 
     if (!req.session.isAuth) return res.redirect('/login');
 
     const userReview = await DB_review.getUserReview(user, movie_id);
-
+console.log(reviewContent)
     if (!userReview) {
-        const inserted_review_id = await DB_review.insertReview(reviewContent); //This line inserts the new review. reID returns the REVIEW_ID of the new row
+        const inserted_review_id = await DB_review.insertReview(reviewContent,user); //This line inserts the new review. reID returns the REVIEW_ID of the new row
         //const handle_reviewed = await DB_review.insertIntoReviewRelation(user, anime_id, inserted_review_id)
     } else if (userReview) {
         const review_id = userReview.review_id;
         await DB_review.updateReview(review_id, reviewContent)
     }
 
-    res.redirect('/movie/' + movie_id + '/reviews');
+    res.redirect('/');
 })
 
 

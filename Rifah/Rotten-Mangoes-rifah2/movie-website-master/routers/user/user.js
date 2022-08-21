@@ -25,6 +25,8 @@ router.get('/:username', async (req, res) => {
 
     //database query
     const userInfo = await DB_user.getUserInfoByUsername(username);
+    const favList=await DB_user.getFavouriteslistOfUser(username);
+    const watchList=await DB_user.getWatchlistOfUser(username);
 
     //error checking
     const data = {
@@ -32,9 +34,13 @@ router.get('/:username', async (req, res) => {
         isAuth: req.session.isAuth,
         username: req.session.userid,
 
-        userInfo
+        userInfo:userInfo,
+        favList:favList,
+        watchList:watchList
     }
-    res.render('userprofile', data);
+    console.log("backend ");
+    console.log(userInfo);
+    res.render('userprofile2', data);
 })
 
 
