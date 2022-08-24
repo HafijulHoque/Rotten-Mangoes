@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <p style="color:yellow; text-align: center;">
+        <%= message %>
+    </p>
+    <!-- !this is important. posts to /login route -->
+    <br>
+    <div class = "container" style="align-self:center; margin-right:300px;">
+        <form action="/login" method="post" style="text-align: center;">
+            <h2>Login</h2>
+            <div class="input-field">
+                <input type="text" name="username" id="username" placeholder="Enter Username">
+            </div>
+            <div class="input-field">
+                <input type="password" name="password" id="password" placeholder="Enter Password">
+            </div>
+            <input type="submit" value="LogIn">
+        </form>
+    </div>
+
+
+</body>
+
+</html>

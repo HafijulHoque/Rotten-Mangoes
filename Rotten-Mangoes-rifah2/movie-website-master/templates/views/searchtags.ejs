@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Search by tags</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+
+
+
+
+
+
+<<div class="search-by-tags">
+    <section id="search">
+        <!-- !SEARCH -->
+        <form class="search-bar" action="/searchresults" method="post">
+            <select class="selectpicker" data-style="btn-info" name="selectpicker">
+                <option id="title" value="title">title</option>
+                <option  id="genre" value="genre">genre</option>
+                <option  id="Actor" value="genre">Actor</option>
+                <option  id="Director" value="genre">Director</option>
+
+            </select>
+            <input class="search-bar" type="text" placeholder="Search for anything" name="search">
+            <button type="submit">Search</button>
+        </form>
+    </section>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+
+</body>
+
+</html>
