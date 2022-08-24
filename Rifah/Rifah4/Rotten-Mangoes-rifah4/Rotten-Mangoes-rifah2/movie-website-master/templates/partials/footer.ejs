@@ -1,0 +1,9 @@
+<footer>
+    <% if(!isAuth) { %>
+        <p>Not logged in</p>
+        <% } else { %>
+            <p>
+                logged in as : <%= username %>
+            </p>
+            <% } %>
+</footer>

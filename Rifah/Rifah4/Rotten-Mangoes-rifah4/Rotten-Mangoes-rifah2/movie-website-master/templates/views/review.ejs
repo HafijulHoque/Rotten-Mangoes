@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title> My Movie List</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+</head>
+
+<body>
+
+<div class="reviews">
+    <%- include('../partials/header.ejs') %>
+
+
+
+    <!--<p style="font-weight: bolder; color: rgb(64, 64, 124);">
+        Reviews for
+    </p>-->
+    <div>
+
+    </div>
+    <div>
+
+        <button class="open-review" onclick="openReview()" style="background-color: rgb(78, 78, 211);"> Write/Edit review</button>
+        <br>
+        <br>
+
+        <div class="review-edit" id="myReview">
+            <form class="Review" method="post" action=<%="/review" %> >
+                                    <textarea id="text" name="reviewContent" rows="5"
+                                              cols="50"><%= userReviewContent %></textarea>
+                <input type="hidden" name="username" value=<%=username %> >
+
+                <br>
+                <button type="submit" style="background-color: rgb(60, 33, 112);"> Post </button>
+            </form>
+        </div>
+
+        
+    <% if(!reviews || reviews.length==0) { %>
+            <p>No result found</p>
+        <% } else { %>
+            <ul>
+                <% for (let review of reviews){ %>
+                    <%= review.id + review.content%>
+                <% } %>
+            </ul>
+        <% } %>
+    </div>
+</div>
+<script>
+    var a = 0;
+    function openReview() {
+        if (a == 1) {
+            document.getElementById("myReview").style.display = "none";
+            return a = 0;
+        } else {
+            document.getElementById("myReview").style.display = "block";
+            return a = 1;
+        }
+    }
+    var b = 0
+    function openVoteForm() {
+        if (b == 1) {
+            document.getElementById("vote").style.display = "none";
+            return b = 0;
+        } else {
+            document.getElementById("vote").style.display = "block";
+            return b = 1;
+        }
+    }
+    function removeReview() {
+        return confirm("your review will be deleted");
+    }
+    document.getElementById("vote").addEventListener("click", vote);
+    var a = 1;
+    function vote() {
+        if (a == 1) {
+            document.getElementById("in").value = parseInt(document.getElementById("in").value) + 1;
+            return a = 0;
+        }
+        else {
+            document.getElementById("in").value = parseInt(document.getElementById("in").value) - 1;
+            return a = 1;
+        }
+    }
+</script>
+<%- include('../partials/footer.ejs') %>
+</body>
+
+</html>
