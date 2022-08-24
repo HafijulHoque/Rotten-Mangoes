@@ -14,15 +14,15 @@
 </head>
 
 <body>
-    <div class="main-content">
-        <div>
-            <%- include('../partials/header.ejs') %>
-        </div>
-            <section id="homepage-top-movies" style="margin-bottom: 15%; font-family: cursive; font-style: italic">
-                <ul>
-                    <div style="float: left; width : 50%">
-                        <h2> <a class="home" href="/movielist/new" style="text-decoration-line: none; color: #EFFC20">Newly Released Movies</a> </h2>
-                        <!--<div class="movie-list-wrapper">
+<div class="main-content">
+    <div>
+        <%- include('../partials/header.ejs') %>
+    </div>
+    <section id="homepage-top-movies" style="margin-bottom: 15%; font-family: cursive; font-style: italic">
+        <ul>
+            <div style="float: left; width : 50%">
+                <h2> <a class="home" href="/movielist/new" style="text-decoration-line: none; color: #EFFC20">Newly Released Movies</a> </h2>
+                <!--<div class="movie-list-wrapper">
                             <div class="movie-list">
                                 <% for (var i = 0; i < moviesList.length; i++){ %>
                                     <ul style="color: #ffffff; font-size: xx-large; font-style: italic; font-family: cursive">
@@ -38,75 +38,100 @@
                             </div>
                         </div>-->
 
-                        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="/img/aot.jpg" alt= "1">
-                                    <div class="carousel-caption d-none d-md-block">
+                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="/img/anime_pic/aot.jpg" alt= "1">
+                            <!--<div class="carousel-caption d-none d-md-block">
                                         <h5 style="color: white"><%= moviesList[0].Title %></h5>
                                         <p>Plot</p>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="/img/geass.jpg" alt= "1">
-                                    <div class="carousel-caption d-none d-md-block">
+                                    </div>-->
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/img/anime_pic/geass.jpg" alt= "1">
+                            <!--<div class="carousel-caption d-none d-md-block">
                                         <h5 style="color: white"><%= moviesList[1].Title %></h5>
                                         <p>Plot</p>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="/img/knb.jpg" alt= "1">
-                                    <div class="carousel-caption d-none d-md-block">
+                                    </div>-->
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/img/anime_pic/knb.jpg" alt= "1">
+                            <!--<div class="carousel-caption d-none d-md-block">
                                         <h5 style="color: white"><%= moviesList[2].Title %></h5>
                                         <p>Plot</p>
-                                    </div>
-                                </div>
+                                    </div>-->
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="/img/anime_pic/knb.jpg" alt= "1">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 style="color: white"><%= moviesList[2].Title %></h5>
+                                <p>Plot</p>
                             </div>
-                            <a class="carousel-control-prev" href="/" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="/" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="/img/anime_pic/knb.jpg" alt= "1">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 style="color: white"><%= moviesList[2].Title %></h5>
+                                <p>Plot</p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="/img/anime_pic/knb.jpg" alt= "1">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 style="color: white"><%= moviesList[2].Title %></h5>
+                                <p>Plot</p>
+                            </div>
                         </div>
                     </div>
-                </ul>
+                    <a class="carousel-control-prev" href="/" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="/" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </ul>
 
 
-                <ul>
-                    <div style="float: bottom; width : 50%">
-                        <h2><a class="home" href="/movielist/top" style="text-decoration-line: none; color:yellow;">Top Movies</a></h2>
-                        <% for (let movie of recommendation){ %>
-                        <li>
-                            <a class="listed" href=<%="/movie/" + movie.id %> >
+        <ul>
+            <div style="float: bottom; width : 50%">
+                <h2><a class="home" href="/movielist/top" style="text-decoration-line: none; color:yellow;">Top Movies</a></h2>
+                <% for (let movie of recommendation){ %>
+                <li>
+                    <a class="listed" href=<%="/movie/" + movie.id %> >
 
-                                <%= movie.title %>
-                            </a>
-                        </li>
-                        <% } %>
-                    </div>
-                </ul>
-            </section>
+                        <%= movie.title %>
+                    </a>
+                </li>
+                <% } %>
+            </div>
+        </ul>
+    </section>
 
-            <section id="homepage-recommended-movies" style="margin-top: 50%;">
-                <% if(isAuth){ %>
-                    <h3><a class="home" href="/movielist/recommendation"> Recommended For You </a> </h3>
-                    <% for (let movie of recommendation){ %>
-                        <li>
-                            <a class="listed" href=<%="/movie/" + movie.id %> >
+    <section id="homepage-recommended-movies" style="margin-top: 50%;">
+        <% if(isAuth){ %>
+            <h3><a class="home" href="/movielist/recommendation"> Recommended For You </a> </h3>
+            <% for (let movie of recommendation){ %>
+            <li>
+                <a class="listed" href=<%="/movie/" + movie.id %> >
 
-                                <%= movie.title %>
-                            </a>
-                        </li>
-                        <% } %>
-                            <% } %>
-            </section>
-    </div>
-    <%- include('../partials/footer.ejs') %>
+                    <%= movie.title %>
+                </a>
+            </li>
+            <% } %>
+        <% } %>
+    </section>
+</div>
+<%- include('../partials/footer.ejs') %>
 
-    <script src="app.js"></script>
+<script src="app.js"></script>
+
 </body>
 
 </html>
