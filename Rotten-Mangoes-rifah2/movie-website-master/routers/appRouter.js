@@ -25,6 +25,7 @@ const personnelRouter = require('./personnel/personnel')
 const userRouter = require('./user/user')
 const awardRouter=require('./Awards/Awards')
 const merchandiseRouter=require('./Merchandise/Merchandise')
+const reviewRouter=require('./Review/review')
 
 const homePageRouter=require('./home/homepage')
 const DB_movie = require("../DB_codes/DB_movie");
@@ -73,6 +74,7 @@ router.use('/alltvshows',movieRouter3)
 router.use('/singlemovie',singleMovieRouter)
 router.use('/Awards',awardRouter)
 router.use('/Merchandise',merchandiseRouter)
+router.use('/review', reviewRouter)
 
 //!ERRORS
 
