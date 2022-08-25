@@ -14,7 +14,7 @@ async function getRandomShow()
     let sql=`
     SELECT *
     FROM "C##MOVIEDATABASE"."Show"
-    fetch NEXT 4 ROWS ONLY 
+     
     `
     return (await database.execute(sql,[],database.options)).rows
 }
