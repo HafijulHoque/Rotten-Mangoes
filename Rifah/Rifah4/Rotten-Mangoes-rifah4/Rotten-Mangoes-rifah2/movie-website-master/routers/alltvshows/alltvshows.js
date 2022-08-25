@@ -6,7 +6,7 @@ const DB_rating = require('../../DB_codes/DB_rating')
 const router = express.Router({ mergeParams: true })
 router.get('/',async (req, res) => {
         console.log("from all tv shows")
-        const tvList = await DB_movie.getRandomShow();
+        const tvList = await DB_movie.getRandomSeries();
         console.log(tvList);
         const data = {
             pageTitle: 'List of Tv Series',

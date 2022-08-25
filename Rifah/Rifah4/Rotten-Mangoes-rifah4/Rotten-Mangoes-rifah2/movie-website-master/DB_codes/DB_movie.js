@@ -101,10 +101,9 @@ async function getAllTvSeriesTitleAndID() {
         SELECT TITLE FROM MOVIES WHERE GENRE = '${genres[0]}'`;
     for (let i = 1; i < genres.length; i++) {
         sqlgenre += `
-        INTERSECT 
+        INTERSECT
         (SELECT TITLE FROM MOVIES WHERE GENRE = '${genres[i]}')`;
     }
-
     if (years && years.length > 0) {
         sqlgenre += `and (TO_CHAR(RELEASE_DATE, 'YYYY') = ${years[0]}`
         for (let i = 1; i < years.length; i++) {
@@ -178,7 +177,7 @@ async function getMoviesTitleandIDByOneGenre(genre) {
 
 /*async function getCharactersOfAnime(anime_id) {
     let sql = `
-        SELECT FIRST_NAME, LAST_NAME, PICTURE_ID, VOICE_ACTOR_ID, 
+        SELECT FIRST_NAME, LAST_NAME, PICTURE_ID, VOICE_ACTOR_ID,
         (SELECT V.FIRST_NAME||' '||V.LAST_NAME FROM VOICE_ACTOR V WHERE V.PERSONNEL_ID = C.VOICE_ACTOR_ID) AS VA_NAME
         FROM CHARACTER C
         WHERE ANIME_ID = :ANIME_ID
@@ -211,7 +210,7 @@ module.exports = {
     getShowsByID,
     getMoviesByREGEX,
     getGenresById,
- getDirectorByID,
+    getDirectorByID,
     getAllMoviesTitleAndID,
     getAllGenres,
     //getMoviesByGenreAndOrYear,
@@ -221,7 +220,7 @@ module.exports = {
     //getCharactersOfAnime,
     //getCharacterByName,
     getNumberOfSeasons,
-  //  getEpisodesOfAnime,
+    //  getEpisodesOfAnime,
 
     //updateAnimeRating
     getStudioName,

@@ -22,9 +22,10 @@
     <% }
     else { %>
         <% for (var i = 0; i < moviesList.length; i++){ %>
-            <ul style="color: white; font-size: xx-large; font-style: italic; font-family: cursive">
-                <%= moviesList[i].Id + ". " + moviesList[i].Title %>
-            </ul>
+        <a href=<%="/movielist/"+moviesList[i].Id+"/details"%>>
+            <p><%=moviesList[i].Title%></p>
+
+        </a>
         <% } %>
 
     <% } %>

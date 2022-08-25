@@ -7,7 +7,7 @@ const router = express.Router({ mergeParams: true })
 
 
 router.get('/', async (req, res) => {
-    const movieList = await DB_movie.getAllMoviesTitleAndID();
+    const movieList = await DB_movie.getRandomShow();
     console.log(movieList)
     const data = {
         pageTitle: 'List of movies',
@@ -16,8 +16,23 @@ router.get('/', async (req, res) => {
 
         moviesList: movieList,
     }
-    res.render('movielist.ejs', data)
+    res.render('movielist', data)
 })
+router.get('/:Id/details', async (req, res) => {
+    console.log("Movielist new get..")
+    console.log(req.params.Id)
+    const movieList = await DB_movie.getShowsByID(req.params.Id);
+    console.log(movieList)
+    const data = {
+        pageTitle: 'List of movies',
+        isAuth: req.session.isAuth,
+        username: req.session.username,
+
+        moviedetails: movieList,
+    }
+    res.render('singlemovie', data)
+})
+
 
 
 

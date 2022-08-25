@@ -3,14 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="66d5a54d-a7cc-4a98-b06e-3398cf5330c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_user.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/routers/appRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/routers/appRouter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/routers/user/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/routers/user/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/partials/header.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/partials/header.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/register.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/register.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_movie.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_movie.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_review.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_review.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/routers/alltvshows/alltvshows.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/routers/alltvshows/alltvshows.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/routers/movie/movie.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/routers/movie/movie.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/routers/movielist/movielist.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/routers/movielist/movielist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/alltvshows.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/alltvshows.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/movielist.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/movielist.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/review.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/review.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/userprofile2.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/userprofile2.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/searchresults.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/searchresults.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/singlemovie.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/singlemovie.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Rotten-Mangoes-rifah2/movie-website-master/templates/views/userprofile2.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../Rotten-Mangoes-rifah2/movie-website-master/templates/views/userprofile2.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ins.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../ins.txt" afterDir="false" />
     </list>
@@ -55,7 +57,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1661354144361</updated>
-      <workItem from="1661354145584" duration="30240000" />
+      <workItem from="1661354145584" duration="34157000" />
     </task>
     <servers />
   </component>

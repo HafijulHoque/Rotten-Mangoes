@@ -9,39 +9,32 @@ const router = express.Router({ mergeParams: true })
 /*router.get('/:id', async (req, res) => {
     const movie_id = req.params.id;
     const username = req.session.username;
-
     const movie = await DB_movie.getShowsByID(movie_id);
     const genres = await DB_movie.getGenresById(movie_id);
     const director = await DB_movie.getDirectorByID(movie.directors_ssn);
     const characters = await DB_movie.getActorsById(movie_id);
-
     const watchlistData = await DB_watchlist.getWatchlistRowOfUserAndMovie(username, movie_id);
     const favlistData=await DB_watchlist.getFavouriteslistOfUser(username,movie_id)
     const usersWatchlisted = await DB_watchlist.getCountWatchlisted(movie_id);
     const usersFavourited = await DB_watchlist.getCountFavourited(movie_id);
     const isAddedToWatchlist = watchlistData ? true : false;
     const isAddedTofav=favlistData?true:false;
-
     const isAddedToFavouriteList = (isAddedTofav) ? true : false;
     const userRating = await DB_rating.getUsersRatingOfMovie(username, movie_id);
     const userRatedThisMovie = userRating ? true : false;
-
     const data = {
         pageTitle: 'Shows',
         isAuth: req.session.isAuth,
         username: req.session.userid,
-
         movie,
         genres,
         director,
         characters,
-
         watchlistData,
         isAddedToWatchlist,
         isAddedToFavouriteList,
         usersWatchlisted,
         usersFavourited,
-
         userRating,
         userRatedThisMovie
     }
@@ -53,7 +46,6 @@ const router = express.Router({ mergeParams: true })
     }
     res.render('movie', data)
 })
-
  */
 
 
@@ -64,27 +56,28 @@ router.get('/', async (req, res) => {
     console.log(req.session)
     const movie_id = req.params.id;
     const user = req.session.userid;
-console.log(user)
-    const reviews = await DB_review.getAllReviewsWithUserVotes(movie_id, user);
+    console.log(user)
+    //const reviews = await DB_review.getAllReviewsWithUserVotes(movie_id, user);
     const userReview = await DB_review.getUserReview(user, movie_id);
     const movie_title = await DB_movie.getMoviesByID(movie_id);
-
+    const allUserReview = await DB_review.getAllUserReview(user);
     let userReviewContent = ""
-    if (userReview) userReviewContent = userReview.CONTENT;
+    if (userReview) userReviewContent = userReview.Content;
 
-    //console.log(reviews)
+    //console.log(allUserReview)
 
     const data = {
         pageTitle: 'Reviews',
         isAuth: req.session.isAuth,
         username: req.session.username,
 
-        reviews,
+        //reviews,
         userReview,
         userReviewContent,
         movie_id,
         movie_title,
-        username:user
+        username:user,
+        allUserReview
     }
     res.render('review', data);
 })
@@ -101,7 +94,7 @@ router.post('/', async (req, res) => {
     if (!req.session.isAuth) return res.redirect('/login');
 
     const userReview = await DB_review.getUserReview(user, movie_id);
-console.log(reviewContent)
+    console.log(reviewContent)
     if (!userReview) {
         const inserted_review_id = await DB_review.insertReview(reviewContent,user); //This line inserts the new review. reID returns the REVIEW_ID of the new row
         //const handle_reviewed = await DB_review.insertIntoReviewRelation(user, anime_id, inserted_review_id)
@@ -129,12 +122,12 @@ router.post('/:movie_id/reviews/:review_id/vote', async (req, res) => {
     const movie_id = req.params.movie_id;
     const {  review_id,username, comments } = req.body;
 
-        //insert vote
-        await DB_review.insertVote(username, review_id, comments);
-        await DB_review.incrementVoteinReview(review_id);
+    //insert vote
+    await DB_review.insertVote(username, review_id, comments);
+    await DB_review.incrementVoteinReview(review_id);
 
-        //delete vote
-  //      await DB_review.deleteVote(username, review_id);
+    //delete vote
+    //      await DB_review.deleteVote(username, review_id);
     //    await DB_review.decrementVoteinReview(review_id);
 
     res.redirect('/movie/' + anime_id + '/reviews');
@@ -161,7 +154,6 @@ router.post('/:id/rating/post', async (req, res) => {
     const movie_id = req.params.movie_id;
     const characterFirstname = req.params.charactername.split("_")[0];
     const characterlastname = req.params.charactername.split("_")[1];
-
     //database query
     const character = await DB_movie.g(anime_id, characterFirstname, characterlastname);
     if (!character) res.redirect('/error')
@@ -169,7 +161,6 @@ router.post('/:id/rating/post', async (req, res) => {
         pageTitle: 'Character',
         isAuth: req.session.isAuth,
         username: req.session.userid,
-
         character
     }
     res.render('characterprofile', data)
