@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 
 //user makes post request to register him into db
 router.post('/', async (req, res) => {
-    const { username, email, password } = req.body;
+    const { username, email, password} = req.body;
     console.log(email)
 console.log(username);
     let userExists = (await DB_auth.getUserByUsername(username)).length == 0 ? false : true;
