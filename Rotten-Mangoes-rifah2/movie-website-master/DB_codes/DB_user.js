@@ -40,7 +40,7 @@ async function updateUserEmailandBio(username, email, bio) {
 async function getFavouriteslistOfUser(username) {
     let sql = `
         SELECT *
-        FROM "C##MOVIE_DATABASE"."favourites"
+        FROM "C##MOVIE_DATABASE"."favourites"  JOIN "C##MOVIE_DATABASE"."Show" USING ("Id")
         WHERE "Username"=:USERNAME
           
     `
@@ -50,18 +50,31 @@ async function getFavouriteslistOfUser(username) {
 async function getWatchlistOfUser(username) {
     let sql = `
      SELECT *
-        FROM "C##MOVIE_DATABASE"."Watchlist"
+        FROM "C##MOVIE_DATABASE"."Watchlist"   JOIN "C##MOVIE_DATABASE"."Show" USING ("Id")
         WHERE "Username"=:USERNAME
         
     `
     return (await database.execute(sql, [username], database.options)).rows
 }
-
+async function getRecommendation(username) {
+    let sql = `
+     SELECT *
+       FROM "C##MOVIE_DATABASE"."Show"
+        WHERE   "Genre" IN (
+            SELECT "Genre"
+            FROM "C##MOVIE_DATABASE"."favourites"  JOIN "C##MOVIE_DATABASE"."Show" USING ("Id")
+            WHERE  "Username"=:USERNAME
+            )
+        
+    `
+    return (await database.execute(sql, [username], database.options)).rows
+}
 module.exports = {
     getUserInfoByUsername,
     updateUserEmailandBio,
     getFavouriteslistOfUser,
     getWatchlistOfUser,
     updateUserFirstName,
-    updateUserPassword
+    updateUserPassword,
+    getRecommendation
 }

@@ -13,35 +13,34 @@
 </head>
 
 <body>
-    <div class="main-content">
-        <%- include('../partials/header.ejs') %>
-            <h3 style="color: #EFFC20;">Movie</h3>
-                <ul>
-                   <% if(movies.length!=0){%>
-                    <% for (let movie of movies){ %>
-                    <li> <a class="listed" href=<%="/singlemovie/" + movie.Id %> >
-                            <%=movie.Title%>
-
-                        </a>
-                    </li>
-                    </ul>
-                    <% } }%>
-        <ul>
-            <h3 style="color:rgb(26, 20, 114);">Director</h3>
-                    <% if(directors.length!=0){%>
+<div class="main-content">
+    <%- include('../partials/header.ejs') %>
+    <h3 style="color: #EFFC20;">Movie</h3>
+    <ul>
+        <% if(movies.length!=0){%>
+            <% for (let movie of movies){ %>
+            <li> <a class="listed" href=<%="/singlemovie/" + movie.Id %> >
+                    <%=movie.Title%>
+                </a>
+            </li>
+    </ul>
+    <% } }%>
+    <ul>
+        <h3 style="color:rgb(26, 20, 114);">Director</h3>
+        <% if(directors.length!=0){%>
             <% console.log(directors)%>
-                    <% for(let director of directors){%>
-                    <p><%=director.Name %></p>
-                        <% } }%>
-                </ul>
-            <ul>
-                <%- include('../partials/listedAnimes.ejs') %>
-            </ul>
+            <% for(let director of directors){%>
+            <p><%=director.Name %></p>
+        <% } }%>
+    </ul>
+    <ul>
+        <%- include('../partials/listedAnimes.ejs') %>
+    </ul>
 
 
 
-            </div>
-    <%- include('../partials/footer.ejs') %>
+</div>
+<%- include('../partials/footer.ejs') %>
 </body>
 
 </html>

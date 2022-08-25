@@ -22,10 +22,34 @@
     <section id="homepage-top-movies" style="margin-bottom: 15%; font-family: cursive; font-style: italic">
         <ul>
             <div style="float: left; width : 50%">
-                <h2> <a class="home" href="/movielist/new" style="text-decoration-line: none; color: #EFFC20">Newly Released Movies</a> </h2>
+                <h2> <a class="home" href="/movielist/new" style="text-decoration-line: none; color: #EFFC20;">Newly Released Movies</a> </h2>
 
+                <div class="d-flex flex-wrap justify-content-evenly">
+                    <% for(let i = 0;i < moviesList.length;i++){ %>
+                        <div class="card mb-1 m-1" style="width: 12rem;">
+                            <img class="card-img-top p-3" src=<%= moviesList[i].Pictures %>
+                            alt="Card">
+                            <div class="card-body" style="display: flex;flex-direction: column;justify-content:space-between;">
+                                <p style="color: #266dd3;font-weight: 650; font-size: 18px;" class="card-title"><%= moviesList[i].Title %></p>
+                                <div>
+                <span class="ml-0">
 
-                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                </span>
+                                    <p class="card-text">Released on: <%= moviesList[i].Release_Date %></p>
+                                    <div class="d-grid gap-2">
+                                        <a href=<%="/movielist/"+moviesList[i].Id+"/details"%> class="btn-warning">
+                                            <i class="bi bi-book-half"></i>
+                                            VIEW Movie
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                    <br/>
+                </div>
+
+                <!--<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <img src="/img/anime_pic/aot.jpg" alt= "1">
@@ -60,20 +84,45 @@
                     </div>
                     <a class="carousel-control-prev" href="/" role="button" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <!--<span class="sr-only">Previous</span-->>
+                        &lt;!&ndash;<span class="sr-only">Previous</span&ndash;&gt;>
                     </a>
                     <a class="carousel-control-next" href="/" role="button" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <!--<span class="sr-only">Next</span>-->
+                        &lt;!&ndash;<span class="sr-only">Next</span>&ndash;&gt;
                     </a>
-                </div>
+                </div>-->
             </div>
         </ul>
 
 
         <ul>
             <div style="float: bottom; width : 50%">
-                <h2><a class="home" href="/movielist/top" style="text-decoration-line: none; color:yellow;">Top Movies</a></h2>
+                <h2><a class="home" href="/movielist/top" style="text-decoration-line: none; color:yellow; padding-top: 10%">Top Movies</a></h2>
+                <div class="d-flex flex-wrap justify-content-evenly">
+                    <% for(let i = 0;i < moviesList.length;i++){ %>
+                        <div class="card mb-1 m-1" style="width: 12rem;">
+                            <img class="card-img-top p-3" src=<%= moviesList[i].Pictures %>
+                            alt="Card">
+                            <div class="card-body" style="display: flex;flex-direction: column;justify-content:space-between;">
+                                <p style="color: #266dd3;font-weight: 650; font-size: 18px;" class="card-title"><%= moviesList[i].Title %></p>
+                                <div>
+                <span class="ml-0">
+
+                </span>
+                                    <p class="card-text">Released on: <%= moviesList[i].Release_Date %></p>
+                                    <div class="d-grid gap-2">
+                                        <a href=<%="/movielist/"+moviesList[i].Id+"/details"%> class="btn-warning">
+                                            <i class="bi bi-book-half"></i>
+                                            VIEW Movie
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                    <br/>
+                </div>
+
                 <% for (let movie of recommendation){ %>
                 <li>
                     <a class="listed" href=<%="/movie/" + movie.id %> >

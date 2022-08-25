@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Movie List</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+</head>
+<body>
+
+<%- include('../partials/header.ejs') %>
+<div class="container">
+    <h1 style="color: #EFFC20">Register</h1>
+    <form action="/editProfile" method="post" autocomplete="on">
+        <!--First name-->
+        <div class="box">
+            <label for="username" class="fl fontLabel"> Username: </label>
+            <div class="fr">
+                <input type="text" name="username" placeholder="username"
+                       class="textBox" autofocus="on" required>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <!--First name-->
+        <div class="box">
+            <label for="FirstName" class="fl fontLabel"> First Name: </label>
+            <div class="fr">
+                <input type="text" name="FirstName" placeholder="Firstname"
+                       class="textBox" autofocus="on" required>
+            </div>
+            <div class="clr"></div>
+        </div>
+
+        <!--Second name-->
+        <div class="box">
+            <label for="LastName" class="fl fontLabel"> Second Name: </label>
+            <div class="fr">
+                <input type="text" required name="LastName"
+                       placeholder="Last Name" class="textBox">
+            </div>
+            <div class="clr"></div>
+        </div>
+        <!--Second name-->
+
+
+        <!---Phone No.------>
+        <div class="box">
+            <label for="Bio" class="fl fontLabel"> Bio: </label>
+            <div class="fr">
+                <input type="text" required name="Bio"
+                       placeholder="Bio" class="textBox">
+            </div>
+            <div class="clr"></div>
+        </div>
+        <!---Phone No.---->
+
+
+        <!---Email ID---->
+        <div class="box">
+            <label for="email" class="fl fontLabel"> Email ID: </label>
+            <div class="fr">
+                <input type="email" required name="email" placeholder="Email Id" class="textBox">
+            </div>
+            <div class="clr"></div>
+        </div>
+        <!--Email ID----->
+
+
+        <!---Password------>
+        <div class="box">
+            <label for="password" class="fl fontLabel"> Password: </label>
+            <div class="fr">
+                <input type="Password" required name="password" placeholder="Password" class="textBox">
+            </div>
+            <div class="clr"></div>
+        </div>
+        <!---Password---->
+
+        <!---Credit Card No------>
+        <div class="box">
+            <label for="credit" class="fl fontLabel"> Credit Card No </label>
+            <div class="fr">
+                <input type="text" required name="creditcard" placeholder="Credit card No" class="textBox">
+            </div>
+            <div class="clr"></div>
+        </div>
+        <!---Credit Card No---->
+
+        <!---Gender----->
+        <div class="box radio">
+            <label for="gender" class="fl fontLabel"> Gender: </label>
+            <input type="radio" name="Gender" value="Male" required> Male &nbsp; &nbsp; &nbsp; &nbsp;
+            <input type="radio" name="Gender" value="Female" required> Female
+        </div>
+        <!---Gender--->
+
+
+        <!--Terms and Conditions------>
+        <div class="box terms">
+            <input type="checkbox" name="Terms" required> &nbsp; I accept the terms and conditions
+        </div>
+        <!--Terms and Conditions------>
+
+
+
+        <!---Submit Button------>
+        <div class="box" style="background: #000000; text-align: center; ">
+            <input type="Submit" name="Submit" class="submit" value="Register"  >
+        </div>
+        <!---Submit Button----->
+    </form>
+</div>
+
+</body>
+</html>

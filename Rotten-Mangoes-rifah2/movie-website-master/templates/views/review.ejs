@@ -23,7 +23,7 @@
     </div>
     <div  style="padding-left: 40%">
 
-        <button class="open-review btn btn-secondary my-2 my-sm-0" onclick="openReview()" style="background-color: #4e4ed3; color: black; margin-top: 30px"> Write/Edit review</button>
+        <button class="open-review btn btn-secondary my-2 my-sm-0" onclick="openReview()" style="background-color: #333333; color: white; margin-top: 30px"> Write/Edit review</button>
         <br>
         <br>
 
@@ -34,23 +34,23 @@
                 <input type="hidden" name="username" value=<%=username %> >
 
                 <br>
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit" style="background-color: #4e4ee5; margin-bottom: 20px; color: black"> Post </button>
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit" style="background-color: #333333; margin-bottom: 20px; color: white"> Post </button>
             </form>
         </div>
 
-        
-    <% if(!allUserReview || allUserReview.length==0) { %>
+
+        <% if(!allUserReview || allUserReview.length==0) { %>
             <p>No result found</p>
         <% } else { %>
             <% for (var i = 0; i < allUserReview.length; i++){ %>
-                <ul style="font-size: large; font-family: cursive; color: black;">
-                    <div class="card" style="width: 18rem; background-color: #4e4ed3; margin-left: 50px; margin-top: 10px;">
+                <ul style="font-size: large; font-family: cursive; color: white;">
+                    <div class="card" style="width: 18rem; background-color: #333333; margin-left: 50px; margin-top: 10px;">
                         <div class="card-body">
-                                <%= allUserReview[i].Review_id + ". " + allUserReview[i].Content%>
+                            <%= allUserReview[i].Review_id + ". " + allUserReview[i].Content%>
                         </div>
                     </div>
-                    <button class="btn btn-secondary my-2 my-sm-0" style="color: black; background-color: #4e4ee5; margin-bottom: 10px; margin-left: 50px"> Nice! </button>
-                    <button class="btn btn-secondary my-2 my-sm-0" style=" color: black; background-color: #4e4ee5; margin-bottom: 10px; margin-left: 155px"> Nope </button>
+                    <button class="btn btn-secondary my-2 my-sm-0" style="color: white; background-color: #333333; margin-bottom: 10px; margin-left: 50px"> Nice! </button>
+                    <button class="btn btn-secondary my-2 my-sm-0" style=" color: white; background-color: #333333; margin-bottom: 10px; margin-left: 155px"> Nope </button>
                 </ul>
             <% } %>
         <% } %>

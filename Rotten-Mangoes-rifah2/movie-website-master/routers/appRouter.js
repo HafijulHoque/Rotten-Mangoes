@@ -9,6 +9,7 @@ const DB_movies = require('../DB_codes/DB_movie');
 const loginRouter = require('./authentication/login')
 const registerRouter = require('./authentication/register')
 const logoutRouter = require('./authentication/logout')
+const editProfileRouter=require('./editProfile/editProfile')
 const singleMovieRouter=require('./Movie1/Movie1')
 
 const movieRouter = require('./movie/movie')
@@ -40,8 +41,8 @@ router.get('/', async (req, res) => {
     //const topAnimes = await DB_homepage.getTopAnimes();
 
     let recommendation = []
-  //  if (req.session.isAuth)
-        recommendation = await DB_homepage.getAllTopMovies();
+    //  if (req.session.isAuth)
+    recommendation = await DB_homepage.getAllTopMovies();
     const data = {
         pageTitle: 'Rotten Mangoes',
         isAuth: req.session.isAuth,
@@ -74,6 +75,7 @@ router.use('/alltvshows',movieRouter3)
 router.use('/singlemovie',singleMovieRouter)
 router.use('/Awards',awardRouter)
 router.use('/Merchandise',merchandiseRouter)
+router.use('/editProfile',editProfileRouter)
 
 
 //!ERRORS

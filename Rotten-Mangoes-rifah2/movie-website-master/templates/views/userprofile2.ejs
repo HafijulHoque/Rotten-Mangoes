@@ -4,7 +4,6 @@
 
 <head>
     <title>Users profile</title>
-
     <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
@@ -12,17 +11,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
           rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
-    <style>
-        .form-popup {
-            display: none;
-        }
+
     </style>
 
 </head>
 
 <body>
 <%- include('../partials/header.ejs') %>
+
+
+
+
+
 <div class="container">
 
     <div class="row">
@@ -32,7 +34,7 @@
         </div>
 
         <div class="col-9" style="padding-top: 20px;">
-            <h4><%=userInfo.First_Name + ' ' + userInfo.Last_Name%> <span class="card-subtitle mb-2 text-muted">(<i><%=userInfo.Username%>)</i></span></h4>
+            <h4><%=userInfo.First_Name + ' ' + userInfo.Last_Name %> <span class="card-subtitle mb-2 text-muted">(<i><%=userInfo.Username%>)</i></span></h4>
 
             <p class="h6"><span class="card-subtitle mb-2 text-muted">Born: <%=userInfo.Date_of_birth%> </span></p>
             <p class="h6"><span class="card-subtitle mb-2 text-muted"><b> BIO: </b>"<%=userInfo.Bio%>" </span></p>
@@ -42,46 +44,137 @@
     <hr style="border:1px solid #f1f1f1d0">
 </div>
 
-<<form >
-    <button type="submit" name="Submit" id="frm1_submit" class="btn btn-outline-danger btn-sm"
-            style="position: absolute;
-    left: 1200px;
-    top: 600px;">
-       <span> Edit Profile</span></button>
-</form>
 
 
 
 
 
 
-<div class="row">
-    <div class="col-4">
-        <h6 >
 
-            <b> Shows Watched  (Total: <%=favList.length%>) </b></h6>
-        <% if(favList.length == 0) {  %>
-            <p>No Show</p>
-        <% } %>
 
-        <ul>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <h6 >
+
+                <b> Favourite Show  (Total: <%=favList.length%>) </b></h6>
+            <% if(favList.length == 0) {  %>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-block">
+                        <h5 class="card-title">Sorry!</h5>
+                        <p class="card-text">I am a fucking nerd</p>
+                        <a href="#" class="btn btn-primary">See details</a>
+                    </div>
+                </div>
+            <% } %>
+
+
             <% if(favList.length > 0) { %>
                 <%  for (var i = 0; i< favList.length; i++) {  %>
-                    <% console.log('this is ' + i + ' ' + favList[i].Title)  %>
 
-                    <li class="showsug" style="margin : 8px 0">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-block">
+                        <h5 class="card-title"><%=favList[i].Title%></h5>
+                        <%console.log(favList[i].Plot)%>
+                        <p class="card-text"><%=favList[i].Plot%></p>
+                        <a href="#" class="btn btn-primary">See details</a>
+                    </div>
+                </div>
 
-                        <p><%=  favList[i].Title  %> </p>
-
-                    </li>
 
 
                 <%  }  %>
             <% } %>
-        </ul>
+        </div>
+
     </div>
-
-
-
 </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <h6 >
+
+                <b> Watchlist  (Total: <%=watchList.length%>) </b></h6>
+            <% if(watchList.length == 0) {  %>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-block">
+                        <h5 class="card-title">Sorry!</h5>
+
+                        <p class="card-text">I am a fucking nerd</p>
+                        <a href="#" class="btn btn-primary">See details</a>
+                    </div>
+                </div>
+            <% } %>
+
+
+            <% if(watchList.length > 0) { %>
+                <%  for (var i = 0; i< watchList.length; i++) {  %>
+
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-block">
+                        <h5 class="card-title"><%=watchList[i].Title%></h5>
+                        <%console.log(watchList[i].Plot)%>
+                        <p class="card-text"><%=watchList[i].Plot%></p>
+                        <a href="#" class="btn btn-primary">See details</a>
+                    </div>
+                </div>
+
+
+
+                <%  }  %>
+            <% } %>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <h6 >
+
+                <b> Our Recommendations  (Total: <%=reco.length%>) </b></h6>
+            <% if(reco.length == 0) {  %>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-block">
+                        <h5 class="card-title">Sorry!</h5>
+                        <p class="card-text">I am a fucking nerd</p>
+                        <a href="#" class="btn btn-primary">See details</a>
+                    </div>
+                </div>
+            <% } %>
+
+
+            <% if(reco.length > 0) { %>
+                <%  for (var i = 0; i< reco.length; i++) {  %>
+
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-block">
+                        <h5 class="card-title"><%=reco[i].Title%></h5>
+
+                        <p class="card-text"><%=reco[i].Plot%></p>
+                        <a href="#" class="btn btn-primary">See details</a>
+                    </div>
+                </div>
+
+
+
+                <%  }  %>
+            <% } %>
+        </div>
+
+    </div>
+</div>
+
+<a href="/editProfile"> edit profile</a>
 </body>
+</html>

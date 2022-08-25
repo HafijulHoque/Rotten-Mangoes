@@ -15,16 +15,16 @@ async function insertIntoTest(id) {
 async function getAllReviewsOf(id) {
     let sql = `
         SELECT *
-    FROM "C##MOVIE_DATABASE"."Review"
-where "show_id"=:id
+        FROM "C##MOVIE_DATABASE"."Review"
+        where "show_id"=:id
     `
     return (await database.execute(sql, [id], database.options)).rows
 }
 async function getAllReviewsFromTitle(title) {
     let sql = `
         SELECT *
-    FROM "C##MOVIE_DATABASE"."Review"
-where "Title"=:title
+        FROM "C##MOVIE_DATABASE"."Review"
+        where "Title"=:title
     `
     return (await database.execute(sql, [id], database.options)).rows
 }
@@ -34,7 +34,7 @@ async function getAllReviewsWithUserVotes(id, username) {
         SELECT *
         FROM "C##MOVIE_DATABASE"."Review" NATURAL JOIN "C##MOVIE_DATABASE"."Voted"
         Where "show_id"=:id and "Username"=:username
-        
+
     `
     return (await database.execute(sql, [id, username], database.options)).rows
 }
@@ -64,9 +64,9 @@ async function insertReview(reviewContent,username) {
     Id=Math.floor(Id)
     console.log("from database"+reviewContent)
     let sql = `
-        INSERT INTO "C##MOVIE_DATABASE"."Review" ("Review_id","Date","Content", "Votes","Username") 
-        VALUES(:ID,SYSDATE,:content,0,:username) 
-        RETURNING "Review_id" INTO :retID
+        INSERT INTO "C##MOVIE_DATABASE"."Review" ("Review_id","Date","Content", "Votes","Username")
+        VALUES(:ID,SYSDATE,:content,0,:username)
+            RETURNING "Review_id" INTO :retID
     `
 
     const binds = {
@@ -89,9 +89,9 @@ async function updateReview(review_id, content) {
 //has problems
 async function removeReviewFromReviewed(username, id) {
     let sql = `
-        DELETE FROM "C##MOVIE_DATABASE"."REVIEW" 
-            WHERE "Username" = :username AND "Review_id"=:id    
-            `
+        DELETE FROM "C##MOVIE_DATABASE"."REVIEW"
+        WHERE "Username" = :username AND "Review_id"=:id
+    `
     return (await database.execute(sql, [id], database.options))
 }
 
