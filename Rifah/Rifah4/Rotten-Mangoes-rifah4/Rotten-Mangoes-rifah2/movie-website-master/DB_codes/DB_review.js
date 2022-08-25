@@ -1,4 +1,5 @@
-const oracledb = require('oracledb');
+var oracledb = require('oracledb');
+oracledb.autoCommit=true;
 const database = require('./database')
 
 async function insertIntoTest(id) {
@@ -103,7 +104,14 @@ async function removeReview(review_id) {
     `
     return (await database.execute(sql, [review_id], database.options))
 }
-
+async function getReview(review_id) {
+    let sql = `
+        SELECT *
+        FROM "C##MOVIEDATABASE"."Review"
+        WHERE "Review_id" = :review_id
+    `
+    return (await database.execute(sql, [review_id], database.options)).rows[0]
+}
 
 /*async function insertIntoReviewRelation(user, review_id) {
     let sql = `
@@ -132,23 +140,41 @@ async function deleteVote(username, review_id) {
 }
 
 async function incrementVoteinReview(review_id) {
+    const x='1'
+    const name=review_id
+    console.log("DB END")
     let sql = `
-        UPDATE REVIEW
-        SET VOTES = VOTES + 1
-        WHERE REVIEW_ID = :REVIEW_ID
+        UPDATE "C##MOVIEDATABASE"."Review"
+        SET "Votes" = :x
+        WHERE "Review_id" = :name
     `
-    return await database.execute(sql, [review_id], database.options)
+    return await database.execute(sql, [name,x], database.options)
+}
+async function incrementVote(review_id) {
+    const x="eto pera kenno"
+    const y="1"
+    const z=review_id
+    console.log("DB END")
+    let sql = `
+        UPDATE "C##MOVIEDATABASE"."Review"
+        SET "Content"=:x,"Votes"=:y
+WHERE "Review_id"=:z
+    `
+    return await database.execute(sql, [x,y,z], database.options)
 }
 
 
 async function decrementVoteinReview(review_id) {
+const x="0"
     let sql = `
-        UPDATE REVIEW
-        SET VOTES = VOTES - 1
-        WHERE REVIEW_ID = :REVIEW_ID
+        UPDATE "C##MOVIEDATABASE"."Review"
+        SET "Votes" = : x
+        WHERE "Review_id" = :REVIEW_ID
     `
-    return await database.execute(sql, [review_id], database.options)
+    return await database.execute(sql, [x,review_id], database.options)
 }
+
+
 
 module.exports = {
     insertIntoTest,
@@ -164,5 +190,7 @@ module.exports = {
     insertVote,
     deleteVote,
     incrementVoteinReview,
-    decrementVoteinReview
+    decrementVoteinReview,
+    getReview,
+    incrementVote
 }
