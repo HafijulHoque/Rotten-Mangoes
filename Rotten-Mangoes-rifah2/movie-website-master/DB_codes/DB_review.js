@@ -46,12 +46,14 @@ async function getUserReview(username,id) {
     `
     return (await database.execute(sql, [username, id], database.options)).rows[0]
 }
+
+
 async function getAllUserReview(username) {
     let sql = `
         SELECT * FROM "C##MOVIE_DATABASE"."Review"
         WHERE "Username"=:username
     `
-    return (await database.execute(sql, [username, id], database.options)).rows[0]
+    return (await database.execute(sql, [username], database.options)).rows
 }
 
 
@@ -157,6 +159,7 @@ module.exports = {
     getAllReviewsOf,
     getAllReviewsWithUserVotes,
     getUserReview,
+    getAllUserReview,
     //insertIntoReviewRelation,
     insertVote,
     deleteVote,

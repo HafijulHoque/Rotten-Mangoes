@@ -4,7 +4,13 @@
 <head>
     <title>Tv Shows</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 </head>
 
 <body>
@@ -16,7 +22,7 @@
     <% }
     else { %>
         <% for (var i = 0; i < tvsList.length; i++){ %>
-            <ul style="color: white">
+            <ul style="color: white; font-size: xx-large; font-style: italic; font-family: cursive">
                 <%= tvsList[i].Id + ". " + tvsList[i].Title %>
             </ul>
         <% } %>

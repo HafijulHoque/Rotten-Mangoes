@@ -3,18 +3,23 @@
 
 <head>
     <title>My Movie List</title>
-    <link rel="stylesheet" href="/css/styles.css">
-
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+          rel="stylesheet">
 </head>
 
 <body>
     <div class="main-content">
         <%- include('../partials/header.ejs') %>
-            <h3 style="color:rgb(26, 20, 114);">Movie</h3>
+            <h3 style="color: #EFFC20;">Movie</h3>
                 <ul>
                    <% if(movies.length!=0){%>
                     <% for (let movie of movies){ %>
-                    <li> <a class="listed" href=<%="/singlemovie/" + movie.Id%> >
+                    <li> <a class="listed" href=<%="/singlemovie/" + movie.Id %> >
                             <%=movie.Title%>
 
                         </a>
@@ -22,11 +27,11 @@
                     </ul>
                     <% } }%>
         <ul>
-            <h3 style="color:rgb(26, 20, 114);">DIrector</h3>
+            <h3 style="color:rgb(26, 20, 114);">Director</h3>
                     <% if(directors.length!=0){%>
             <% console.log(directors)%>
                     <% for(let director of directors){%>
-                    <p><%=director.Name%></p>
+                    <p><%=director.Name %></p>
                         <% } }%>
                 </ul>
             <ul>

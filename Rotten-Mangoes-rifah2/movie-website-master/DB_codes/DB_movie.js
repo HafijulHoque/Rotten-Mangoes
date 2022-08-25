@@ -132,7 +132,7 @@ async function getMoviesByYear(years) {
 async function sortMoviesByRelease(){
     let sql = `
          SELECT *
-        FROM "C##MOVIE_DATABASE"."Movies"
+        FROM "C##MOVIE_DATABASE"."Show"
         ORDER BY "Release_Date" DESC 
     `
     return (await database.execute(sql, [], database.options)).rows
