@@ -27,7 +27,8 @@ router.get('/:username', async (req, res) => {
     const userInfo = await DB_user.getUserInfoByUsername(username);
     const favList=await DB_user.getFavouriteslistOfUser(username);
     const watchList=await DB_user.getWatchlistOfUser(username);
-
+    const reco=await DB_user.getRecommendation(username);
+            console.log(favList)
     //error checking
     const data = {
         pageTitle: 'Profile',
@@ -36,7 +37,8 @@ router.get('/:username', async (req, res) => {
 
         userInfo:userInfo,
         favList:favList,
-        watchList:watchList
+        watchList:watchList,
+        reco:reco
     }
     console.log("backend ");
     console.log(userInfo);

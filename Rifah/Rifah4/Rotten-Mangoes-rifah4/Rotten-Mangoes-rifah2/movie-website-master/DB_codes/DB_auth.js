@@ -1,16 +1,27 @@
 const database = require('./database')
-const oracledb=require('oracledb')
+var oracledb=require('oracledb');
+oracledb.autoCommit=true;
 async function getUserByUsername(username) {
     console.log("from sql "+username);
     let sql = `
-        SELECT "Username","Password","Email"
+        SELECT *
         FROM "C##MOVIEDATABASE"."Useraccount"
-        WHERE "Username" = :username
+        WHERE "Username" = :USERNAME
     `
     const saffat=  (await database.execute(sql, [username], database.options))
     console.log(saffat);
     return saffat.rows
 }
+async function getUser() {
+    let sql = `
+        SELECT *
+        FROM "C##MOVIEDATABASE"."Useraccount"
+       
+    `
+  return  (await database.execute(sql, [], database.options)).rows
+
+}
+
 
 async function insertAccountIntoDB(username, hashpassword,email) {
     console.log(email);
@@ -29,8 +40,47 @@ async function insertAccountIntoDB(username, hashpassword,email) {
     return (await database.execute(sql, [username, hashpassword,email], database.options))
 }
 
+async function UpdateAccountIntoDB(username,email,bio,credit) {
+    console.log(email);
+    console.log(username);
+    console.log(bio);
+    console.log(credit)
+    const voda="voda"
+
+    let sql = `
+        UPDATE "C##MOVIEDATABASE"."Useraccount"
+        SET  "Bio"=:voda,"Email"=:email,"Credit_card_no"=:credit
+          WHERE "Username" = :USERNAME
+
+
+        
+    `
+    console.log(bio);
+    return (await database.execute(sql, [username,email,bio,credit], database.options))
+}
+async function UpdateAccountIntoDB1(username,bio) {
+console.log("ok")
+const voda=bio
+    const name=username
+    let sql = `
+        UPDATE "C##MOVIEDATABASE"."Useraccount"
+        SET  "Bio"=:voda
+where "Username"=:name
+         
+
+
+
+        
+    `
+
+    return (await database.execute(sql,[voda,name] , database.options))
+}
 
 module.exports = {
     getUserByUsername,
-    insertAccountIntoDB
+    insertAccountIntoDB,
+    UpdateAccountIntoDB,
+    getUser,
+    UpdateAccountIntoDB1
+
 }
