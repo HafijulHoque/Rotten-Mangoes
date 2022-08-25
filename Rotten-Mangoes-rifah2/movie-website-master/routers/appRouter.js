@@ -32,7 +32,6 @@ const homePageRouter=require('./home/homepage')
 const DB_movie = require("../DB_codes/DB_movie");
 
 
-
 //!HOME PAGE
 router.get('/', async (req, res) => {
     const username = req.session.userid;
@@ -76,7 +75,6 @@ router.use('/singlemovie',singleMovieRouter)
 router.use('/Awards',awardRouter)
 router.use('/Merchandise',merchandiseRouter)
 router.use('/editProfile',editProfileRouter)
-
 
 //!ERRORS
 

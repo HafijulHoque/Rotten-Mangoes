@@ -15,17 +15,38 @@
 <body>
 <div class="main-content">
     <%- include('../partials/header.ejs') %>
-    <h3 style="color: #EFFC20;">Movie</h3>
-    <ul>
-        <% if(movies.length!=0){%>
-            <% for (let movie of movies){ %>
-            <li> <a class="listed" href=<%="/singlemovie/" + movie.Id %> >
-                    <%=movie.Title%>
-                </a>
-            </li>
-    </ul>
-    <% } }%>
-    <ul>
+    <h3 style="color: #EFFC20; font-family: cursive">Shows</h3>
+
+    <div class="d-flex flex-wrap justify-content-evenly">
+        <% if(movies.length == 0){ %>
+        <h3 style="font-family: cursive; color: red; margin-left: 250px">No results found!</h3>
+        <%} else {%>
+        <% for(let i = 0;i < movies.length;i++){ %>
+            <div class="card mb-1 m-1" style="width: 12rem;">
+                <img class="card-img-top p-3" src=<%= movies[i].Pictures %>
+                alt="Card">
+                <div class="card-body" style="display: flex;flex-direction: column;justify-content:space-between;">
+                    <p style="color: #266dd3;font-weight: 650; font-size: 18px;" class="card-title"><%= movies[i].Title %></p>
+                    <div>
+                <span class="ml-0">
+
+                </span>
+                        <p class="card-text">Released on: <%= movies[i].Release_Date %></p>
+                        <div class="d-grid gap-2">
+                            <a href=<%="/movielist/"+movies[i].Id+"/details"%> class="btn-warning">
+                                <i class="bi bi-book-half"></i>
+                                VIEW Movie
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+            <%}%>
+        <br/>
+    </div>
+
+    <!--<ul>
         <h3 style="color:rgb(26, 20, 114);">Director</h3>
         <% if(directors.length!=0){%>
             <% console.log(directors)%>
@@ -35,7 +56,7 @@
     </ul>
     <ul>
         <%- include('../partials/listedAnimes.ejs') %>
-    </ul>
+    </ul>-->
 
 
 

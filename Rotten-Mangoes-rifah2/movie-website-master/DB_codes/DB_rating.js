@@ -3,7 +3,7 @@ const database = require('./database')
 async function getUsersRatingOfMovie(username, id) {
     let sql = `
         SELECT * 
-        FROM RATED
+        FROM "C##MOVIE_DATABASE"."Rated"
         WHERE USERNAME = :USERNAME AND id=:id
     `
     return (await database.execute(sql, [username, TITLE], database.options)).rows[0]

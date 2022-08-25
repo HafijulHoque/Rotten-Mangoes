@@ -24,6 +24,10 @@ if(req.body.selectpicker=='title')
 
 }
 
+else if(req.body.selectpicker == 'genre'){
+    movies = await DB_search.getShowsByGenre(string);
+}
+
 else if(req.body.selectpicker=='Actor')
 {
  movies=await DB_search.getActorsByREGEX(string)
