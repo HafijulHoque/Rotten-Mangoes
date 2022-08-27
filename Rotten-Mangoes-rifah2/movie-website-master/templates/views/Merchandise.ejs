@@ -1,15 +1,15 @@
-<html>
-    <head>
-        <title>Merchandise</title>
-        <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
-              rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    </head>
+html>
+<head>
+    <title>Merchandise</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+</head>
 </html>
 
 <body>
@@ -32,7 +32,6 @@
                     <p style="color: #266dd3;font-weight: 650; font-size: 18px;" class="card-title">Title</p>
                     <div>
                 <span class="ml-0">
-
                 </span>
                         <p class="card-text">Size: <%= tshirts[i].size %></p>
                         <p class="card-text">Color: <%= tshirts[i].color %></p>
@@ -40,6 +39,14 @@
                         <p class="card-text">Price: <%= tshirts[i].Price %></p>
                     </div>
                 </div>
+                <% if(tshirts[i].In_Stock === 0){ %>
+                    <button class="btn btn-success disabled btn-secondary my-2 my-sm-0">Add to Cart</button>
+                <% }else{ %>
+                    <button id="btnSaveChanges" class="btn btn-success btn-secondary my-2 my-sm-0">Add to Cart
+                    </button>
+                <% } %>
+
+                <!--<button class="btn btn-secondary my-2 my-sm-0" type="submit">Add to Cart</button>-->
             </div>
         <% } %>
         <br/>
@@ -55,7 +62,6 @@
                     <p style="color: #266dd3;font-weight: 650; font-size: 18px;" class="card-title">Title</p>
                     <div>
                 <span class="ml-0">
-
                 </span>
                         <p class="card-text">Size: <%= figurines[i].size %></p>
                         <p class="card-text">Color: <%= figurines[i].color %></p>
@@ -63,6 +69,14 @@
                         <p class="card-text">Price: <%= figurines[i].Price %></p>
                     </div>
                 </div>
+
+                <% if(figurines [i].In_Stock === 0){ %>
+                    <button class="btn btn-success disabled btn-secondary my-2 my-sm-0">Add to Cart</button>
+                <% }else{ %>
+                    <button id="btnSaveChanges" class="btn btn-success btn-secondary my-2 my-sm-0">Add to Cart
+                    </button>
+                <% } %>
+                <!--<button class="btn btn-secondary my-2 my-sm-0" type="submit">Add to Cart</button>-->
             </div>
         <% } %>
         <br/>

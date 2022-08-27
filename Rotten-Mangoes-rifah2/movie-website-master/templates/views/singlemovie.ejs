@@ -136,6 +136,32 @@
 
                     </tr>
 
+                    <tr>
+                        <form class="js--review-form" action=<%="/movielist/"+moviedetails.Id+"/details"%> method="POST">
+                            <div class="form-group">
+                                <input type="hidden" name="bookId" id="bookId" value=<%= moviedetails.Title %>>
+                                <input type="hidden" name="reviewId" id="bookId" value=<%= moviedetails.Title %>>
+                                <textarea required maxlength="500" name="comment" class="form-control" id=<%="review"+moviedetails.Title%> rows="3"><</textarea>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="rating">
+                                    <input required type="radio" name="rating" value="5" id=<%=moviedetails.Title+"5"%>>
+                                    <label for=<%=moviedetails.Title+"5"%>>☆☆☆☆☆</label>
+                                    <input type="radio" name="rating" value="4" id=<%=moviedetails.Title+"4"%>>
+                                    <label for=<%=moviedetails.Title+"4"%>>☆☆☆☆</label>
+                                    <input type="radio" name="rating" value="3" id=<%=moviedetails.Title+"3"%>>
+                                    <label for=<%=moviedetails.Title+"3"%>>☆☆☆</label>
+                                    <input type="radio" name="rating" value="2" id=<%=moviedetails.Title+"2"%>>
+                                    <label for=<%=moviedetails.Title+"2"%>>☆☆</label>
+                                    <input type="radio" name="rating" value="1" id=<%moviedetails.Title+"1"%>>
+                                    <label for=<%=moviedetails.Title+"1"%>>☆</label>
+                                </div>
+                                <button class="btn btn-outline-primary" type="submit">Submit</button>
+                                <button id=<%= "cancelReviewBtn" + moviedetails.Title %> class="btn btn-danger ms-5" >Cancel</button>
+                            </div>
+                        </form>
+                    </tr>
+
 
 
 
@@ -145,7 +171,7 @@
 
             <div class="tab-pane fade" id="messages">
                 <div class="row justify-items-start p-5">
-                    <div class="col-2"><img class="circular" src=<%=   moviedetails.Picture %>></div>
+
                     <div class="col">
                         <h3><%=   moviedetails.Title %></h3>
                         <div class="pt-2">

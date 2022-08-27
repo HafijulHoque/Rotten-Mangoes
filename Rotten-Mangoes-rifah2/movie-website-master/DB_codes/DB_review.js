@@ -1,9 +1,10 @@
-const oracledb = require('oracledb');
+var oracledb = require('oracledb');
+oracledb.autoCommit=true;
 const database = require('./database')
 
 async function insertIntoTest(id) {
     let sql = `
-        INSERT INTO TEST VALUES(:sid) RETURNING id INTO: ids 
+        INSERT INTO TEST VALUES(:sid) RETURNING id INTO: ids
     `
     const binds = {
         sid: id,
@@ -15,16 +16,16 @@ async function insertIntoTest(id) {
 async function getAllReviewsOf(id) {
     let sql = `
         SELECT *
-        FROM "C##MOVIE_DATABASE"."Review"
-        where "show_id"=:id
+    FROM "C##MOVIE_DATABASE"."Review"
+where "show_id"=:id
     `
     return (await database.execute(sql, [id], database.options)).rows
 }
 async function getAllReviewsFromTitle(title) {
     let sql = `
         SELECT *
-        FROM "C##MOVIE_DATABASE"."Review"
-        where "Title"=:title
+    FROM "C##MOVIE_DATABASE"."Review"
+where "Title"=:title
     `
     return (await database.execute(sql, [id], database.options)).rows
 }
@@ -34,7 +35,7 @@ async function getAllReviewsWithUserVotes(id, username) {
         SELECT *
         FROM "C##MOVIE_DATABASE"."Review" NATURAL JOIN "C##MOVIE_DATABASE"."Voted"
         Where "show_id"=:id and "Username"=:username
-
+        
     `
     return (await database.execute(sql, [id, username], database.options)).rows
 }
@@ -64,9 +65,9 @@ async function insertReview(reviewContent,username) {
     Id=Math.floor(Id)
     console.log("from database"+reviewContent)
     let sql = `
-        INSERT INTO "C##MOVIE_DATABASE"."Review" ("Review_id","Date","Content", "Votes","Username")
-        VALUES(:ID,SYSDATE,:content,0,:username)
-            RETURNING "Review_id" INTO :retID
+        INSERT INTO "C##MOVIE_DATABASE"."Review" ("Review_id","Date","Content", "Votes","Username") 
+        VALUES(:ID,SYSDATE,:content,0,:username) 
+        RETURNING "Review_id" INTO :retID
     `
 
     const binds = {
@@ -81,7 +82,7 @@ async function insertReview(reviewContent,username) {
 
 async function updateReview(review_id, content) {
     let sql = `
-        UPDATE "C##MOVIE_DATABASE"."Review" SET "Content" = :CONTENT WHERE "Review_id" = :review_id
+        UPDATE "C##MOVIEDATABASE"."Review" SET "Content" = :CONTENT WHERE "Review_id" = :review_id
     `
     return (await database.execute(sql, [content, review_id], database.options))
 }
@@ -89,21 +90,28 @@ async function updateReview(review_id, content) {
 //has problems
 async function removeReviewFromReviewed(username, id) {
     let sql = `
-        DELETE FROM "C##MOVIE_DATABASE"."REVIEW"
-        WHERE "Username" = :username AND "Review_id"=:id
-    `
+        DELETE FROM "C##MOVIEDATABASE"."REVIEW" 
+            WHERE "Username" = :username AND "Review_id"=:id    
+            `
     return (await database.execute(sql, [id], database.options))
 }
 
 async function removeReview(review_id) {
     let sql = `
-        DELETE 
+        DELETE
         FROM REVIEW
         WHERE REVIEW_ID = :review_id
     `
     return (await database.execute(sql, [review_id], database.options))
 }
-
+async function getReview(review_id) {
+    let sql = `
+        SELECT *
+        FROM "C##MOVIE_DATABASE"."Review"
+        WHERE "Review_id" = :review_id
+    `
+    return (await database.execute(sql, [review_id], database.options)).rows[0]
+}
 
 /*async function insertIntoReviewRelation(user, review_id) {
     let sql = `
@@ -132,23 +140,41 @@ async function deleteVote(username, review_id) {
 }
 
 async function incrementVoteinReview(review_id) {
+    const x='1'
+    const name=review_id
+    console.log("DB END")
     let sql = `
-        UPDATE REVIEW
-        SET VOTES = VOTES + 1
-        WHERE REVIEW_ID = :REVIEW_ID
+        UPDATE "C##MOVIE_DATABASE"."Review"
+        SET "Votes" = :x
+        WHERE "Review_id" = :name
     `
-    return await database.execute(sql, [review_id], database.options)
+    return await database.execute(sql, [name,x], database.options)
+}
+async function incrementVote(review_id) {
+    const x="eto pera kenno"
+    const y="1"
+    const z=review_id
+    console.log("DB END")
+    let sql = `
+        UPDATE "C##MOVIE_DATABASE"."Review"
+        SET "Votes"=:y
+WHERE "Review_id"=:z
+    `
+    return await database.execute(sql, [y,z], database.options)
 }
 
 
 async function decrementVoteinReview(review_id) {
+    const x="0"
     let sql = `
-        UPDATE REVIEW
-        SET VOTES = VOTES - 1
-        WHERE REVIEW_ID = :REVIEW_ID
+        UPDATE "C##MOVIE_DATABASE"."Review"
+        SET "Votes" = : x
+        WHERE "Review_id" = :REVIEW_ID
     `
-    return await database.execute(sql, [review_id], database.options)
+    return await database.execute(sql, [x,review_id], database.options)
 }
+
+
 
 module.exports = {
     insertIntoTest,
@@ -164,5 +190,7 @@ module.exports = {
     insertVote,
     deleteVote,
     incrementVoteinReview,
-    decrementVoteinReview
+    decrementVoteinReview,
+    getReview,
+    incrementVote
 }

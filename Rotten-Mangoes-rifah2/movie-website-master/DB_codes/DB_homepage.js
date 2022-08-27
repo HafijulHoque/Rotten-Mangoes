@@ -25,7 +25,7 @@ async function getNewlyReleasedTvShows() {
 async function getTopTvSeries() {
     let sql = `
         SELECT *
-        FROM "C##MOVIE_DATABASE"."Rated" NATURAL join "C##MOVIE_DATABASE"."Tv_series"
+        FROM "C##MOVIE_DATABASE"."Rated" NATURAL join "C##MOVIEDATABASE"."Tv_series"
         ORDER BY "Stars" DESC
             FETCH next 4 ROWS ONLY
         
@@ -35,7 +35,7 @@ async function getTopTvSeries() {
 async function getTopMovies() {
     let sql = `
         SELECT *
-        FROM "C##MOVIE_DATABASE"."Rated" NATURAL join "C##MOVIE_DATABASE"."Movies"
+        FROM "C##MOVIE_DATABASE"."Rated" NATURAL join "C##MOVIEDATABASE"."Movies"
         ORDER BY "Stars" DESC
             FETCH next 4 ROWS ONLY
         
@@ -64,8 +64,8 @@ async function getAllNewlyReleasedTvSeries() {
 async function getAllTopMovies() {
     let sql = `
         SELECT *
-        FROM "C##MOVIE_DATABASE"."Rated" NATURAL join "C##MOVIE_DATABASE"."Movies"
-        ORDER BY "Stars" DESC
+        FROM "C##MOVIE_DATABASE"."Rated" NATURAL join "C##MOVIEDATABASE"."Movies"
+        ORDER BY "Rating" DESC
     
     `
 
@@ -74,8 +74,8 @@ async function getAllTopMovies() {
 async function getAllTopTvSeries() {
     let sql = `
         SELECT *
-        FROM "C##MOVIE_DATABASE"."Rated" NATURAL join "C##MOVIE_DATABASE"."Tv_series"
-        ORDER BY "Stars" DESC
+        FROM "C##MOVIE_DATABASE"."Rated" NATURAL join "C##MOVIEDATABASE"."Tv_series"
+        ORDER BY "Rating" DESC
     
     `
 
@@ -88,7 +88,7 @@ FROM "C##MOVIE_DATABASE"."SHOW"
 WHERE "GENRE" IN(
 
       SELECT "Genre"
-      FROM "C##MOVIE_DATABASE"."favourites" NATURAL JOIN "C##MOVIE_DATABASE"."Show")
+      FROM "C##MOVIEDATABASE"."favourites" NATURAL JOIN "C##MOVIEDATABASE"."Show")
 FETCH NEXT 3 ROWS ONLY 
     
     `
@@ -135,8 +135,8 @@ WHERE ANIME_ID <> ALL(SELECT ANIME_ID FROM WATCHED_LIST WHERE USERNAME = :userna
 module.exports = {
     getNewlyReleasedMovies,
     getTopMovies,
- //   getUserRecommendation,
+    //   getUserRecommendation,
     getAllTopMovies,
     //getAllNewlyReleasedAnime,
-   // getAllUserRecommendation
+    // getAllUserRecommendation
 }

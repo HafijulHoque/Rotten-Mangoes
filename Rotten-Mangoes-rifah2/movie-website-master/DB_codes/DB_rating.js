@@ -1,21 +1,44 @@
 const database = require('./database')
+var oracledb=require('oracledb')
+oracledb.autoCommit=true;
 
 async function getUsersRatingOfMovie(username, id) {
     let sql = `
         SELECT * 
-        FROM "C##MOVIE_DATABASE"."Rated"
+        FROM RATED
         WHERE USERNAME = :USERNAME AND id=:id
     `
     return (await database.execute(sql, [username, TITLE], database.options)).rows[0]
 }
-
-async function insertRating(username, TITLE, stars) {
+async function getRating( id) {
     let sql = `
-        INSERT INTO RATED(USERNAME, TITLE, STARS)
-        VALUES(:USERNAME, :ANIME_ID, :STARS)
+        SELECT AVG("Rating")
+        FROM "C##MOVIE_DATABASE"."Rated"
+       GROUP BY "Id"
+        HAVING "Id"=:id
     `
-    return await database.execute(sql, [username, TITLE, stars], database.options)
+    return (await database.execute(sql, [id], database.options)).rows[0]
 }
+
+async function insertRating(username, rating,id,comment) {
+    let sql = `
+        INSERT INTO "C##MOVIE_DATABASE"."Rated"
+        VALUES(:USERNAME, :RATING, :ID,:COMMENT)
+    `
+    return await database.execute(sql, [username, rating,id,comment], database.options)
+}
+async function RatingExist(username,id) {
+    let sql = `
+    SELECT *
+    FROM "C##MOVIE_ DATABASE"."Rating"
+WHERE "Username"=:username and :"Id"=:id
+    
+        
+    `
+    return await database.execute(sql, [username, id], database.options)
+}
+
+
 
 async function updateRating(username, id, star) {
     let sql = `
@@ -55,6 +78,8 @@ module.exports = {
     getUsersRatingOfMovie,
     insertRating,
     updateRating,
-   // updateAllAnimeRank,
+    getRating,
+    RatingExist
+    // updateAllAnimeRank,
     //updateAnimeRating
 }
