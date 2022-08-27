@@ -9,6 +9,15 @@ async function getShowsByREGEX(string) {
     }
     return (await database.execute(sql, [], database.options)).rows
 }
+
+async function getShowsByGenre(string){
+    let sql = `
+    SELECT * FROM "C##MOVIEDATABASE"."Show" WHERE LOWER("Genre") LIKE '${string[0]}'`
+    for (let i = 1; i < string.length; i++) {
+        sql += ` AND LOWER("Genre") LIKE '${string[i]}'`;
+    }
+    return (await database.execute(sql, [], database.options)).rows
+}
 async function getMoviesByREGEX(string) {
     let sql = `
     SELECT * FROM "C##MOVIEDATABASE"."Show" NATURAL Join"C##MOVIEDATABASE"."Movies" WHERE LOWER("Title") LIKE '${string[0]}'`
@@ -47,7 +56,6 @@ async function getDirectorsByREGEX(string) {
         SELECT ANIME_ID, FIRST_NAME, LAST_NAME, PICTURE_ID FROM CHARACTER
         WHERE (LOWER(FIRST_NAME) LIKE '${string[0]}' OR LOWER(LAST_NAME) LIKE '${string[0]}')
     `
-
     for (let i = 1; i < string.length; i++) {
         sql += ` OR (LOWER(FIRST_NAME) LIKE '${string[i]}' OR LOWER(LAST_NAME) LIKE '${string[i]}')`;
     }
@@ -63,7 +71,6 @@ async function getDirectorsByREGEX(string) {
     for (let i = 1; i < string.length; i++) {
         sql += ` OR (LOWER(FIRST_NAME) LIKE '${string[i]}' OR LOWER(LAST_NAME) LIKE '${string[i]}')`;
     }
-
     return (await database.execute(sql, [], database.options)).rows
 }*/
 
@@ -77,7 +84,6 @@ async function getDirectorsByREGEX(string) {
     for (let i = 1; i < string.length; i++) {
         sql += ` OR (LOWER(FIRST_NAME) LIKE '${string[i]}' OR LOWER(LAST_NAME) LIKE '${string[i]}')`;
     }
-
     return (await database.execute(sql, [], database.options)).rows
 }*/
 
@@ -88,7 +94,8 @@ module.exports = {
     getActorsByREGEX,
     getMoviesByREGEX,
     getTvSeriesByREGEX,
-    getShowsByREGEX
+    getShowsByREGEX,
+    getShowsByGenre
     //getCharactersByREGEX,
     //getVoiceActorsByREGEX,
     //getWritersByREGEX

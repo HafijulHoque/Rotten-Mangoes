@@ -1,6 +1,7 @@
 const express = require('express')
 const DB_movie = require('../../DB_codes/DB_movie')
 const DB_list = require('../../DB_codes/DB_homepage')
+const DB_rating=require('../../DB_codes/DB_rating')
 const router = express.Router({ mergeParams: true })
 //all done. Ok
 
@@ -15,6 +16,7 @@ router.get('/', async (req, res) => {
         username: req.session.username,
 
         moviesList: movieList,
+
     }
     res.render('movielist', data)
 })
@@ -31,6 +33,22 @@ router.get('/:Id/details', async (req, res) => {
         moviedetails: movieList,
     }
     res.render('singlemovie', data)
+})
+router.post('/:Id/details', async (req, res) => {
+    console.log("Movielist new post..")
+    console.log(req.body)
+    console.log(req.session.userid)
+    console.log(req.params.Id)
+    console.log(req.body.rating)
+    console.log(req.body.comment);
+    let ratingexist=(await DB_rating.RatingExist(req.body.userid,req.params.Id)).length==0?true:false
+    if(ratingexist==false)
+    DB_rating.insertRating(req.session.userid,req.body.rating,req.params.Id,req.body.comment)
+    else
+        console.log("Rating already exist..")
+
+    res.redirect('/')
+
 })
 
 

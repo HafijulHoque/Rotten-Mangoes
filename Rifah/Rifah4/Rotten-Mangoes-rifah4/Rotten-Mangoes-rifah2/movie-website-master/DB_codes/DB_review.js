@@ -157,10 +157,10 @@ async function incrementVote(review_id) {
     console.log("DB END")
     let sql = `
         UPDATE "C##MOVIEDATABASE"."Review"
-        SET "Content"=:x,"Votes"=:y
+        SET "Votes"=:y
 WHERE "Review_id"=:z
     `
-    return await database.execute(sql, [x,y,z], database.options)
+    return await database.execute(sql, [y,z], database.options)
 }
 
 

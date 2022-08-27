@@ -3,11 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="66d5a54d-a7cc-4a98-b06e-3398cf5330c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/public/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/public/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/public/css/register.css" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/public/css/register.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/public/test.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/index.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/register.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/register.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_homepage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_rating.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_rating.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_review.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_review.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_search.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/routers/Merchandise/Merchandise.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/routers/Merchandise/Merchandise.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/routers/movielist/movielist.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/routers/movielist/movielist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/routers/searchresult/searchresult.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/routers/searchresult/searchresult.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/Merchandise.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/Merchandise.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/login.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/searchresults.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/searchresults.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/singlemovie.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/singlemovie.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Rotten-Mangoes-rifah2/movie-website-master/templates/views/singlemovie.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../Rotten-Mangoes-rifah2/movie-website-master/templates/views/singlemovie.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Rotten-Mangoes-rifah2/movie-website-master/templates/views/userprofile2.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../Rotten-Mangoes-rifah2/movie-website-master/templates/views/userprofile2.ejs" afterDir="false" />
@@ -37,15 +42,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "F:/Databaseproject/Rifah/Rifah4",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/Databaseproject/Rifah/Rifah4&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -55,7 +60,8 @@
       <option name="presentableId" value="Default" />
       <updated>1661354144361</updated>
       <workItem from="1661354145584" duration="42843000" />
-      <workItem from="1661447094490" duration="5002000" />
+      <workItem from="1661447094490" duration="8590000" />
+      <workItem from="1661577076863" duration="8657000" />
     </task>
     <servers />
   </component>

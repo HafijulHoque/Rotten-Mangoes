@@ -65,7 +65,7 @@ async function getAllTopMovies() {
     let sql = `
         SELECT *
         FROM "C##MOVIEDATABASE"."Rated" NATURAL join "C##MOVIEDATABASE"."Movies"
-        ORDER BY "Stars" DESC
+        ORDER BY "Rating" DESC
     
     `
 
@@ -75,7 +75,7 @@ async function getAllTopTvSeries() {
     let sql = `
         SELECT *
         FROM "C##MOVIEDATABASE"."Rated" NATURAL join "C##MOVIEDATABASE"."Tv_series"
-        ORDER BY "Stars" DESC
+        ORDER BY "Rating" DESC
     
     `
 
