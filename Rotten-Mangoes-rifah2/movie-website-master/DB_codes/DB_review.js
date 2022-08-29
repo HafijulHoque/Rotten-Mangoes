@@ -4,7 +4,7 @@ const database = require('./database')
 
 async function insertIntoTest(id) {
     let sql = `
-        INSERT INTO TEST VALUES(:sid) RETURNING id INTO: ids
+        INSERT INTO TEST VALUES(:sid) RETURNING id INTO: ids 
     `
     const binds = {
         sid: id,
@@ -82,7 +82,7 @@ async function insertReview(reviewContent,username) {
 
 async function updateReview(review_id, content) {
     let sql = `
-        UPDATE "C##MOVIEDATABASE"."Review" SET "Content" = :CONTENT WHERE "Review_id" = :review_id
+        UPDATE "C##MOVIE_DATABASE"."Review" SET "Content" = :CONTENT WHERE "Review_id" = :review_id
     `
     return (await database.execute(sql, [content, review_id], database.options))
 }
@@ -90,7 +90,7 @@ async function updateReview(review_id, content) {
 //has problems
 async function removeReviewFromReviewed(username, id) {
     let sql = `
-        DELETE FROM "C##MOVIEDATABASE"."REVIEW" 
+        DELETE FROM "C##MOVIE_DATABASE"."REVIEW" 
             WHERE "Username" = :username AND "Review_id"=:id    
             `
     return (await database.execute(sql, [id], database.options))
@@ -98,7 +98,7 @@ async function removeReviewFromReviewed(username, id) {
 
 async function removeReview(review_id) {
     let sql = `
-        DELETE
+        DELETE 
         FROM REVIEW
         WHERE REVIEW_ID = :review_id
     `
@@ -165,7 +165,7 @@ WHERE "Review_id"=:z
 
 
 async function decrementVoteinReview(review_id) {
-    const x="0"
+const x="0"
     let sql = `
         UPDATE "C##MOVIE_DATABASE"."Review"
         SET "Votes" = : x

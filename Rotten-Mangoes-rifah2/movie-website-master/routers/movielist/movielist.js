@@ -43,7 +43,7 @@ router.post('/:Id/details', async (req, res) => {
     console.log(req.body.comment);
     let ratingexist=(await DB_rating.RatingExist(req.body.userid,req.params.Id)).length==0?true:false
     if(ratingexist==false)
-        DB_rating.insertRating(req.session.userid,req.body.rating,req.params.Id,req.body.comment)
+    DB_rating.insertRating(req.session.userid,req.body.rating,req.params.Id,req.body.comment)
     else
         console.log("Rating already exist..")
 

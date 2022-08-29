@@ -22,6 +22,10 @@ html>
         </ol>
     </nav>
 
+    <form action="/Merchandise" method="post">
+        <button id="btnSaveChanges" class="btn btn-success" style="align-self: center; position: relative; top: 15px; width: 190px; height: 38px;">View Cart</button>
+
+    </form>
     <h2 style="color: #EFFC20">Tshirts:</h2>
     <div class="d-flex flex-wrap justify-content-evenly">
         <% for(let i = 0;i < tshirts.length;i++){ %>
@@ -39,14 +43,15 @@ html>
                         <p class="card-text">Price: <%= tshirts[i].Price %></p>
                     </div>
                 </div>
-                <% if(tshirts[i].In_Stock === 0){ %>
-                    <button class="btn btn-success disabled btn-secondary my-2 my-sm-0">Add to Cart</button>
+                <% if(tshirts[i].In_Stock <= 0){ %>
+                    <button class="btn btn-success disabled">Add to Cart</button>
                 <% }else{ %>
-                    <button id="btnSaveChanges" class="btn btn-success btn-secondary my-2 my-sm-0">Add to Cart
-                    </button>
+                <form action="/Merchandise" method="post">
+                    <input type="hidden" name = "product_id" id = "product_id" value=<%=tshirts[i].Product_id%>>
+                    <input type="hidden" name = "price" id = "price" value=<%=tshirts[i].Price%>>
+                    <button id="btnSaveChanges" class="btn btn-success" style="align-self: center; position: relative; top: 15px; width: 190px; height: 38px;">Add to Cart</button>
+                </form>
                 <% } %>
-
-                <!--<button class="btn btn-secondary my-2 my-sm-0" type="submit">Add to Cart</button>-->
             </div>
         <% } %>
         <br/>
@@ -69,14 +74,15 @@ html>
                         <p class="card-text">Price: <%= figurines[i].Price %></p>
                     </div>
                 </div>
-
-                <% if(figurines [i].In_Stock === 0){ %>
-                    <button class="btn btn-success disabled btn-secondary my-2 my-sm-0">Add to Cart</button>
+                <% if(figurines[i].In_Stock === 0){ %>
+                    <button class="btn btn-success disabled">Add to Cart</button>
                 <% }else{ %>
-                    <button id="btnSaveChanges" class="btn btn-success btn-secondary my-2 my-sm-0">Add to Cart
-                    </button>
+                <form action="/Merchandise" method="post">
+                    <input type="hidden" name = "product_id" id = "product_id" value=<%=figurines[i].Product_id%>>
+                    <input type="hidden" name = "price" id = "price" value=<%=figurines[i].Price%>>
+                    <button id="btnSaveChanges" class="btn btn-success" style="align-self: center; position: relative; top: 15px; width: 190px; height: 38px;">Add to Cart</button>
+                </form>
                 <% } %>
-                <!--<button class="btn btn-secondary my-2 my-sm-0" type="submit">Add to Cart</button>-->
             </div>
         <% } %>
         <br/>

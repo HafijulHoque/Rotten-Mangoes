@@ -18,7 +18,7 @@ async function getUser() {
         FROM "C##MOVIE_DATABASE"."Useraccount"
        
     `
-    return  (await database.execute(sql, [], database.options)).rows
+  return  (await database.execute(sql, [], database.options)).rows
 
 }
 
@@ -59,8 +59,8 @@ async function UpdateAccountIntoDB(username,email,bio,credit) {
     return (await database.execute(sql, [username,email,bio,credit], database.options))
 }
 async function UpdateAccountIntoDB1(username,bio) {
-    console.log("ok")
-    const voda=bio
+console.log("ok")
+const voda=bio
     const name=username
     let sql = `
         UPDATE "C##MOVIE_DATABASE"."Useraccount"

@@ -5,7 +5,7 @@ const router = express.Router({ mergeParams: true })
 
 
 router.get('/', async (req, res) => {
-    console.log("hi from userprofile get")
+console.log("hi from userprofile get")
     const data=
         {
             pageTitle: 'Edit profile',
@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     console.log("hi from editprofile post")
-    console.log(req.session)
+console.log(req.session)
     console.log(req.params)
     const { username,Bio, email, password,creditcard } = req.body;
     console.log("hi");
@@ -29,8 +29,8 @@ router.post('/', async (req, res) => {
     console.log(creditcard)
     console.log(req.body);
 
-    // let userExists = (await DB_auth.getUserByUsername(username)).length == 0 ? false : true;
-    let userExists=false;
+   // let userExists = (await DB_auth.getUserByUsername(username)).length == 0 ? false : true;
+let userExists=false;
 
     if (userExists) {
         return res.render('register', { message: 'User already exists' })
@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
     //if new user
     const hashpassword = await bcrypt.hash(password, 4);
     //insert user into db with hashed password
-    const nabid=await DB_auth.getUserByUsername(username);
+   const nabid=await DB_auth.getUserByUsername(username);
     console.log("user info..")
     console.log(nabid)
     await DB_auth.UpdateAccountIntoDB1(username,Bio);

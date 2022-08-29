@@ -28,7 +28,7 @@ router.get('/:username', async (req, res) => {
     const favList=await DB_user.getFavouriteslistOfUser(username);
     const watchList=await DB_user.getWatchlistOfUser(username);
     const reco=await DB_user.getRecommendation(username);
-    console.log(favList)
+            console.log(favList)
     //error checking
     const data = {
         pageTitle: 'Profile',

@@ -18,12 +18,12 @@
     <%- include('../partials/header.ejs') %>
     <h3 style="color: yellow; font-family: cursive;">Movies:</h3>
 
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item active">Movies</li>
-        </ol>
-    </nav>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active">Movies</li>
+            </ol>
+        </nav>
 
 
     <h6>(Showing )</h6>
@@ -41,8 +41,8 @@
                         <p class="card-text">Released on: <%= moviesList[i].Release_Date %></p>
                         <div class="d-grid gap-2">
                             <a href=<%="/movielist/"+moviesList[i].Id+"/details"%> class="btn-warning">
-                                <i class="bi bi-book-half"></i>
-                                VIEW Movie
+                            <i class="bi bi-book-half"></i>
+                            VIEW Movie
                             </a>
                         </div>
                     </div>
@@ -54,9 +54,9 @@
 </div>
 
 
-</div>
+    </div>
 
-<%- include('../partials/footer.ejs') %>
+    <%- include('../partials/footer.ejs') %>
 </body>
 
 </html>

@@ -15,108 +15,108 @@
 </head>
 <body>
 
-<%- include('../partials/header.ejs') %>
-<div class="container">
-    <h1 style="color: #EFFC20">Register</h1>
-    <form action="/editProfile" method="post" autocomplete="on">
-        <!--First name-->
-        <div class="box">
-            <label for="username" class="fl fontLabel"> Username: </label>
-            <div class="fr">
-                <input type="text" name="username" placeholder="username"
-                       class="textBox" autofocus="on" required>
+    <%- include('../partials/header.ejs') %>
+    <div class="container">
+        <h1 style="color: #EFFC20">Register</h1>
+        <form action="/editProfile" method="post" autocomplete="on">
+            <!--First name-->
+            <div class="box">
+                <label for="username" class="fl fontLabel"> Username: </label>
+                <div class="fr">
+                    <input type="text" name="username" placeholder="username"
+                           class="textBox" autofocus="on" required>
+                </div>
+                <div class="clr"></div>
             </div>
-            <div class="clr"></div>
-        </div>
-        <!--First name-->
-        <div class="box">
-            <label for="FirstName" class="fl fontLabel"> First Name: </label>
-            <div class="fr">
-                <input type="text" name="FirstName" placeholder="Firstname"
-                       class="textBox" autofocus="on" required>
+            <!--First name-->
+            <div class="box">
+                <label for="FirstName" class="fl fontLabel"> First Name: </label>
+                <div class="fr">
+                    <input type="text" name="FirstName" placeholder="Firstname"
+                           class="textBox" autofocus="on" required>
+                </div>
+                <div class="clr"></div>
             </div>
-            <div class="clr"></div>
-        </div>
 
-        <!--Second name-->
-        <div class="box">
-            <label for="LastName" class="fl fontLabel"> Second Name: </label>
-            <div class="fr">
-                <input type="text" required name="LastName"
-                       placeholder="Last Name" class="textBox">
+            <!--Second name-->
+            <div class="box">
+                <label for="LastName" class="fl fontLabel"> Second Name: </label>
+                <div class="fr">
+                    <input type="text" required name="LastName"
+                           placeholder="Last Name" class="textBox">
+                </div>
+                <div class="clr"></div>
             </div>
-            <div class="clr"></div>
-        </div>
-        <!--Second name-->
+            <!--Second name-->
 
 
-        <!---Phone No.------>
-        <div class="box">
-            <label for="Bio" class="fl fontLabel"> Bio: </label>
-            <div class="fr">
-                <input type="text" required name="Bio"
-                       placeholder="Bio" class="textBox">
+            <!---Phone No.------>
+            <div class="box">
+                <label for="Bio" class="fl fontLabel"> Bio: </label>
+                <div class="fr">
+                    <input type="text" required name="Bio"
+                           placeholder="Bio" class="textBox">
+                </div>
+                <div class="clr"></div>
             </div>
-            <div class="clr"></div>
-        </div>
-        <!---Phone No.---->
+            <!---Phone No.---->
 
 
-        <!---Email ID---->
-        <div class="box">
-            <label for="email" class="fl fontLabel"> Email ID: </label>
-            <div class="fr">
-                <input type="email" required name="email" placeholder="Email Id" class="textBox">
+            <!---Email ID---->
+            <div class="box">
+                <label for="email" class="fl fontLabel"> Email ID: </label>
+                <div class="fr">
+                    <input type="email" required name="email" placeholder="Email Id" class="textBox">
+                </div>
+                <div class="clr"></div>
             </div>
-            <div class="clr"></div>
-        </div>
-        <!--Email ID----->
+            <!--Email ID----->
 
 
-        <!---Password------>
-        <div class="box">
-            <label for="password" class="fl fontLabel"> Password: </label>
-            <div class="fr">
-                <input type="Password" required name="password" placeholder="Password" class="textBox">
+            <!---Password------>
+            <div class="box">
+                <label for="password" class="fl fontLabel"> Password: </label>
+                <div class="fr">
+                    <input type="Password" required name="password" placeholder="Password" class="textBox">
+                </div>
+                <div class="clr"></div>
             </div>
-            <div class="clr"></div>
-        </div>
-        <!---Password---->
+            <!---Password---->
 
-        <!---Credit Card No------>
-        <div class="box">
-            <label for="credit" class="fl fontLabel"> Credit Card No </label>
-            <div class="fr">
-                <input type="text" required name="creditcard" placeholder="Credit card No" class="textBox">
+            <!---Credit Card No------>
+            <div class="box">
+                <label for="credit" class="fl fontLabel"> Credit Card No </label>
+                <div class="fr">
+                    <input type="text" required name="creditcard" placeholder="Credit card No" class="textBox">
+                </div>
+                <div class="clr"></div>
             </div>
-            <div class="clr"></div>
-        </div>
-        <!---Credit Card No---->
+            <!---Credit Card No---->
 
-        <!---Gender----->
-        <div class="box radio">
-            <label for="gender" class="fl fontLabel"> Gender: </label>
-            <input type="radio" name="Gender" value="Male" required> Male &nbsp; &nbsp; &nbsp; &nbsp;
-            <input type="radio" name="Gender" value="Female" required> Female
-        </div>
-        <!---Gender--->
+            <!---Gender----->
+            <div class="box radio">
+                <label for="gender" class="fl fontLabel"> Gender: </label>
+                <input type="radio" name="Gender" value="Male" required> Male &nbsp; &nbsp; &nbsp; &nbsp;
+                <input type="radio" name="Gender" value="Female" required> Female
+            </div>
+            <!---Gender--->
 
 
-        <!--Terms and Conditions------>
-        <div class="box terms">
-            <input type="checkbox" name="Terms" required> &nbsp; I accept the terms and conditions
-        </div>
-        <!--Terms and Conditions------>
+            <!--Terms and Conditions------>
+            <div class="box terms">
+                <input type="checkbox" name="Terms" required> &nbsp; I accept the terms and conditions
+            </div>
+            <!--Terms and Conditions------>
 
 
 
-        <!---Submit Button------>
-        <div class="box" style="background: #000000; text-align: center; ">
-            <input type="Submit" name="Submit" class="submit" value="Register"  >
-        </div>
-        <!---Submit Button----->
-    </form>
-</div>
+            <!---Submit Button------>
+            <div class="box" style="background: #000000; text-align: center; ">
+                <input type="Submit" name="Submit" class="submit" value="Register"  >
+            </div>
+            <!---Submit Button----->
+        </form>
+    </div>
 
 </body>
 </html>

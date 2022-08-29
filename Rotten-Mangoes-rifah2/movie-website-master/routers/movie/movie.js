@@ -81,6 +81,40 @@ router.get('/', async (req, res) => {
     }
     res.render('review', data);
 })
+router.get('/:Review_id/details', async (req, res) => {
+    console.log("getting from single review")
+console.log(req.params.Review_id)
+    const myreview=await DB_review.getReview(req.params.Review_id)
+    console.log(myreview)
+    const data = {
+        pageTitle: 'Single Reviews',
+        isAuth: req.session.isAuth,
+        username: req.session.username,
+myreview:myreview
+
+
+    }
+    res.render('singlereview', data);
+})
+router.post('/:Review_id/details1', async (req, res) => {
+    console.log("posting from single review 1")
+    console.log(req.params.Review_id)
+    await DB_review.incrementVote(req.params.Review_id)
+    const myreview=await DB_review.getReview(req.params.Review_id)
+    console.log(myreview)
+
+    res.redirect('/')
+})
+router.post('/:Review_id/details2', async (req, res) => {
+    console.log("posting from single review 2")
+    console.log(req.params.Review_id)
+    await DB_review.decrementVoteinReview(req.params.Review_id)
+    const myreview=await DB_review.getReview(req.params.Review_id)
+    console.log(myreview)
+
+
+    res.redirect('/')
+})
 
 
 

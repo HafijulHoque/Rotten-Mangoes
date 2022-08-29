@@ -26,10 +26,12 @@ const personnelRouter = require('./personnel/personnel')
 const userRouter = require('./user/user')
 const awardRouter=require('./Awards/Awards')
 const merchandiseRouter=require('./Merchandise/Merchandise')
+const cartRouter=require('./Purchase/cart')
 
 
 const homePageRouter=require('./home/homepage')
 const DB_movie = require("../DB_codes/DB_movie");
+
 
 
 //!HOME PAGE
@@ -40,8 +42,8 @@ router.get('/', async (req, res) => {
     //const topAnimes = await DB_homepage.getTopAnimes();
 
     let recommendation = []
-    //  if (req.session.isAuth)
-    recommendation = await DB_homepage.getAllTopMovies();
+  //  if (req.session.isAuth)
+        recommendation = await DB_homepage.getAllTopMovies();
     const data = {
         pageTitle: 'Rotten Mangoes',
         isAuth: req.session.isAuth,
@@ -75,6 +77,8 @@ router.use('/singlemovie',singleMovieRouter)
 router.use('/Awards',awardRouter)
 router.use('/Merchandise',merchandiseRouter)
 router.use('/editProfile',editProfileRouter)
+router.use('/cart', cartRouter)
+router.use('/bought', cartRouter)
 
 //!ERRORS
 

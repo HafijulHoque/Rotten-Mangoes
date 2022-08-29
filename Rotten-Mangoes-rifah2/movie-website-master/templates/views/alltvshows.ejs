@@ -17,14 +17,6 @@
 <div class="main-content">
     <%- include('../partials/header.ejs') %>
     <h3 style="color: yellow; font-family: cursive;">Tv Series: </h3>
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item active">Tv Shows</li>
-        </ol>
-    </nav>
-
-
     <% if(!tvsList || tvsList.length === 0) { %>
         <p style="color: white">No result found</p>
     <% }

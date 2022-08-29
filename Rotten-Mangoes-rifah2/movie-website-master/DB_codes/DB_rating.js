@@ -30,7 +30,7 @@ async function insertRating(username, rating,id,comment) {
 async function RatingExist(username,id) {
     let sql = `
     SELECT *
-    FROM "C##MOVIE_ DATABASE"."Rating"
+    FROM "C##MOVIE_DATABASE"."Rating"
 WHERE "Username"=:username and :"Id"=:id
     
         
@@ -80,6 +80,6 @@ module.exports = {
     updateRating,
     getRating,
     RatingExist
-    // updateAllAnimeRank,
+   // updateAllAnimeRank,
     //updateAnimeRating
 }
