@@ -32,6 +32,7 @@ router.post('/', async (req, res) => {
     const merch = await DB_merch.getAllProductsAndPrice(username)
     const tshirts = await DB_merch.getAllTshirts();
     const figurines = await DB_merch.getAllFigurines();
+    const bool = await DB_cart.changeBool1(req.body.product_id, username)
 
     const data = {
         pageTitle: 'Rotten Mangoes',
@@ -43,12 +44,11 @@ router.post('/', async (req, res) => {
         tshirts:tshirts,
         figurines:figurines,
     }
-    res.render("cart", data)
+    res.redirect("cart")
 })
 
 router.post('/', async (req, res) => {
     username = req.session.userid;
-    const bool = await DB_cart.changeBool1(req.body.product_id, username)
     const merch = await DB_merch.getAllProductsAndPrice(username)
     const data = {
         pageTitle: 'Rotten Mangoes',
