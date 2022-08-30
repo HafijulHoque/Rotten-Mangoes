@@ -78,6 +78,25 @@ async function getStudioName(id) {
     `
     return (await database.execute(sql, [id], database.options)).rows[0]
 }
+async function getAllActors()
+{
+    let sql=`
+    SELECT *
+    FROM "C##MOVIEDATABASE"."Actor"
+    `
+    return (await database.execute(sql,[],database.options)).rows
+}
+async function getAllDirectors()
+{
+    let sql=`
+        SELECT *
+        FROM "C##MOVIEDATABASE"."Directors"
+
+    `
+    return (await database.execute(sql,[],database.options)).rows
+}
+
+
 
 async function getAllMoviesTitleAndID() {
     let sql = `
@@ -131,7 +150,15 @@ async function getMoviesByYear(years) {
 async function sortMoviesByRelease(){
     let sql = `
          SELECT *
-        FROM "C##MOVIEDATABASE"."Show"
+        FROM "C##MOVIEDATABASE"."Movies"
+        ORDER BY "Release_Date" DESC 
+    `
+    return (await database.execute(sql, [], database.options)).rows
+}
+async function sortTvseriesByRelease(){
+    let sql = `
+         SELECT *
+        FROM "C##MOVIEDATABASE"."Tv_series"
         ORDER BY "Release_Date" DESC 
     `
     return (await database.execute(sql, [], database.options)).rows
@@ -201,11 +228,35 @@ async function getNumberOfSeasons(Title,Release_date) {
     `
     return (await database.execute(sql, [anime_id], database.options)).rows[0]
 }
+async function getActorbyid(ssn)
+{
+    let sql=`
+    SELECT *
+    FROM "C##MOVIEDATABASE"."Actor"
+    WHERE "SSN"=:ssn
+    `
+    return (await database.execute(sql, [ssn], database.options)).rows[0]
+}
+async function getDirectorbyid(ssn)
+{
+    let sql=`
+    SELECT *
+    FROM "C##MOVIEDATABASE"."Directors"
+    WHERE "SSN"=:ssn
+    `
+    return (await database.execute(sql, [ssn], database.options)).rows[0]
+
+}
+async function getTopMovies()
+{
+
+
+}
 
 
 
 module.exports = {
-    //getAnimeByID,
+    sortTvseriesByRelease,
     getMoviesByID,
     getShowsByID,
     getMoviesByREGEX,
@@ -220,12 +271,12 @@ module.exports = {
     //getCharactersOfAnime,
     //getCharacterByName,
     getNumberOfSeasons,
-    //  getEpisodesOfAnime,
 
-    //updateAnimeRating
-    getStudioName,
-    getActorsById,
     getRandomSeries,
     getRandomShow,
-    sortMoviesByRelease
+    sortMoviesByRelease,
+    getAllActors,
+    getAllDirectors,
+    getActorbyid,
+    getDirectorbyid
 }

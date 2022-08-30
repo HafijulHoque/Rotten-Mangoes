@@ -138,6 +138,17 @@ async function deleteVote(username, review_id) {
     `
     return (await database.execute(sql, [username, review_id], database.options)).rows
 }
+async function countAllVotes(review_id)
+{
+    let sql=`
+    SELECT COUNT("Votes") AS CNT
+    FROM "C##MOVIEDATABASE"."Review"
+    Group By "Review_id" 
+    Having "Review_id"=:review_id
+    `
+    return (await database.execute(sql, [review_id], database.options)).rows[0]
+
+}
 
 async function incrementVoteinReview(review_id) {
     const x='1'
@@ -192,5 +203,6 @@ module.exports = {
     incrementVoteinReview,
     decrementVoteinReview,
     getReview,
-    incrementVote
+    incrementVote,
+    countAllVotes
 }

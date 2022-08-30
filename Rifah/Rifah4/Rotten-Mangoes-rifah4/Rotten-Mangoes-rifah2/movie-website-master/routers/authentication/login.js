@@ -31,6 +31,7 @@ router.post('/', async (req, res) => {
 console.log("user.Password");
     const passwordMatch = await bcrypt.compare(password, user[0].Password)
     if (!passwordMatch) {
+        console.log("doesnt match")
         return res.render('login', { message: 'Error logging in' })
     }
     //var session = req.session;

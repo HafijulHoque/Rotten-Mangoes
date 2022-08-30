@@ -22,156 +22,96 @@
 <%- include('../partials/header.ejs') %>
 
 
-
-
-
-<div class="container">
-
-    <div class="row">
-        <% console.log(userInfo)%>
-        <div class="col-3">
-            <img src="<%=userInfo.Picture%>" alt="Responsive image" class="img-thumbnail" width="200" style="border-radius: 100%;">
-        </div>
-
-        <div class="col-9" style="padding-top: 20px;">
-            <h4><%=userInfo.First_Name + ' ' + userInfo.Last_Name%> <span class="card-subtitle mb-2 text-muted">(<i><%=userInfo.Username%>)</i></span></h4>
-
-            <p class="h6"><span class="card-subtitle mb-2 text-muted">Born: <%=userInfo.Date_of_birth%> </span></p>
-            <p class="h6"><span class="card-subtitle mb-2 text-muted"><b> BIO: </b>"<%=userInfo.Bio%>" </span></p>
-        </div>
-
-    </div>
-    <hr style="border:1px solid #f1f1f1d0">
-</div>
-
-
-
-
-
-
-
-
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-lg-6 mb-4">
-        <h6 >
-
-            <b> Favourite Show  (Total: <%=favList.length%>) </b></h6>
-        <% if(favList.length == 0) {  %>
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-block">
-                <h5 class="card-title">Sorry!</h5>
-                <p class="card-text">I am a fucking nerd</p>
-                <a href="#" class="btn btn-primary">See details</a>
+<div class="row">
+    <div class="col-3">
+        <div class="shadow  mt-3 p-2">
+            <div class="row no-gutters">
+                <div class="col-3">
+                    <img class="circular" src="<%=userInfo.Picture%>" width="50">
+                </div>
+                <div class="col-9">
+                    <span>Hello</span>
+                    <h5><%=userInfo.Username%></h5>
+                </div>
             </div>
         </div>
-        <% } %>
+        <div class="shadow  mt-3 p-2">
+            <div class="list-group list-group-flush">
+                <a href="/my-section/profile" class="list-group-item list-group-item-action active" aria-current="true">My Account</a>
+                <a href="/my-section/orders" class="list-group-item list-group-item-action ">My Orders</a>
+                <!--                <a href="#" class="list-group-item list-group-item-action">My Lists</a>-->
+                <a href="/my-section/wishlist" class="list-group-item list-group-item-action">My Wishlist</a>
+                <a href="/my-section/reviews" class="list-group-item list-group-item-action">My Ratings and Reviews</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-9">
+        <div class="shadow p-3 mt-3 d-flex justify-content-between">
+
+            <h3>Profile</h3>
+            <a class="btn btn-outline-warning ms-2" href="/editprofile">
+                <i class="bi bi-pencil-square"></i>
+                Edit Profile
+            </a>
 
 
-            <% if(favList.length > 0) { %>
-                <%  for (var i = 0; i< favList.length; i++) {  %>
+        </div>
+        <section class="shadow mt-3 p-3">
+            <h3>Personal Information</h3>
+            <hr>
+            <form action="/my-section/profile" method="post">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="floatingInput">Name</label>
+                            <input disabled required type="text" name="name" value="<%= userInfo.Username %>" class="form-control"
+                                   id="floatingInput" placeholder="Jon Doe">
 
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-block">
-                            <h5 class="card-title"><%=favList[i].Title%></h5>
-                            <%console.log(favList[i].Plot)%>
-                            <p class="card-text"><%=favList[i].Plot%></p>
-                            <a href="#" class="btn btn-primary">See details</a>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dob" class="form-label pb-1">Your Date of Birth</label>
+                            <input disabled type="date" name="dob" value="<%=userInfo.Date_of_birth%>"
+                                   class="form-control personal p-3 date-of-birth">
+                        </div>
+
+                    </div>
+                </div>
+                <hr>
+                <h3>Contact Information</h3>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="floatingInput">Credit card no</label>
+                            <input disabled type="text" name="phone" value="<%= userInfo.Credit_card_no %>" class="form-control"
+                                   id="floatingInput" placeholder="">
                         </div>
                     </div>
-
-
-
-                <%  }  %>
-            <% } %>
-    </div>
-
-</div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-lg-6 mb-4">
-            <h6 >
-
-                <b> Watchlist  (Total: <%=watchList.length%>) </b></h6>
-            <% if(watchList.length == 0) {  %>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-block">
-                    <h5 class="card-title">Sorry!</h5>
-
-                    <p class="card-text">I am a fucking nerd</p>
-                    <a href="#" class="btn btn-primary">See details</a>
-                </div>
-            </div>
-            <% } %>
-
-
-            <% if(watchList.length > 0) { %>
-                <%  for (var i = 0; i< watchList.length; i++) {  %>
-
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-block">
-                        <h5 class="card-title"><%=watchList[i].Title%></h5>
-                        <%console.log(watchList[i].Plot)%>
-                        <p class="card-text"><%=watchList[i].Plot%></p>
-                        <a href="#" class="btn btn-primary">See details</a>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="floatingInput">Email address</label>
+                            <input disabled type="email" name="email" value="<%=userInfo.Email%>" class="form-control"
+                                   id="floatingInput" placeholder="name@example.com">
+                        </div>
                     </div>
                 </div>
-
-
-
-                <%  }  %>
-            <% } %>
-        </div>
-
-    </div>
-</div>
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-lg-6 mb-4">
-            <h6 >
-
-                <b> Our Recommendations  (Total: <%=reco.length%>) </b></h6>
-            <% if(reco.length == 0) {  %>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-block">
-                    <h5 class="card-title">Sorry!</h5>
-                    <p class="card-text">I am a fucking nerd</p>
-                    <a href="#" class="btn btn-primary">See details</a>
-                </div>
-            </div>
-            <% } %>
-
-
-            <% if(reco.length > 0) { %>
-                <%  for (var i = 0; i< reco.length; i++) {  %>
-
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-block">
-                        <h5 class="card-title"><%=reco[i].Title%></h5>
-
-                        <p class="card-text"><%=reco[i].Plot%></p>
-                        <a href="#" class="btn btn-primary">See details</a>
+                <hr>
+                <h3>Profile Picture</h3>
+                <div class="row ">
+                    <div class="col-2">
+                        <img class="img-fluid circular" src="<%=userInfo.Picture%>">
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="floatingInput">Link</label>
+                            <input disabled type="text" name="image" value="<%=userInfo.Picture%>" class="form-control"
+                                   id="floatingInput" placeholder="name@example.com">
+                        </div>
                     </div>
                 </div>
+                <hr>
 
-
-
-                <%  }  %>
-            <% } %>
-        </div>
-
+            </form>
+        </section>
     </div>
 </div>
 

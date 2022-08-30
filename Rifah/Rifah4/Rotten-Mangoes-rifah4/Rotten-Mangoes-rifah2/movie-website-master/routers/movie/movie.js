@@ -61,6 +61,8 @@ router.get('/', async (req, res) => {
     const userReview = await DB_review.getUserReview(user, movie_id);
     const movie_title = await DB_movie.getMoviesByID(movie_id);
     const allUserReview = await DB_review.getAllUserReview(user);
+    console.log("From backend..")
+    console.log(allUserReview)
     let userReviewContent = ""
     if (userReview) userReviewContent = userReview.Content;
 
@@ -72,8 +74,8 @@ router.get('/', async (req, res) => {
         username: req.session.username,
 
         //reviews,
-        userReview,
-        userReviewContent,
+        userreview:allUserReview,
+        userreviewcontent:userReviewContent,
         movie_id,
         movie_title,
         username:user,
@@ -86,11 +88,14 @@ router.get('/:Review_id/details', async (req, res) => {
 console.log(req.params.Review_id)
     const myreview=await DB_review.getReview(req.params.Review_id)
     console.log(myreview)
+    const totalvotes=await DB_review.countAllVotes(req.params.Review_id)
+    console.log(totalvotes)
     const data = {
         pageTitle: 'Single Reviews',
         isAuth: req.session.isAuth,
         username: req.session.username,
-myreview:myreview
+        myreview:myreview,
+        totalvotes:totalvotes
 
 
     }

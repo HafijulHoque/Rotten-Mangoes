@@ -26,7 +26,8 @@ const personnelRouter = require('./personnel/personnel')
 const userRouter = require('./user/user')
 const awardRouter=require('./Awards/Awards')
 const merchandiseRouter=require('./Merchandise/Merchandise')
-
+const actorRouter=require('./Allactors/Allactors')
+const directorRouter=require('./allDirectors/alldirectors')
 
 const homePageRouter=require('./home/homepage')
 const DB_movie = require("../DB_codes/DB_movie");
@@ -37,12 +38,13 @@ const DB_movie = require("../DB_codes/DB_movie");
 router.get('/', async (req, res) => {
     const username = req.session.userid;
     const movieList = await DB_movie.sortMoviesByRelease();
+    const serieslist=await DB_movie.sortTvseriesByRelease()
     //const newlyReleased = await DB_homepage.getNewlyReleasedAnime();
     //const topAnimes = await DB_homepage.getTopAnimes();
 
-    let recommendation = []
+
   //  if (req.session.isAuth)
-        recommendation = await DB_homepage.getAllTopMovies();
+        const recommendation = await DB_homepage.getAllTopMovies();
     const data = {
         pageTitle: 'Rotten Mangoes',
         isAuth: req.session.isAuth,
@@ -51,6 +53,7 @@ router.get('/', async (req, res) => {
 
         recommendation: recommendation,
         moviesList: movieList,
+        serieslist:serieslist
     }
     res.render('index', data)
 })
@@ -76,6 +79,8 @@ router.use('/singlemovie',singleMovieRouter)
 router.use('/Awards',awardRouter)
 router.use('/Merchandise',merchandiseRouter)
 router.use('/editProfile',editProfileRouter)
+router.use('/directorlist',directorRouter)
+router.use('/actorlist',actorRouter)
 
 
 //!ERRORS

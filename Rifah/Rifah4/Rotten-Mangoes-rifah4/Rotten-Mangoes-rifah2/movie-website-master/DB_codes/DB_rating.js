@@ -20,22 +20,35 @@ async function getRating( id) {
     return (await database.execute(sql, [id], database.options)).rows[0]
 }
 
-async function insertRating(username, rating,id,comment) {
+async function insertRating(username, rating,id,Comment) {
     let sql = `
         INSERT INTO "C##MOVIEDATABASE"."Rated"
-        VALUES(:USERNAME, :RATING, :ID,:COMMENT)
+        VALUES(:username, :raing, :id, :Comment)
     `
-    return await database.execute(sql, [username, rating,id,comment], database.options)
+    return await database.execute(sql, [username, rating,id,Comment], database.options)
+}
+async function insertRating2(username,rating,id,kk)
+{
+    let sql=`
+    INSERT INTO "C##MOVIEDATABASE"."Rated"
+    VALUES(:username, :raing, :id,:kk )
+
+    `
+    return await database.execute(sql,[username,rating,id,kk],database.options)
 }
 async function RatingExist(username,id) {
+    console.log(username)
+    console.log(id)
     let sql = `
-    SELECT *
-    FROM "C##MOVIEDATABASE"."Rating"
-WHERE "Username"=:username and :"Id"=:id
+    SELECT "Username"
+    FROM "C##MOVIEDATABASE"."Rated"
+WHERE "Username"=:username and "Id"=:id
     
         
     `
-    return await database.execute(sql, [username, id], database.options)
+  return (await database.execute(sql, [username, id], database.options)).rows;
+
+
 }
 
 
@@ -79,7 +92,8 @@ module.exports = {
     insertRating,
     updateRating,
     getRating,
-    RatingExist
+    RatingExist,
+    insertRating2
    // updateAllAnimeRank,
     //updateAnimeRating
 }

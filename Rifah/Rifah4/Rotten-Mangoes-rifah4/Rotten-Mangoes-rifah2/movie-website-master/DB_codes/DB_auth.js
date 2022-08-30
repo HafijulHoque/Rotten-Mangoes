@@ -39,24 +39,30 @@ async function insertAccountIntoDB(username, hashpassword,email) {
     `
     return (await database.execute(sql, [username, hashpassword,email], database.options))
 }
+async function changePassword(username,password)
+{
+    let sql=`
+    UPDATE "C##MOVIEDATABASE"."Useraccount"
+    SET "Password"=:password
+WHERE "Username"=:username
+    `
+    return (await database.execute(sql,[username,password],database.options))
 
-async function UpdateAccountIntoDB(username,email,bio,credit) {
-    console.log(email);
-    console.log(username);
-    console.log(bio);
-    console.log(credit)
-    const voda="voda"
+}
+
+async function UpdateAccountIntoDB(username,firstname,lastname,dob,email,bio) {
+
 
     let sql = `
         UPDATE "C##MOVIEDATABASE"."Useraccount"
-        SET  "Bio"=:voda,"Email"=:email,"Credit_card_no"=:credit
+        SET  "Username"=:username,"First_Name"=:firstname,"Last_Name"=:lastname,"Date_of_birth"=:dob,"Email"=:email,"Bio"=:bio
           WHERE "Username" = :USERNAME
 
 
         
     `
     console.log(bio);
-    return (await database.execute(sql, [username,email,bio,credit], database.options))
+    return (await database.execute(sql, [username,firstname,lastname,dob,email,bio], database.options))
 }
 async function UpdateAccountIntoDB1(username,bio) {
 console.log("ok")
@@ -81,6 +87,7 @@ module.exports = {
     insertAccountIntoDB,
     UpdateAccountIntoDB,
     getUser,
-    UpdateAccountIntoDB1
+    UpdateAccountIntoDB1,
+    changePassword
 
 }

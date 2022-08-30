@@ -18,31 +18,31 @@
     <%- include('../partials/header.ejs') %>
     <h3 style="color: yellow; font-family: cursive;">Movies:</h3>
 
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active">Movies</li>
-            </ol>
-        </nav>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active">Newly Released Movies</li>
+        </ol>
+    </nav>
 
 
     <h6>(Showing )</h6>
     <div class="d-flex flex-wrap justify-content-evenly">
-        <% for(let i = 0;i < moviesList.length;i++){ %>
+        <% for(let i = 0;i < movies.length;i++){ %>
             <div class="card mb-1 m-1" style="width: 12rem;">
-                <img class="card-img-top p-3" src=<%= moviesList[i].Picture %>
+                <img class="card-img-top p-3" src=<%= movies[i].Picture %>
                 alt="Card">
                 <div class="card-body" style="display: flex;flex-direction: column;justify-content:space-between;">
-                    <p style="color: #266dd3;font-weight: 650; font-size: 18px;" class="card-title"><%= moviesList[i].Title %></p>
+                    <p style="color: #266dd3;font-weight: 650; font-size: 18px;" class="card-title"><%= movies[i].Title %></p>
                     <div>
                 <span class="ml-0">
 
                 </span>
-                        <p class="card-text">Released on: <%= moviesList[i].Release_Date %></p>
+                        <p class="card-text">Released on: <%= movies.Release_Date %></p>
                         <div class="d-grid gap-2">
-                            <a href=<%="/movielist/"+moviesList[i].Id+"/details"%> class="btn-warning">
-                            <i class="bi bi-book-half"></i>
-                            VIEW Movie
+                            <a href=<%="/movielist/"+movies[i].Id+"/details"%> class="btn-warning">
+                                <i class="bi bi-book-half"></i>
+                                VIEW Movie
                             </a>
                         </div>
                     </div>
@@ -51,14 +51,12 @@
         <% } %>
         <br/>
     </div>
+</div>
 
 
 </div>
 
-
-    </div>
-
-    <%- include('../partials/footer.ejs') %>
+<%- include('../partials/footer.ejs') %>
 </body>
 
 </html>
