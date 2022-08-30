@@ -9,12 +9,17 @@ const DB_cart = require('../../DB_codes/DB_cart')
 const router = express.Router({ mergeParams: true })
 
 router.get('/',async (req, res) => {
+    console.log("from cart get..")
+    console.log(req.body)
+    console.log(req.params)
     username = req.session.userid;
     /*console.log(username);
     //const getId = await DB_cart.getCartId(req.session.userid)
     console.log("From cart get request")
     //console.log(getId)
     const cart = await DB_cart.getTotalPrice(getId);*/
+    const quantity=await DB_cart.getquanity(username)
+    console.log(quantity)
     const merch = await DB_merch.getAllProductsAndPrice(username)
     const data = {
         pageTitle: 'Your Cart',
@@ -22,16 +27,21 @@ router.get('/',async (req, res) => {
         username: req.session.username,
 
         //cart:cart,
-        merch:merch
+        merch:quantity
     }
     res.render("cart", data);
 })
 
 router.post('/', async (req, res) => {
+    console.log("Cart post...")
+    console.log(req.body)
+    console.log(req.params)
+    console.log(req.session)
     username = req.session.userid;
+    console.log(username)
     const merch = await DB_merch.getAllProductsAndPrice(username)
-    const tshirts = await DB_merch.getAllTshirts();
-    const figurines = await DB_merch.getAllFigurines();
+    console.log(merch)
+
     const bool = await DB_cart.changeBool1(req.body.product_id, username)
 
     const data = {
@@ -40,15 +50,17 @@ router.post('/', async (req, res) => {
         username: req.session.username,
 
         //bool:bool,
-        merch:merch,
-        tshirts:tshirts,
-        figurines:figurines,
+
     }
-    res.render("cart", data)
+   res.redirect('/')
 })
 
-router.post('/', async (req, res) => {
+router.post('/buy', async (req, res) => {
+    console.log("Cart buy post...")
     username = req.session.userid;
+    console.log(req.body)
+    console.log(req.session)
+    console.log(req.params)
     const merch = await DB_merch.getAllProductsAndPrice(username)
     const data = {
         pageTitle: 'Rotten Mangoes',

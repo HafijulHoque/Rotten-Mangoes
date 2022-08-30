@@ -34,15 +34,27 @@ async function changeBool1(product_id, username){
     AND "Username" = :username
     `
 
-    return await database.execute(sql, [product_id], database.options)
+    return await database.execute(sql, [product_id,username], database.options)
 }
+async function getquanity(username)
+{
+    let sql=`
+       SELECT COUNT(*) as cnt,"Product_id","Username","Price"
+    FROM "C##MOVIE_DATABASE"."Merch_order"
+       Where "Username"=:username and "Bool"=0
+    GROUP BY "Product_id","Username","Price"
 
+    `
+    return (await database.execute(sql, [username], database.options)).rows
+
+
+}
 
 async function changeBool2(product_id){
     let sql = `
     UPDATE "C##MOVIE_DATABASE"."Merch_order"
     SET "Bool" = 2
-    WHERE "Product_id" = :product_id
+    WHERE "Product_id" = :product_id 
     AND "Username" = :username
     `
 
@@ -52,4 +64,5 @@ module.exports = {
     getTotalPrice,
     getCartId,
     changeBool1,
+    getquanity
 }

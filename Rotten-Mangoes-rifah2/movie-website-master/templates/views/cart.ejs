@@ -32,6 +32,8 @@
                             <!-- Set columns width -->
                             <th class="text-center py-3 px-4" style="min-width: 400px;">Product Name &amp; Details</th>
                             <th class="text-right py-3 px-4" style="width: 100px;">Price</th>
+
+                            <th class="text-right py-3 px-4" style="width: 100px;">qauntity</th>
                             <th class="text-center align-middle py-3 px-0" style="width: 40px;"><a href="#" class="shop-tooltip float-none text-light" title="" data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a></th>
                         </tr>
                         </thead>
@@ -51,7 +53,7 @@
                                     </div>
                                 </td>
                                 <td class="text-right font-weight-semibold align-middle p-4"><%= merch[i].Price + "/-" %></td>
-
+                                <td class="text-right font-weight-semibold align-middle p-4"><%= merch[i].CNT + "/-" %></td>
                                 <%if(y[i] === 0){%>
                                 <td><button id="btnSaveChanges" class="btn btn-success disabled" style="color: white; font-size: x-small; align-self: center; position: relative; top: 15px; width: 45px; height: 38px;">Done</button></td>
                                 <%}else {%>
@@ -80,7 +82,7 @@
                 </div>
 
                 <div class="float-right">
-                    <form action="/bought" method="post">
+                    <form action="/cart/buy" method="post">
                         <button type="button" class="btn btn-lg btn-primary mt-2">Checkout</button>
                     </form>
                 </div>

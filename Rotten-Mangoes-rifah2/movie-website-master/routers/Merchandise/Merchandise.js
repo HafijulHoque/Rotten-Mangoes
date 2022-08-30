@@ -8,6 +8,7 @@ const DB_merch = require('../../DB_codes/DB_merch')
 //const DB_merchOrder = require('../../DB_codes/DB_merch')
 const router = express.Router({ mergeParams: true })
 router.get('/',async (req, res) => {
+        console.log("mERCHANDISE GET ")
         const tshirts = await DB_merch.getAllTshirts();
         const figurines = await DB_merch.getAllFigurines();
         //console.log("from Merchandise get request");
@@ -65,10 +66,10 @@ router.post('/', async (req, res) => {
         const tshirts = await DB_merch.getAllTshirts();
         const figurines = await DB_merch.getAllFigurines();
         //ArrayMerch = []
+
         const x = await DB_merch.insertProduct(username, req.body.product_id, req.body.price);
         const stock = await DB_merch.decrementStock(req.body.product_id)
         const merch = await DB_merch.getAllProductsAndPrice(username)
-
         console.log("From merch post request stock")
         console.log(stock);
         //console.log(Array1)
@@ -80,10 +81,12 @@ router.post('/', async (req, res) => {
 
                 merch:merch,
                 x,
+                tshirts:tshirts,
+                figurines:figurines
                 //Array1:Array1
         }
         //res.redirect('cart')
-        res.render('cart', data);
+        res.redirect('Merchandise')
 })
 
 module.exports=router

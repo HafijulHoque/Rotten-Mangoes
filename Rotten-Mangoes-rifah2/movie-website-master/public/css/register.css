@@ -32,7 +32,7 @@ body{
 
 .head{
     position: relative;
-    color: #EFFC20;
+    color: #0dbf92;
 }
 
 
@@ -43,7 +43,7 @@ body{
 }
 
 .fontLabel{
-    color: #EFFC20;
+    color: #0dbf92;
     position: relative;
     font-size: 14px;
 }
@@ -81,7 +81,7 @@ body{
     font-size: 12px;
 }
 /*.fl_iconbox{
-    background-color: #EFFC20;
+    background-color: #0dbf92;
 }*/
 
 .textBox{
@@ -98,7 +98,7 @@ body{
     width: 20px;
     line-height: 38px;
     text-align: center;
-    background: #EFFC20;
+    background: #0dbf92;
     color: black;
     margin-left: 4px;
     float: left;
