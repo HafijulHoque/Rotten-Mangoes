@@ -18,6 +18,16 @@ async function getShowsByGenre(string){
     }
     return (await database.execute(sql, [], database.options)).rows
 }
+
+/*async function getShowsByDirector(string){
+    let sql = `
+    SELECT * FROM "C##MOVIE_DATABASE"."Directors" 
+    WHERE "" LOWER("Genre") LIKE '${string[0]}'`
+    for (let i = 1; i < string.length; i++) {
+        sql += ` AND LOWER("Genre") LIKE '${string[i]}'`;
+    }
+    return (await database.execute(sql, [], database.options)).rows
+}*/
 async function getMoviesByREGEX(string) {
     let sql = `
     SELECT * FROM "C##MOVIE_DATABASE"."Show" NATURAL Join"C##MOVIE_DATABASE"."Movies" WHERE LOWER("Title") LIKE '${string[0]}'`

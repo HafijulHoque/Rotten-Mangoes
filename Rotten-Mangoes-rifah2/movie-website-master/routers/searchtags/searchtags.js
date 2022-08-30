@@ -30,20 +30,24 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     console.log("posting from searchtags")
-    let { genres, years } = req.body;
+    let { genres, years, directors } = req.body;
 
     if (typeof years == "string") years = [years]
     if (typeof genres == "string") genres = [genres]
+    if (typeof directors == "string") directors = [directors]
 
     let result;
     if (genres && genres.length > 0) {
         result = await DB_movie.getMoviesTitleandIDByOneGenre(genres);
     } else if (years && years.length > 0) {
         result = await DB_movie.getMoviesByYear(years);
+    } else if (directors && directors.length > 0) {
+        result = await DB_movie.getMoviesTitleandIDByDirector(directors);
     }
 
     genres = await DB_movie.getAllGenres()
     years = range(33, 1990);
+    directors = await DB_movie.getAllDirectors();
     const data = {
         pageTitle: 'Search by Tags',
         isAuth: req.session.isAuth,
@@ -52,7 +56,8 @@ router.post('/', async (req, res) => {
 
         genres,
         years,
-        movies: result
+        movies: result,
+        directors
     }
     res.render('searchresults', data);
 })

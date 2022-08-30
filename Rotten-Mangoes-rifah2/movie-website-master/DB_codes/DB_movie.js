@@ -145,6 +145,14 @@ async function getAllGenres() {
     return (await database.execute(sql, [], database.options)).rows
 }
 
+async function getAllDirectors() {
+    let sql = `
+        SELECT DISTINCT "Name"
+        FROM  "C##MOVIE_DATABASE"."Directors"
+    `
+    return (await database.execute(sql, [], database.options)).rows
+}
+
 async function getMoviesTitleandIDByOneGenre(genre) {
     let sql = `
         SELECT *
@@ -153,6 +161,17 @@ async function getMoviesTitleandIDByOneGenre(genre) {
     `
     return (await database.execute(sql, [], database.options)).rows
 }
+
+async function getMoviesTitleandIDByDirector(director) {
+    let sql = `
+        SELECT *
+        FROM "C##MOVIE_DATABASE"."Show"
+        WHERE "Director" = '${director}'
+    `
+    return (await database.execute(sql, [], database.options)).rows
+}
+
+
 
 
 
@@ -227,5 +246,7 @@ module.exports = {
     getActorsById,
     getRandomSeries,
     getRandomShow,
-    sortMoviesByRelease
+    sortMoviesByRelease,
+    getMoviesTitleandIDByDirector,
+    getAllDirectors,
 }

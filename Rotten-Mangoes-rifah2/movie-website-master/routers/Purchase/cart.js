@@ -44,7 +44,7 @@ router.post('/', async (req, res) => {
         tshirts:tshirts,
         figurines:figurines,
     }
-    res.redirect("cart")
+    res.render("cart", data)
 })
 
 router.post('/', async (req, res) => {
