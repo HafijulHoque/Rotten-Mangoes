@@ -8,7 +8,7 @@ const router = express.Router({ mergeParams: true })
 
 
 router.get('/', async (req, res) => {
-    const movieList = await DB_movie.getRandomShow();
+    const movieList = await DB_movie.getAllMoviesTitleAndID();
     console.log(movieList)
     const data = {
         pageTitle: 'List of movies',
