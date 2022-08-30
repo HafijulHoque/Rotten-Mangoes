@@ -8,6 +8,7 @@ const router = express.Router({ mergeParams: true })
 router.get('/',async (req, res) => {
         const awards = await DB_awards.getAllAwards();
         console.log("from awards get request");
+        console.log(awards)
         const data =
             {
                 pageTitle: 'Awards',

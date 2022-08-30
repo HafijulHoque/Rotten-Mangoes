@@ -39,9 +39,18 @@ router.get('/updatepassword', async (req, res) => {
 router.post('/updatepassword', async (req, res) => {
 
     console.log("hi from update password post")
+    console.log("new password")
+    const nabid=await DB_auth.getUserByUsername(req.body.username)
+    console.log(" old pass = ")
+    console.log(nabid)
+    console.log(req.body.password)
+    console.log(req.body)
     const hashpassword = await bcrypt.hash(req.body.password, 4);
-    await DB_auth.changePassword(req.body.username,hashpassword)
+    console.log(hashpassword)
+    await DB_auth.updatePassword(req.body.username,hashpassword)
     console.log("DONE sucessfullyy")
+    const nabid1=await DB_auth.getUserByUsername(req.body.username)
+    console.log(nabid1)
 
     const data=
         {

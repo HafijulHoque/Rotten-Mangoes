@@ -1,5 +1,6 @@
 const database = require('./database')
 var oracledb=require('oracledb');
+const Console = require("console");
 oracledb.autoCommit=true;
 async function getUserByUsername(username) {
     console.log("from sql "+username);
@@ -11,6 +12,20 @@ async function getUserByUsername(username) {
     const saffat=  (await database.execute(sql, [username], database.options))
     console.log(saffat);
     return saffat.rows
+}
+async function updatePassword(username,password) {
+    console.log("from DB "+username);
+    console.log(" "+password)
+    const nabid="Kisu bhalo lage na"
+    const nabid2="Hafijul"
+    let sql = `
+        UPDATE "C##MOVIEDATABASE"."Useraccount"
+        SET "Password"=:nabid
+        WHERE "Username" =:nabid2
+    `
+    const saffat=  (await database.execute(sql, [username,password], database.options))
+    console.log(saffat);
+
 }
 async function getUser() {
     let sql = `
@@ -39,16 +54,7 @@ async function insertAccountIntoDB(username, hashpassword,email) {
     `
     return (await database.execute(sql, [username, hashpassword,email], database.options))
 }
-async function changePassword(username,password)
-{
-    let sql=`
-    UPDATE "C##MOVIEDATABASE"."Useraccount"
-    SET "Password"=:password
-WHERE "Username"=:username
-    `
-    return (await database.execute(sql,[username,password],database.options))
 
-}
 
 async function UpdateAccountIntoDB(username,firstname,lastname,dob,email,bio) {
 
@@ -88,6 +94,6 @@ module.exports = {
     UpdateAccountIntoDB,
     getUser,
     UpdateAccountIntoDB1,
-    changePassword
+    updatePassword
 
 }

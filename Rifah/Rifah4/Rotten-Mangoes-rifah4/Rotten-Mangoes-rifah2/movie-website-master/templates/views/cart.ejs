@@ -1,0 +1,95 @@
+<html>
+<head>
+    <title>Cart</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+<div class="main-content">
+    <div>
+        <%- include('../partials/header.ejs') %>
+    </div>
+
+    <div class="container px-3 my-5 clearfix">
+        <% total = 0%>
+        <!-- Shopping cart table -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Shopping Cart</h2>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered m-0">
+                        <thead>
+                        <tr>
+                            <!-- Set columns width -->
+                            <th class="text-center py-3 px-4" style="min-width: 400px;">Product Name &amp; Details</th>
+                            <th class="text-right py-3 px-4" style="width: 100px;">Price</th>
+
+                            <th class="text-right py-3 px-4" style="width: 100px;">qauntity</th>
+                            <th class="text-center align-middle py-3 px-0" style="width: 40px;"><a href="#" class="shop-tooltip float-none text-light" title="" data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <%var y = []%>
+                        <%for(var i = 0; i < merch.length; i++){%>
+                        <% y[i] = 1}%>
+                        <% for(var i = 0; i < merch.length; i++){ %>
+                        <tr>
+                            <td class="p-4">
+                                <div class="media align-items-center">
+                                    <!--<img  class="d-block ui-w-40 ui-bordered mr-4" src=<%merch[i].Picture%> alt="">-->
+                                    <div class="media-body">
+                                        <p class="d-block text-light"><%="Product " + merch[i].Product_id %> </p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-right font-weight-semibold align-middle p-4"><%= merch[i].Price + "/-" %></td>
+                            <td class="text-right font-weight-semibold align-middle p-4"><%= merch[i].CNT + "/-" %></td>
+                            <%if(y[i] === 0){%>
+                                <td><button id="btnSaveChanges" class="btn btn-success disabled" style="color: white; font-size: x-small; align-self: center; position: relative; top: 15px; width: 45px; height: 38px;">Done</button></td>
+                            <%}else {%>
+                            <form action="/cart" method="post">
+                                <input type="hidden" name = "product_id" id = "product_id" value=<%=merch[i].Product_id%>>
+                                <input type="hidden" name = "price" id = "price" value=<%=merch[i].Price%>>
+                                <td><button id="btnSaveChanges" class="btn btn-success" style="color: white; font-size: x-small; align-self: center; position: relative; top: 15px; width: 45px; height: 38px;">Buy</button></td>
+                                <%y[i] = 0%>
+                            </form>
+                            <%}%>
+                            <% total = total + merch[i].Price%>
+                        </tr>
+                        <%}%>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- / Shopping cart table -->
+
+                <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
+                    <div class="text-right mt-4">
+                        <label style="color: white; font-size: large; margin-left: 1080px"><%= "Total Price = " + total + "/-" %></label>
+                        <div class="text-large"><strong></strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="float-right">
+                <form action="/cart/buy" method="post">
+                    <button type="button" class="btn btn-lg btn-primary mt-2">Checkout</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

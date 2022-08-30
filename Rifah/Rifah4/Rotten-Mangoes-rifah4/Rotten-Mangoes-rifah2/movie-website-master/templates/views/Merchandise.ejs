@@ -1,4 +1,4 @@
-html>
+<html>
 <head>
     <title>Merchandise</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
@@ -9,6 +9,7 @@ html>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/award.css">
 </head>
 </html>
 
@@ -22,10 +23,17 @@ html>
         </ol>
     </nav>
 
+    <a href="/cart">
+        <button id="btnSaveChanges" class="btn btn-success" style="align-self: center; position: relative; top: 0px; width: 190px; height: 38px;">View Cart</button>
+
+    </a>
+
+
+
     <h2 style="color: #EFFC20">Tshirts:</h2>
     <div class="d-flex flex-wrap justify-content-evenly">
         <% for(let i = 0;i < tshirts.length;i++){ %>
-            <div class="card mb-1 m-1" style="width: 12rem;">
+            <div class="card mb-1 m-1" style="width: 15rem;">
                 <img class="card-img-top p-3" src=<%= tshirts[i].Picture %>
                 alt="Card">
                 <div class="card-body" style="display: flex;flex-direction: column;justify-content:space-between;">
@@ -39,6 +47,15 @@ html>
                         <p class="card-text">Price: <%= tshirts[i].Price %></p>
                     </div>
                 </div>
+                <% if(tshirts[i].In_Stock <= 0){ %>
+                    <button class="btn btn-success disabled">Add to Cart</button>
+                <% }else{ %>
+                <form action="/Merchandise" method="post">
+                    <input type="hidden" name = "product_id" id = "product_id" value=<%=tshirts[i].Product_id%>>
+                    <input type="hidden" name = "price" id = "price" value=<%=tshirts[i].Price%>>
+                    <button id="btnSaveChanges" class="btn btn-success" style="align-self: center; position: relative; top: 15px; width: 190px; height: 38px;">Add to Cart</button>
+                </form>
+                <% } %>
             </div>
         <% } %>
         <br/>
@@ -47,7 +64,7 @@ html>
     <h2 style="color: #EFFC20">Figurines:</h2>
     <div class="d-flex flex-wrap justify-content-evenly">
         <% for(let i = 0;i < figurines.length;i++){ %>
-            <div class="card mb-1 m-1" style="width: 12rem;">
+            <div class="card mb-1 m-1" style="width: 15rem;">
                 <img class="card-img-top p-3" src=<%= figurines[i].Picture %>
                 alt="Card">
                 <div class="card-body" style="display: flex;flex-direction: column;justify-content:space-between;">
@@ -61,6 +78,15 @@ html>
                         <p class="card-text">Price: <%= figurines[i].Price %></p>
                     </div>
                 </div>
+                <% if(figurines[i].In_Stock === 0){ %>
+                    <button class="btn btn-success disabled">Add to Cart</button>
+                <% }else{ %>
+                <form action="/Merchandise" method="post">
+                    <input type="hidden" name = "product_id" id = "product_id" value=<%=figurines[i].Product_id%>>
+                    <input type="hidden" name = "price" id = "price" value=<%=figurines[i].Price%>>
+                    <button id="btnSaveChanges" class="btn btn-success" style="align-self: center; position: relative; top: 15px; width: 190px; height: 38px;">Add to Cart</button>
+                </form>
+                <% } %>
             </div>
         <% } %>
         <br/>
