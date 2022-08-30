@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/award.css">
 
 </head>
 
@@ -21,12 +22,12 @@
     </div>
     <section id="homepage-top-movies" style="margin-bottom: 15%; font-family: cursive; font-style: italic">
         <ul>
-            <div style="float: left; width : 50%">
+            <div style="">
                 <h2> <a class="home" href="/movielist/new" style="text-decoration-line: none; color: #EFFC20;">Newly Released Movies</a> </h2>
 
                 <div class="d-flex flex-wrap justify-content-evenly">
                     <% for(let i = 0;i < moviesList.length;i++){ %>
-                        <div class="card mb-1 m-1" style="width: 12rem;">
+                        <div class="card mb-1 m-1" style="width: 15rem;">
                             <img class="card-img-top p-3" src=<%= moviesList[i].Picture %>
                             alt="Card">
                             <div class="card-body" style="display: flex;flex-direction: column;justify-content:space-between;">
