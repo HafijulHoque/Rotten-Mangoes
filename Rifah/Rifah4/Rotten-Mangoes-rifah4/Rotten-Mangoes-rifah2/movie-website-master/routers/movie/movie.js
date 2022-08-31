@@ -60,7 +60,8 @@ router.get('/', async (req, res) => {
     //const reviews = await DB_review.getAllReviewsWithUserVotes(movie_id, user);
     const userReview = await DB_review.getUserReview(user, movie_id);
     const movie_title = await DB_movie.getMoviesByID(movie_id);
-    const allUserReview = await DB_review.getAllUserReview(user);
+    const allUserReview = await DB_review.getAllrReview();
+    const getallReview=
     console.log("From backend..")
     console.log(allUserReview)
     let userReviewContent = ""

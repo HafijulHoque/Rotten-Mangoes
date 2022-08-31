@@ -13,6 +13,14 @@ async function getUserByUsername(username) {
     console.log(saffat);
     return saffat.rows
 }
+async function getusername(username)
+{
+    let sql='Getuserbyid(:username)'
+
+return    (await database.execute(sql, [username], database.options))
+
+
+}
 async function updatePassword(username,password) {
     console.log("from DB "+username);
     console.log(" "+password)
@@ -94,6 +102,7 @@ module.exports = {
     UpdateAccountIntoDB,
     getUser,
     UpdateAccountIntoDB1,
-    updatePassword
+    updatePassword,
+    getusername
 
 }

@@ -49,14 +49,21 @@ async function getUserReview(username,id) {
 }
 
 
+async function getAllrReview() {
+    let sql = `
+        SELECT * FROM "C##MOVIEDATABASE"."Review"
+       
+    `
+    return (await database.execute(sql, [], database.options)).rows
+}
 async function getAllUserReview(username) {
     let sql = `
         SELECT * FROM "C##MOVIEDATABASE"."Review"
-        WHERE "Username"=:username
+WHERE "Username"=:username
+      
     `
     return (await database.execute(sql, [username], database.options)).rows
 }
-
 
 
 //this function will enter new review into the DB and return the NEW REVIEW_ID
@@ -204,5 +211,6 @@ module.exports = {
     decrementVoteinReview,
     getReview,
     incrementVote,
-    countAllVotes
+    countAllVotes,
+    getAllrReview
 }

@@ -36,6 +36,7 @@ async function insertRating2(username,rating,id,kk)
     `
     return await database.execute(sql,[username,rating,id,kk],database.options)
 }
+
 async function RatingExist(username,id) {
     console.log(username)
     console.log(id)
@@ -46,12 +47,34 @@ WHERE "Username"=:username and "Id"=:id
     
         
     `
-  return (await database.execute(sql, [username, id], database.options)).rows;
+  const nabid= (await database.execute(sql, [username, id], database.options))
+    console.log(nabid)
+    console.log(nabid.rows)
+    return nabid.rows
 
 
 }
 
 
+async function getAverageRating(id) {
+    let sql = `
+       SELECT AVG('Rating') as avgrating
+       FROM "C##MOVIEDATABASE"."Rated"
+        GROUP BY "Username"
+       
+    `
+    return (await database.execute(sql, [ id], database.options)).rows[0].avgrating
+}
+
+async function getAllcomments(id) {
+    let sql = `
+       SELECT "Comment"
+       FROM "C##MOVIEDATABASE"."Rated"
+where "Id"=:id
+       
+    `
+    return (await database.execute(sql, [ id], database.options)).rows
+}
 
 async function updateRating(username, id, star) {
     let sql = `
@@ -93,7 +116,9 @@ module.exports = {
     updateRating,
     getRating,
     RatingExist,
-    insertRating2
+    insertRating2,
+    getAverageRating,
+    getAllcomments
    // updateAllAnimeRank,
     //updateAnimeRating
 }

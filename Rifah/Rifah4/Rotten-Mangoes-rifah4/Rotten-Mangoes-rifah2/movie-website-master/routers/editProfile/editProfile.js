@@ -10,6 +10,7 @@ router.get('/', async (req, res) => {
 console.log("hi from userprofile get")
     const username = req.session.userid;
 console.log(username)
+    await DB_auth.getusername(username)
     const userInfo = await DB_user.getUserInfoByUsername(username);
     console.log(userInfo)
     const data=
