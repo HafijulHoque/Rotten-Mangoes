@@ -1,0 +1,138 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/css/register.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+<body>
+<p style="color:#33c24d; text-align: center; font-size: 20px; margin-top: 25px">
+    <%= message %>
+</p>
+<!--<div style="align-self:center; margin-right:300px;">
+    <form action="/register" method="post" style="text-align: center;">
+        <h2 class="h2-title-auth">Register</h2>
+        <div class="input-field">
+            <input type="text" name="username" id="username" placeholder="Enter Username">
+        </div>
+        <div class="input-field">
+            <input type="email" name="email" id="email" placeholder="Enter email">
+        </div>
+        <div class="input-field">
+            <input type="password" name="password" id="password" placeholder="Enter Password">
+        </div>
+        <input type="submit" value="Register">
+    </form>
+</div>-->
+<div class="container">
+    <h1 style="color: #33c24d ">Register</h1>
+    <form action="/register" method="post" autocomplete="on">
+        <!--First name-->
+        <div class="box">
+            <label for="username" class="fl fontLabel"> Username: </label>
+            <div class="iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
+            <div class="fr">
+                <input type="text" name="username" id="username" placeholder="username"
+                       class="textBox" autofocus="on" required>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <!--First name-->
+        <div class="box">
+            <label for="FirstName" class="fl fontLabel"> First Name: </label>
+            <div class="iconBox"><i class="fa fa-user-circle" aria-hidden="true"></i></div>
+            <div class="fr">
+                <input type="text" name="FirstName" id="FirstName" placeholder="Firstname"
+                       class="textBox" autofocus="on" required>
+            </div>
+            <div class="clr"></div>
+        </div>
+
+        <!--Second name-->
+        <div class="box">
+            <label for="LastName" class="fl fontLabel"> Second Name: </label>
+            <div class="iconBox"><i class="fa fa-user-circle" aria-hidden="true"></i></div>
+            <div class="fr">
+                <input type="text" required name="LastName" id="LastName"
+                       placeholder="Last Name" class="textBox">
+            </div>
+            <div class="clr"></div>
+        </div>
+        <!--Second name-->
+
+
+        <!---DoB.------>
+        <div class="box">
+            <label for="Bio" class="fl fontLabel"> Date of Birth: </label>
+            <div class="iconBox"><i class="fa fa-child" aria-hidden="true"></i></div>
+            <div class="fr">
+                <input type="text" required name="dob" id="dob" placeholder="Date of Birth" class="textBox">
+            </div>
+            <div class="clr"></div>
+        </div>
+        <!---Phone No.---->
+
+
+        <!---Email ID---->
+        <div class="box">
+            <label for="email" class="fl fontLabel"> Email ID: </label>
+            <div class="iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+            <div class="fr">
+                <input type="email" required name="email" id="email" placeholder="Email Id" class="textBox">
+            </div>
+            <div class="clr"></div>
+        </div>
+        <!--Email ID----->
+
+
+        <!---Password------>
+        <div class="box">
+            <label for="password" class="fl fontLabel"> Password: </label>
+            <div class="iconBox"><i class="fa fa-key" aria-hidden="true"></i></div>
+            <div class="fr">
+                <input type="Password" required name="password" id="password" placeholder="Password" class="textBox">
+            </div>
+            <div class="clr"></div>
+        </div>
+        <!---Password---->
+
+        <!---Credit Card No------>
+        <div class="box">
+            <label for="credit" class="fl fontLabel"> Credit Card No </label>
+            <div class="iconBox"><i class="fa fa-credit-card-alt" aria-hidden="true"></i></div>
+            <div class="fr">
+                <input type="Credit Card No" required name="credit card No" id="credit" placeholder="Credit Card No" class="textBox">
+            </div>
+            <div class="clr"></div>
+        </div>
+        <!---Credit Card No---->
+
+        <!---Gender----->
+        <div class="box radio">
+            <label for="gender" class="fl fontLabel"> Gender: </label>
+            <input type="radio" name="Gender" value="Male" required> Male &nbsp; &nbsp; &nbsp; &nbsp;
+            <input type="radio" name="Gender" value="Female" required> Female
+        </div>
+        <!---Gender--->
+
+
+        <!--Terms and Conditions------>
+        <div class="box terms">
+            <input type="checkbox" name="Terms" required> &nbsp; I accept the terms and conditions
+        </div>
+        <!--Terms and Conditions------>
+
+
+
+        <!---Submit Button------>
+        <div style="background: #000000; text-align: center; margin-top: 10px">
+            <button name="Submit" class="btn btn-secondary my-2 my-sm-0 submit" type="Submit" style="margin-top: 5px; border-radius: 5px"> Register </button>
+            <!--<input type="Submit" name="Submit" class="submit" value="Register"  >-->
+        </div>
+        <!---Submit Button----->
+    </form>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    /* background-image: url("H:\0. Level 2 Term 2\Project\Front End\HTML\AvengersEndgamepostcredits.jpg") no-repeat center fixed;*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: black;
+}
+
+.fa{
+    position: center;
+    margin-top: 4px;
+}
+
+.container{
+    background: #222222;
+    padding-bottom: 20px;
+    width: 350px;
+    height: 500px;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    padding: 70px 50px 20px 50px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.head{
+    position: relative;
+    color: #33c24d;
+}
+
+
+.fl{
+    float: left;
+    width: 110px;
+    line-height: 35px;
+}
+
+.fontLabel{
+    color: #33c24d;
+    position: relative;
+    font-size: 14px;
+}
+
+.fr{
+    float: right;
+    margin-left: 20px;
+}
+
+.clr{
+    clear: both;
+}
+
+.radio{
+    color: white;
+    background: #000000;
+    line-height: 38px;
+    border-radius: 10px;
+}
+
+.terms{
+    line-height: 35px;
+    text-align: center;
+    background: #000000;
+    color: white;
+    border-radius: 10px;
+}
+
+.box{
+    width: 360px;
+    height: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: verdana;
+    font-size: 12px;
+}
+/*.fl_iconbox{
+    background-color: #33c24d;
+}*/
+
+.textBox{
+    height: 35px;
+    width: 190px;
+    border: none;
+    padding-left: 20px;
+    /*position: relative;*/
+
+}
+
+.iconBox{
+    height: 20px;
+    width: 20px;
+    line-height: 38px;
+    text-align: center;
+    background: #33c24d;
+    color: black;
+    margin-left: 4px;
+    float: left;
+    /*margin-right: 210px;*/
+    margin-top: 7px;
+}
+
+.submit{
+    float: right;
+    border: none;
+    color: gray;
+    width: 100px;
+    height: 30px;
+    background: #ffffff;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    font-size: small;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+
+}

@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Users profile</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+
+    </style>
+
+</head>
+
+<body>
+<%- include('../partials/header.ejs') %>
+
+<div class="row">
+    <div class="col-3">
+        <div class="shadow mt-3 p-2">
+            <div class="row no-gutters">
+                <div class="col-3">
+
+                    <img class="circular" src="<%=user.Picture%>" width="50">
+                </div>
+                <div class="col-9">
+                    <span>Hello</span>
+                    <h5><%=user.Username%></h5>
+                </div>
+            </div>
+        </div>
+        <div class="shadow mt-3 p-2">
+            <div class="list-group list-group-flush">
+                <a href="/my-section/profile" class="list-group-item list-group-item-action active" aria-current="true">My Account</a>
+                <a href="/my-section/orders" class="list-group-item list-group-item-action ">My Orders</a>
+                <!--                <a href="#" class="list-group-item list-group-item-action">My Lists</a>-->
+                <a href="/my-section/wishlist" class="list-group-item list-group-item-action">My Wishlist</a>
+                <a href="/my-section/reviews" class="list-group-item list-group-item-action">My Ratings and Reviews</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-9">
+        <div class="shadow p-3 mt-3 d-flex justify-content-between">
+
+            <h3>Profile</h3>
+            <!--            <a class="btn btn-outline-primary ms-2" href="/my-section/profile/edit">Edit Profile</a>-->
+
+
+        </div>
+        <section class="shadow mt-3 p-3">
+            <h3>Personal Information</h3>
+            <hr>
+            <form action="/editprofile" method="post">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="floatingInput">UserName</label>
+                            <input required type="text" name="username" value="<%= user.Username %>" class="form-control"
+                                   id="username" placeholder="Jon Doe">
+
+                        </div>
+                        <!--<div class="mb-3">
+                            <label for="floatingInput">Bio</label>
+                            <input required type="text" name="bio" value="<%= user.Bio %>" class="form-control"
+                                   id="floatingInput" placeholder="Bio">
+
+                        </div>-->
+                        <div class="mb-3">
+                            <label for="floatingInput"> First Name</label>
+                            <input required type="text" name="firstname" value="<%= user.First_Name %>" class="form-control"
+                                   id="firstname" placeholder="First_Name">
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="floatingInput">Last Name</label>
+                            <input required type="text" name="lastname" value="<%= user.Last_Name %>" class="form-control"
+                                   id="lastname" placeholder="LAST_NAME">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="dob" class="form-label pb-1">Your Date of Birth</label>
+                            <input type="date" name="dob" id="dob" value="<%= user.Date_of_birth %>"
+                                   class="form-control personal p-3 date-of-birth">
+                        </div>
+
+                    </div>
+                </div>
+                <hr>
+                <h3>Contact Information</h3>
+                <div class="row">
+
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="floatingInput">Email address</label>
+                            <input  type="email" name="email" value="<%= user.Email %>" class="form-control"
+                                   id="email" placeholder="name@example.com">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="floatingInput">Credit Card No</label>
+                                <input  type="credit" name="credit" value="<%= user.Credit_card_no %>" class="form-control"
+                                    id="credit" placeholder="Credit Card No">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h3>Profile Picture</h3>
+                <div class="row ">
+                    <div class="col-2">
+                        <img class="img-fluid circular" src="<%=user.Picture%>">
+                    </div>
+
+                </div>
+                <hr>
+                <button class="btn btn-warning" type="submit">Save Profile</button>
+            </form>
+        </section>
+    </div>
+</div>
+</body>
+</html>

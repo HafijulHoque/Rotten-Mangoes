@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title> My Movie List</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+    <title>My Movie List</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="reviews">
+    <%- include('../partials/header.ejs') %>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+<%console.log(userreview)%>
+    <%for(i=0;i<userreview.length;i++){%>
+    <div class="container">
+        <div class="col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <section class="post-heading">
+                        <div class="row">
+                            <div class="col-md-11">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <a href="#">
+                                            <img class="media-object photo-profile" src="http://0.gravatar.com/avatar/38d618563e55e6082adf4c8f8c13f3e4?s=40&d=mm&r=g" width="40" height="40" alt="...">
+                                        </a>
+
+
+                                    </div>
+                                    <div class="media-body">
+                                        <a href="#" class="anchor-username"><h4 class="media-heading"><%=userreview[i].Username%></h4></a>
+                                        <a href="#" class="anchor-time">51 mins</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <a href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="post-body">
+                        <p><%=userreview[i].Content%></p>
+                    </section>
+                    <section class="post-footer">
+                        <hr>
+                        <div class="post-footer-option container">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href=<%="/review/"+userreview[i].Review_id+"/details"%> class="btn-warning">
+                                        <i class="bi bi-book-half"></i>
+                                        VIEW Review
+                                    </a>
+                                </li>
+                                <li>
+                                    <form class="Review" method="post" action=<%="/review/"+userreview[i].Review_id+"/details1"%> >
+                                        <button class="btn btn-secondary my-2 my-sm-0" type="submit"> vote</button>
+
+                                    </form>
+                                    <form class="Review" method="post" action=<%="/review/"+userreview[i].Review_id+"/details2" %> >
+                                        <button class="btn btn-secondary my-2 my-sm-0" type="submit"> Unvote</button>
+
+                                    </form>
+                            </li>
+
+                            </ul>
+                        </div>
+                        <div class="post-footer-comment-wrapper">
+                            <div class="comment-form">
+
+                            </div>
+                            <div class="comment">
+                                <div class="media">
+                                    <div class="media-left">
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <%}%>
+
+    <!--<p style="font-weight: bolder; color: rgb(64, 64, 124);">
+        Reviews for
+    </p>-->
+
+</div>
+<%- include('../partials/footer.ejs') %>
+</body>
+
+</html>
