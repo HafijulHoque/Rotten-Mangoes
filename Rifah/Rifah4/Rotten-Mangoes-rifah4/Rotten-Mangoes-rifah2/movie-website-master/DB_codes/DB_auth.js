@@ -70,21 +70,25 @@ async function getUser() {
 }
 
 
-async function insertAccountIntoDB(username, hashpassword,email) {
+async function insertAccountIntoDB(username, hashpassword,email, First_Name, Last_Name, dob, bio) {
     console.log(email);
     let sql = `
         INSERT INTO "C##MOVIEDATABASE"."Useraccount"
         (
             "Username",      
-            "Password","Email"
+            "Password","Email", "First_Name", "Last_Name", "Date_of_birth", "Bio"
         )
         VALUES(
             :USERNAME,
             :PASSWORD,
-            :EMAIL
+            :EMAIL,
+            :FIRST_NAME,
+            :LAST_NAME,
+            :DOB,
+            :BIO
         )
     `
-    return (await database.execute(sql, [username, hashpassword,email], database.options))
+    return (await database.execute(sql, [username, hashpassword,email, First_Name, Last_Name, dob, bio], database.options))
 }
 
 

@@ -16,10 +16,12 @@ router.get('/', async (req, res) => {
 
 //user makes post request to register him into db
 router.post('/', async (req, res) => {
-    const { username, email, password } = req.body;
+    const { username, email, password, FirstName, LastName, dob, credit } = req.body;
     console.log("hi");
     console.log(email)
-console.log(username);
+    console.log(username);
+    console.log(FirstName);
+    console.log(LastName);
     let userExists = (await DB_auth.getUserByUsername(username)).length == 0 ? false : true;
     userExists=false;
 
@@ -33,8 +35,9 @@ console.log(username);
     //if new user
     const hashpassword = await bcrypt.hash(password, 4);
     //insert user into db with hashed password
-    await DB_auth.insertAccountIntoDB(username,  hashpassword,email);
+    await DB_auth.insertAccountIntoDB(username,  hashpassword,email, FirstName, LastName, dob, credit);
     res.redirect('/')
 })
+
 
 module.exports = router

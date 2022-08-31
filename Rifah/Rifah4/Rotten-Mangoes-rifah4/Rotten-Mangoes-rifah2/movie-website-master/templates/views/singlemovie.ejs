@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -36,6 +35,8 @@
                     <h3 class=""><%=   moviedetails.Title %></h3>
 
                     <h4>  <%=moviedetails.Release_Date %></h4>
+
+                    <h4>Rating: <%=rating%>> </h4>
                     <br/>
 
 
@@ -130,52 +131,53 @@
                     </tr>
                     <tr>
                         <th>Trailer</th>
-                        <iframe width="420" height="315"
-                                src="https://www.youtube.com/embed/tgbNymZ7vqY">
-                        </iframe>
+                        <video width="420" height="315" controls>
+                            <source src=<% moviedetails.Trailer %> type="video">
+                        </video>
+
+                        <!--<iframe width="420" height="315"
+                                src=<% moviedetails.Trailer %>>>
+                        </iframe>-->
 
                     </tr>
-                    <tr>
-
-                        <form action="/watchlist" method="post">
-                            <input type="hidden" name="id" id="id" value=<%= moviedetails.Id %>>
-                            <button>
-                                ADD TO WATCHLIST
-                            </button>
-                        </form>
-                    </tr>
-
-                    <tr>
-                        <form class="js--review-form" action=<%="/movielist/"+moviedetails.Id+"/details"%> method="POST">
-                            <div class="form-group">
-                                <input type="hidden" name="bookId" id="bookId" value=<%= moviedetails.Title %>>
-                                <input type="hidden" name="reviewId" id="bookId" value=<%= moviedetails.Title %>>
-                                <textarea required maxlength="500" name="comment" class="form-control" id=<%="review"+moviedetails.Title%> rows="3"><</textarea>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <div class="rating">
-                                    <input required type="radio" name="rating" value="5" id=<%=moviedetails.Title+"5"%>>
-                                    <label for=<%=moviedetails.Title+"5"%>>☆☆☆☆☆</label>
-                                    <input type="radio" name="rating" value="4" id=<%=moviedetails.Title+"4"%>>
-                                    <label for=<%=moviedetails.Title+"4"%>>☆☆☆☆</label>
-                                    <input type="radio" name="rating" value="3" id=<%=moviedetails.Title+"3"%>>
-                                    <label for=<%=moviedetails.Title+"3"%>>☆☆☆</label>
-                                    <input type="radio" name="rating" value="2" id=<%=moviedetails.Title+"2"%>>
-                                    <label for=<%=moviedetails.Title+"2"%>>☆☆</label>
-                                    <input type="radio" name="rating" value="1" id=<%moviedetails.Title+"1"%>>
-                                    <label for=<%=moviedetails.Title+"1"%>>☆</label>
-                                </div>
-                                <button class="btn btn-outline-primary" type="submit">Submit</button>
-                                <button id=<%= "cancelReviewBtn" + moviedetails.Title %> class="btn btn-danger ms-5" >Cancel</button>
-                            </div>
-                        </form>
-                    </tr>
-
-
-
-
                     </tbody>
                 </table>
+                <div>
+                    <form class="js--review-form" action=<%="/movielist/"+moviedetails.Id+"/details"%> method="post">
+                        <div class="form-group">
+                            <input type="hidden" name="bookId" id="bookId" value=<%= moviedetails.Title %>>
+                            <input type="hidden" name="reviewId" id="bookId" value=<%= moviedetails.Title %>>
+                            <h4>Write a comment:</h4>
+                            <textarea required maxlength="500" name="comment" class="form-control" id=<%="review"+moviedetails.Title%> rows="3"></textarea>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="rating">
+                                <h4>Rate this show:</h4>
+                                <input required type="radio" name="rating" value="5" id=<%=moviedetails.Title+"5"%>>
+                                <label for=<%=moviedetails.Title+"5"%>>☆☆☆☆☆</label>
+                                <input type="radio" name="rating" value="4" id=<%=moviedetails.Title+"4"%>>
+                                <label for=<%=moviedetails.Title+"4"%>>☆☆☆☆</label>
+                                <input type="radio" name="rating" value="3" id=<%=moviedetails.Title+"3"%>>
+                                <label for=<%=moviedetails.Title+"3"%>>☆☆☆</label>
+                                <input type="radio" name="rating" value="2" id=<%=moviedetails.Title+"2"%>>
+                                <label for=<%=moviedetails.Title+"2"%>>☆☆</label>
+                                <input type="radio" name="rating" value="1" id=<%moviedetails.Title+"1"%>>
+                                <label for=<%=moviedetails.Title+"1"%>>☆</label>
+                            </div>
+                            <button class="btn btn-outline-primary" style="margin-left: 1000px;" type="submit">Submit</button>
+                            <button class="btn btn-danger ms-5" style="margin-left: 1000px;" id=<%= "cancelReviewBtn" + moviedetails.Title %>  >Cancel</button>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <h4>Your Comments</h4>
+                    <%for(var i = 0; i < comments.length; i++){%>
+                        <h5><%= comments[i].Comment %></h5>
+                    <%}%>
+                </div>
+
+
+
             </div>
 
             <div class="tab-pane fade" id="messages">

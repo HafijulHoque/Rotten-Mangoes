@@ -2,5 +2,6 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/sql/C##MOVIEDATABASE_v4.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/sql/C##MOVIEDATABASE_v5.sql" dialect="Oracle" />
   </component>
 </project>

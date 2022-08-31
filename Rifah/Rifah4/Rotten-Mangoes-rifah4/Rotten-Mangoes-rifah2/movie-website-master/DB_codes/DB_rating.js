@@ -10,15 +10,16 @@ async function getUsersRatingOfMovie(username, id) {
     `
     return (await database.execute(sql, [username, TITLE], database.options)).rows[0]
 }
-async function getRating( id) {
+async function getAverageRating(id) {
     let sql = `
         SELECT AVG("Rating")
         FROM "C##MOVIEDATABASE"."Rated"
-       GROUP BY "Id"
-        HAVING "Id"=:id
+        WHERE "Id"=:id
+        GROUP BY "Id"
     `
-    return (await database.execute(sql, [id], database.options)).rows[0]
+    return (await database.execute(sql, [id], database.options)).rows
 }
+
 
 async function insertRating(username, rating,id,Comment) {
     let sql = `
@@ -56,16 +57,6 @@ WHERE "Username"=:username and "Id"=:id
 }
 
 
-async function getAverageRating(id) {
-    let sql = `
-       SELECT AVG('Rating') as avgrating
-       FROM "C##MOVIEDATABASE"."Rated"
-        GROUP BY "Id"
-        HAVING "Id"=:id
-       
-    `
-    return (await database.execute(sql, [ id], database.options)).rows[0].avgrating
-}
 
 async function getAllcomments(id) {
     let sql = `
@@ -123,7 +114,7 @@ module.exports = {
     getUsersRatingOfMovie,
     insertRating,
     updateRating,
-    getRating,
+   
     RatingExist,
     insertRating2,
     updatefav,
