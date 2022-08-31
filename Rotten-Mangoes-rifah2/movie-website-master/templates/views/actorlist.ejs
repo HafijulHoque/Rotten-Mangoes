@@ -34,12 +34,11 @@
                 <img class="card-img-top p-3" src=<%= actorlist[i].Picture %>
                 alt="Card">
                 <div class="card-body" style="display: flex;flex-direction: column;justify-content:space-between;">
-                    <p style="color: #266dd3;font-weight: 650; font-size: 18px;" class="card-title"><%= actorlist[i].Title %></p>
+                    <p style="color: #266dd3;font-weight: 650; font-size: 18px;" class="card-title"><%= actorlist[i].Name %></p>
                     <div>
                 <span class="ml-0">
 
                 </span>
-                        <p class="card-text">Released on: <%= actorlist[i].Release_Date %></p>
                         <div class="d-grid gap-2">
                             <a href=<%="/actorlist/"+actorlist[i].SSN+"/details"%> class="btn-warning">
                                 <i class="bi bi-book-half"></i>

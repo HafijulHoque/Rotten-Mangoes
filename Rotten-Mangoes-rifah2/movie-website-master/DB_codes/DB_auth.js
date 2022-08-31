@@ -46,13 +46,13 @@ async function getUser() {
 }
 
 
-async function insertAccountIntoDB(username, hashpassword,email, First_Name, Last_Name, dob, card) {
+async function insertAccountIntoDB(username, hashpassword,email, First_Name, Last_Name, dob, bio) {
     console.log(email);
     let sql = `
         INSERT INTO "C##MOVIE_DATABASE"."Useraccount"
         (
             "Username",      
-            "Password","Email", "First_Name", "Last_Name", "Date_of_birth", "Credit_card_no"
+            "Password","Email", "First_Name", "Last_Name", "Date_of_birth", "Bio"
         )
         VALUES(
             :USERNAME,
@@ -61,26 +61,26 @@ async function insertAccountIntoDB(username, hashpassword,email, First_Name, Las
             :FIRST_NAME,
             :LAST_NAME,
             :DOB,
-            :CARD
+            :BIO
         )
     `
-    return (await database.execute(sql, [username, hashpassword,email, First_Name, Last_Name, dob, card], database.options))
+    return (await database.execute(sql, [username, hashpassword,email, First_Name, Last_Name, dob, bio], database.options))
 }
 
 
-async function UpdateAccountIntoDB(username,firstname,lastname,dob,email,card) {
+async function UpdateAccountIntoDB(username,firstname,lastname,dob,email,bio) {
 
 
     let sql = `
         UPDATE "C##MOVIE_DATABASE"."Useraccount"
-        SET  "Username"=:username,"First_Name"=:firstname,"Last_Name"=:lastname,"Date_of_birth"=:dob,"Email"=:email,"Credit_card_no"=:card
+        SET  "Username"=:username,"First_Name"=:firstname,"Last_Name"=:lastname,"Date_of_birth"=:dob,"Email"=:email,"Bio"=:bio
           WHERE "Username" = :USERNAME
 
 
         
     `
-    //console.log(bio);
-    return (await database.execute(sql, [username,firstname,lastname,dob,email,card], database.options))
+    console.log(bio);
+    return (await database.execute(sql, [username,firstname,lastname,dob,email,bio], database.options))
 }
 async function UpdateAccountIntoDB1(username,bio) {
     console.log("ok")
