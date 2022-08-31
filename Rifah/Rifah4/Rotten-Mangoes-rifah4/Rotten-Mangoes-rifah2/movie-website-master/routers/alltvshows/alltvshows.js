@@ -6,14 +6,14 @@ const DB_rating = require('../../DB_codes/DB_rating')
 const router = express.Router({ mergeParams: true })
 router.get('/',async (req, res) => {
         console.log("from all tv shows")
-        const tvList = await DB_movie.getRandomSeries();
+        const tvList = await DB_movie.getAllTvSeriesTitleAndID();
         console.log(tvList);
         const data = {
             pageTitle: 'List of Tv Series',
             isAuth: req.session.isAuth,
             username: req.session.username,
 
-            tvsList: tvList
+            tvList: tvList
         }
         res.render('alltvshows', data)
 

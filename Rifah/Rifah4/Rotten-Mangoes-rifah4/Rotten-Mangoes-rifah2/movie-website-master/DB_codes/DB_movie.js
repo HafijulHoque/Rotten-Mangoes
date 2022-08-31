@@ -108,12 +108,10 @@ async function getAllMoviesTitleAndID() {
 async function getAllTvSeriesTitleAndID() {
     let sql = `
            SELECT *
-        FROM "C##MOVIEDATABASE"."Tv_series"
+           FROM "C##MOVIEDATABASE"."Tv_series" natural join "C##MOVIEDATABASE"."Show"
     `
     return (await database.execute(sql, [], database.options)).rows
 }
-
-
 
 /*async function getMoviesByGenreAndOrYear(genres, years) {
     let sqlgenre = `
@@ -278,5 +276,6 @@ module.exports = {
     getAllActors,
     getAllDirectors,
     getActorbyid,
-    getDirectorbyid
+    getDirectorbyid,
+    getAllTvSeriesTitleAndID
 }

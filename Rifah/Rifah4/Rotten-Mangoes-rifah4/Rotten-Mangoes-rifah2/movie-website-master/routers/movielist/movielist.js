@@ -8,7 +8,7 @@ const router = express.Router({ mergeParams: true })
 
 
 router.get('/', async (req, res) => {
-    const movieList = await DB_movie.getRandomShow();
+    const movieList = await DB_movie.getAllMoviesTitleAndID();
     console.log(movieList)
     const data = {
         pageTitle: 'List of movies',
@@ -41,15 +41,11 @@ router.post('/:Id/details', async (req, res) => {
     console.log(req.params.Id)
     console.log(req.body.rating)
     console.log(req.body.comment);
-   const ratingexist=(await DB_rating.RatingExist(req.session.userid,req.params.Id) )
-     console.log("from backend..")
-    console.log(ratingexist)
-    let nabid=ratingexist.length==0?false:true;
-    if(nabid==false)
-    await DB_rating.insertRating2(req.session.userid,req.body.rating,req.params.Id,req.body.comment)
-    else{
+    let ratingexist=(await DB_rating.RatingExist(req.body.userid,req.params.Id)).length==0?true:false
+    if(ratingexist==false)
+        DB_rating.insertRating(req.session.userid,req.body.rating,req.params.Id,req.body.comment)
+    else
         console.log("Rating already exist..")
-    }
 
     res.redirect('/')
 
@@ -58,19 +54,16 @@ router.post('/:Id/details', async (req, res) => {
 
 
 
-router.get('/new', async (req, res) => {
-    const newMovies = await DB_movie.sortMoviesByRelease();
-    console.log("Hello from MOvieslist/new get router..")
-    console.log(newMovies)
+/*router.get('/new', async (req, res) => {
+    const newMovies = await DB_list.getAllNewlyReleasedAnime();
     const data = {
         pageTitle: 'List of Newly released Movies',
         isAuth: req.session.isAuth,
         username: req.session.username,
-
         movies: newMovies
     }
-    res.render('newmovielist', data)
-})
+    res.render('movielist', data)
+})*/
 
 router.get('/top', async (req, res) => {
     const topMovies = await DB_list.getTopMovies();
