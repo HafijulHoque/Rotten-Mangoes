@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="66d5a54d-a7cc-4a98-b06e-3398cf5330c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_rating.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_rating.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/routers/editProfile/editProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/routers/editProfile/editProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/login.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_movie.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_movie.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/routers/appRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/routers/appRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/partials/header.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/partials/header.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/singlemovie.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/singlemovie.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/watchlist.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/templates/views/watchlist.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Rotten-Mangoes-rifah2/movie-website-master/templates/views/singlemovie.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../Rotten-Mangoes-rifah2/movie-website-master/templates/views/singlemovie.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Rotten-Mangoes-rifah2/movie-website-master/templates/views/userprofile2.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../Rotten-Mangoes-rifah2/movie-website-master/templates/views/userprofile2.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ins.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../ins.txt" afterDir="false" />
@@ -57,7 +58,9 @@
       <workItem from="1661577076863" duration="23541000" />
       <workItem from="1661709877676" duration="24837000" />
       <workItem from="1661861879598" duration="694000" />
-      <workItem from="1661888962133" duration="17180000" />
+      <workItem from="1661888962133" duration="20361000" />
+      <workItem from="1661924906432" duration="122000" />
+      <workItem from="1661928207661" duration="2605000" />
     </task>
     <servers />
   </component>
@@ -81,7 +84,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/Rotten-Mangoes-rifah4/Rotten-Mangoes-rifah2/movie-website-master/DB_codes/DB_auth.js</url>
           <line>24</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

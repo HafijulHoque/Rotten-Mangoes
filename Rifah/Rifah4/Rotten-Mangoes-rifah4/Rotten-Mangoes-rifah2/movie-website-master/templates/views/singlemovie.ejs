@@ -135,6 +135,15 @@
                         </iframe>
 
                     </tr>
+                    <tr>
+
+                        <form action="/watchlist" method="post">
+                            <input type="hidden" name="id" id="id" value=<%= moviedetails.Id %>>
+                            <button>
+                                ADD TO WATCHLIST
+                            </button>
+                        </form>
+                    </tr>
 
                     <tr>
                         <form class="js--review-form" action=<%="/movielist/"+moviedetails.Id+"/details"%> method="POST">

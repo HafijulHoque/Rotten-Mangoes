@@ -107,11 +107,36 @@ async function getAllMoviesTitleAndID() {
 }
 async function getAllTvSeriesTitleAndID() {
     let sql = `
-           SELECT *
-           FROM "C##MOVIEDATABASE"."Tv_series" natural join "C##MOVIEDATABASE"."Show"
+        SELECT *
+        FROM "C##MOVIEDATABASE"."Tv_series"
+                 natural join "C##MOVIEDATABASE"."Show"
     `
     return (await database.execute(sql, [], database.options)).rows
+
 }
+
+async function Mywatchlist(username,id) {
+    let sql = `
+          DECLARE 
+BEGIN 
+   ADDTOWATCHLIST2(:username,:id);
+END ;
+    `
+    return (await database.execute(sql, [username,id], database.options))
+
+}
+async function getallWatchlist(username)
+{
+    let sql=`
+    SELECT * 
+    FROM "C##MOVIEDATABASE"."Watchlist"  JOIN "C##MOVIEDATABASE"."Show" USING ("Id")
+    WHERE "Username"=:username
+    
+    `
+    return (await database.execute(sql, [username], database.options)).rows
+
+}
+
 
 /*async function getMoviesByGenreAndOrYear(genres, years) {
     let sqlgenre = `
@@ -277,5 +302,8 @@ module.exports = {
     getAllDirectors,
     getActorbyid,
     getDirectorbyid,
-    getAllTvSeriesTitleAndID
+    getAllTvSeriesTitleAndID,
+    Mywatchlist,
+    getallWatchlist
+
 }

@@ -33,6 +33,7 @@ const directorRouter=require('./allDirectors/alldirectors')
 const homePageRouter=require('./home/homepage')
 const DB_movie = require("../DB_codes/DB_movie");
 const cartRouter=require('./Purchase/cart')
+const watchlistRouter=require('./watchlist/watchlist')
 
 
 //!HOME PAGE
@@ -84,6 +85,7 @@ router.use('/editProfile',editProfileRouter)
 router.use('/directorlist',directorRouter)
 router.use('/actorlist',actorRouter)
 router.use('/cart',cartRouter)
+router.use('/watchlist',watchlistRouter)
 
 //!ERRORS
 
