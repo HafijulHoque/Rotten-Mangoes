@@ -31,7 +31,7 @@ async function insertRating2(username,rating,id,kk)
 {
     let sql=`
     INSERT INTO "C##MOVIEDATABASE"."Rated"
-    VALUES(:username, :raing, :id,:kk )
+    VALUES(:username, :raing, :id,:kk,0 )
 
     `
     return await database.execute(sql,[username,rating,id,kk],database.options)

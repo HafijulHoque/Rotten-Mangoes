@@ -37,6 +37,20 @@ router.get('/updatepassword', async (req, res) => {
 
     res.render('updatepassword',data)
 })
+router.get('/forgetpassword', async (req, res) => {
+
+    console.log("hi from forget password get")
+
+    const data=
+        {
+            pageTitle: 'Update password',
+            isAuth: req.session.isAuth,
+            username: req.session.username,
+
+        }
+
+    res.render('forgetpassword',data)
+})
 router.post('/updatepassword', async (req, res) => {
 
     console.log("hi from update password post")
@@ -48,7 +62,7 @@ router.post('/updatepassword', async (req, res) => {
     console.log(req.body)
     const hashpassword = await bcrypt.hash(req.body.password, 4);
     console.log(hashpassword)
-    await DB_auth.updatePassword(req.body.username,hashpassword)
+    await DB_auth.updatePassword2(req.body.username,hashpassword)
     console.log("DONE sucessfullyy")
     const nabid1=await DB_auth.getUserByUsername(req.body.username)
     console.log(nabid1)
@@ -60,7 +74,34 @@ router.post('/updatepassword', async (req, res) => {
 
         }
 
-    res.render('login',data)
+    res.redirect('/')
+})
+
+router.post('/forgetpassword', async (req, res) => {
+
+    console.log("hi from update password post")
+    console.log("new password")
+    const nabid=await DB_auth.getUserByUsername(req.body.username)
+    console.log(" old pass = ")
+    console.log(nabid)
+
+    console.log(req.body.password)
+    console.log(req.body)
+    const hashpassword = await bcrypt.hash(req.body.password, 4);
+    console.log(hashpassword)
+    await DB_auth.forgetPassword2(req.body.username,hashpassword,req.body.secretcode)
+    console.log("DONE sucessfullyy")
+    const nabid1=await DB_auth.getUserByUsername(req.body.username)
+    console.log(nabid1)
+
+    const data=
+        {
+            pageTitle: 'Login',
+
+
+        }
+
+    res.redirect('/')
 })
 
 router.post('/', async (req, res) => {

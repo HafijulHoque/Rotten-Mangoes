@@ -35,6 +35,30 @@ async function updatePassword(username,password) {
     console.log(saffat);
 
 }
+async function updatePassword2(username,password) {
+
+    let sql = `
+       DECLARE 
+BEGIN 
+  UPDATEPASS(:username,:password); 
+END ;
+    `
+    const saffat=  (await database.execute(sql, [username,password], database.options))
+    console.log(saffat);
+
+}
+async function forgetPassword2(username,password,secretcode) {
+console.log("forget pass db")
+    let sql = `
+       DECLARE 
+BEGIN 
+  FORGETPASS(:username,:password,:secretcode); 
+END ;
+    `
+    const saffat=  (await database.execute(sql, [username,password,secretcode], database.options))
+    console.log(saffat);
+
+}
 async function getUser() {
     let sql = `
         SELECT *
@@ -103,6 +127,8 @@ module.exports = {
     getUser,
     UpdateAccountIntoDB1,
     updatePassword,
-    getusername
+    getusername,
+    updatePassword2,
+    forgetPassword2
 
 }
