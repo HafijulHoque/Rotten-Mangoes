@@ -58,13 +58,13 @@ WHERE "Username"=:username and "Id"=:id
 
 async function getAverageRating(id) {
     let sql = `
-        SELECT AVG('Rating') as avgr
+        SELECT AVG("Rating")
         FROM "C##MOVIE_DATABASE"."Rated"
+        WHERE "Id"=:id
         GROUP BY "Id"
-        HAVING "Id"=:id
 
     `
-    return (await database.execute(sql, [id], database.options)).rows[0].avgr
+    return (await database.execute(sql, [id], database.options)).rows
 }
 
 

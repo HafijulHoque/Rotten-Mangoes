@@ -24,9 +24,11 @@ router.get('/:Id/details', async (req, res) => {
     console.log("Movielist new get..")
     console.log(req.params.Id)
     const movieList = await DB_movie.getShowsByID(req.params.Id);
-    const comments = await DB_rating.getAllcomments(req.params.Id);
-    const rating = await DB_rating.getAverageRating(req.params.Id);
     console.log(movieList)
+    const comments = await DB_rating.getAllcomments(req.params.Id);
+    console.log(comments)
+    const rating = await DB_rating.getAverageRating(req.params.Id);
+    console.log(rating)
     const data = {
         pageTitle: 'List of movies',
         isAuth: req.session.isAuth,
