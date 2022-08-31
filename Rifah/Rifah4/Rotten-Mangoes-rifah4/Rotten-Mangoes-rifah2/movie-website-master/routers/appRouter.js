@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router({ mergeParams: true });
 const DB_homepage = require('../DB_codes/DB_homepage');
+const DB_rating=require('../DB_codes/DB_rating');
 const DB_movies = require('../DB_codes/DB_movie');
 
 
@@ -36,6 +37,7 @@ const cartRouter=require('./Purchase/cart')
 
 //!HOME PAGE
 router.get('/', async (req, res) => {
+    await DB_rating.updatefav()
     const username = req.session.userid;
     const movieList = await DB_movie.sortMoviesByRelease();
     const serieslist=await DB_movie.sortTvseriesByRelease()

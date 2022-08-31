@@ -60,7 +60,8 @@ async function getAverageRating(id) {
     let sql = `
        SELECT AVG('Rating') as avgrating
        FROM "C##MOVIEDATABASE"."Rated"
-        GROUP BY "Username"
+        GROUP BY "Id"
+        HAVING "Id"=:id
        
     `
     return (await database.execute(sql, [ id], database.options)).rows[0].avgrating
@@ -84,7 +85,15 @@ async function updateRating(username, id, star) {
     `
     return (await database.execute(sql, [star, username, id], database.options)).rows
 }
-
+async function updatefav() {
+    let sql = `
+        DECLARE 
+BEGIN 
+  UPDATEFAV; 
+END ; 
+    `
+    return (await database.execute(sql, [], database.options)).rows
+}
 /*async function updateMovieRating(anime_id) {
     let sql = `
         BEGIN
@@ -117,6 +126,7 @@ module.exports = {
     getRating,
     RatingExist,
     insertRating2,
+    updatefav,
     getAverageRating,
     getAllcomments
    // updateAllAnimeRank,
